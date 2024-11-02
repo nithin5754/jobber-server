@@ -10,7 +10,10 @@ import { ICloudinary } from "../../../External-libraries/3-cloudinary/ICloudinar
 import { firstLetterUpperCase, lowerCase } from "../../utils/helper.utils";
 import { IMailer } from "../../../External-libraries/4-mailer/IMailer";
 import config from "../../../config";
+import { EmailTemplate } from "../../../External-libraries/4-mailer/mail.templete";
 export class SignUp {
+
+
   constructor(
     private authService: IAuthService,
     private crypto: ICrypto,
@@ -93,11 +96,15 @@ export class SignUp {
 
       let result = await this.authService.create(authData);
       const verificationLink = `${config.URL_.CLIENT_URL}/confirm_email?v_token=${authData.emailVerificationToken}`;
-      await this.mailer.SendEmail({
-        email: result?.email,
-        link: verificationLink,
-        html: `<h1>Hy ${result?.username}</h1><br><p>Your LINK for the verification is <div><h2>${verificationLink}</h2></div></p>`,
-      });
+      
+      if(result&&result.username){
+        await this.mailer.SendEmail({
+          email: result?.email,
+          link: verificationLink,
+          subject:'verify your eamil',
+          html: EmailTemplate.verify_email({username:result.username ,verificationLink}),
+        });
+      }
 
       return res.status(200).json({ message: 'User created successfully',user:result,token:'1234556'});
     } catch (error: any) {
