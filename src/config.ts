@@ -14,6 +14,15 @@ const config={
     URI:process.env.MONGO_URI as string,
   },
   NODE_ENVIRONMENT: process.env.NODEENVIRONMENT as string,
+
+  NODEMAILER_:{
+    PASSWORD_NODEMAILER:process.env.PASSWORD_NODEMAIL as string,
+    EMAIL_NODEMAILER:process.env.EMAIL_NODEMAIL as string,
+    EMAIL_NODEMAIL_PROVIDER:process.env.EMAIL_NODEMAIL_PROVIDER as string
+  },
+      URL_:{
+        CLIENT_URL:process.env.CLIENT as string
+      }
 }
 
 
