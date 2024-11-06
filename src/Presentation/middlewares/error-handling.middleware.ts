@@ -1,34 +1,20 @@
 import { NextFunction, Request, Response } from "express"
-import { CustomError } from "../error/error.interface"
+import { CustomError, IErrorResponse } from "../error/error.interface"
+
 
 
 const ErrorHandlingMiddleWare = (
-  err:Error,
-  req:Request,
+  error:IErrorResponse,
+  _req:Request,
   res:Response,
   next:NextFunction
 
 ):void=> {
-
-
-  if(err instanceof CustomError){
-    const errResponse=err.serializeErrors()
-
-    console.log(errResponse,"my error");
-    
-
-     res.status(errResponse.statusCode).json({
-      message:errResponse.message,
-      status:errResponse.status,
-      comingFrom:errResponse.comingFrom,
-    })
-  }else{
-    res.status(500).json({
-      message:"Internal Server Error"
-    })
+  if (error instanceof CustomError) {
+    console.log('error templete', ` ${error.comingFrom}:`, error);
+    res.status(error.statusCode).json(error.serializeErrors());
   }
-
-
+  next()
 
 }
 export default ErrorHandlingMiddleWare

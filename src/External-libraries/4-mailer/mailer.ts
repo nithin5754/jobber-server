@@ -1,5 +1,5 @@
 import config from "../../config";
-import { IMailer, ImailerDetails } from "./IMailer";
+import { IEmailMessageDetails, IMailer } from "./IMailer";
 import nodemailer from "nodemailer";
 
 export class Mailer implements IMailer {
@@ -7,7 +7,7 @@ export class Mailer implements IMailer {
   private _port: number = 465;
   private _secure: boolean = true;
 
-  async SendEmail(data: ImailerDetails) {
+  async SendEmail(data: IEmailMessageDetails) {
     const transporter = nodemailer.createTransport({
       host: this._host,
       port: this._port,
@@ -18,11 +18,9 @@ export class Mailer implements IMailer {
       },
     });
 
-    // <h1>Hy ${name}</h1><br><p>Your OTP for the verification is <h2>${otp}</h2></p>
- 
     await transporter.sendMail({
       from: config.NODEMAILER_.EMAIL_NODEMAIL_PROVIDER,
-      to: `${data.email}`,
+      to: `${data.receiverEmail}`,
       subject: data.subject,
       html: data.html,
     });

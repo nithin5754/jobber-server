@@ -4,13 +4,6 @@ import { Application } from "express";
 import { ConfigType } from "../../config";
 
 
-
-console.log("hello hey");
-
-
-
-
-
 const serverConfig=(app:Application,config:ConfigType)=>{
 
 

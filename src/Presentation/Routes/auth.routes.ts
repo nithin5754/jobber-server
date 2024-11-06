@@ -6,29 +6,50 @@ import { Crypto } from "../../External-libraries/1-crypto/Crypto";
 import { Uuid } from "../../External-libraries/2-public-id/Uuid";
 import { CloudinaryUploads } from "../../External-libraries/3-cloudinary/Cloudinary-uploads";
 import { Mailer } from "../../External-libraries/4-mailer/mailer";
+import upload from "../middlewares/multer";
+import { MulterFileConverter } from "../../External-libraries/5-multer-converter/multer-converter";
+import { JwtToken } from "../../External-libraries/6-token.ts/jwt.token";
+import { SignIn } from "../Controllers/1-auth-controller/signin";
+import { VerifyEmail } from "../Controllers/1-auth-controller/verify-email";
 
-const authRepository=new AuthRepository()
-const authService=new AuthService(authRepository)
+const authRepository = new AuthRepository();
+const crypto = new Crypto();
+const uuid = new Uuid();
+const uploads = new CloudinaryUploads();
+const multer = new MulterFileConverter();
+const mailer = new Mailer();
+const jwtToken = new JwtToken();
+const authService = new AuthService(
+  authRepository,
+  jwtToken,
+  crypto,
+  uuid,
+  uploads,
+  mailer,
+  multer
+);
 
-const  crypto=new Crypto()
-const uuid=new Uuid()
-const uploads=new CloudinaryUploads()
-const mailer=new Mailer()
+const signup_controller = new SignUp(authService);
 
-const signup_controller=new SignUp(authService,crypto,uuid,uploads,mailer)
+const signin_controller = new SignIn(authService);
+
+const verify_controller = new VerifyEmail(authService);
 
 const authRouter = (router: Router) => {
+  router
+    .route("/register")
+    .post(
+      upload.single("profilePicture"),
+      signup_controller.onCreateUser.bind(signup_controller)
+    );
+  router.route("/login")
+  .post(upload.none(),signin_controller.read.bind(signin_controller));
 
   router
-  .route("/register")
-  .post(signup_controller.onCreateUser.bind(signup_controller));
+    .route('/verify-email')
+    .put(verify_controller.update.bind(verify_controller));
 
-
-  return router
-
+  return router;
 };
 
-
-
-
-export default authRouter
+export default authRouter;

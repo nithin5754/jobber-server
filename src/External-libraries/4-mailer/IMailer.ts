@@ -1,14 +1,20 @@
-export type ImailerDetails = {
-  name?: string;
-  email?: string;
+
+
+
+export interface IEmailMessageDetails {
+  receiverEmail?:string;
   subject?:string;
-  otp?: string;
-  link?: string;
-  description?: string;
-  html?:string,
-  type?:string
-};
+  verifyLink?:string;
+  resetLink?:string;
+  username?:string;
+  otp?:string;
+  description?:string;
+  html?:string;
+  type?:string;
+}
+
+
 
 export interface IMailer {
-  SendEmail(data:ImailerDetails): any;
+  SendEmail(data:IEmailMessageDetails): any;
 }

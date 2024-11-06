@@ -6,25 +6,26 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 
 import cors from "cors";
-import { ConfigType } from "../../config";
+import { CloudinaryConfigClass, ConfigType } from "../../config";
 
-// import { v2 as cloudinary } from "cloudinary";
+
+const cloudinary=new CloudinaryConfigClass()
 
 export default function expressConfig(app: Application, _config: ConfigType) {
+
+ 
+
+
   app.use(
     cors({
       origin: ["http://localhost:3000"],
-      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       credentials: true,
     })
   );
 
-  // cloudinary.config({
-  //   cloud_name:config.cloudinary.CLOUDINARY_CLOUD_NAME,
-  //   api_key:config.cloudinary.CLOUDINARY_API_KEY,
-  //   api_secret:config.cloudinary.CLOUDINARY_API_SECRET
-  // })
 
+  cloudinary.cloudinaryConfig();
   app.use(morgan("dev"));
   app.use(express.json());
   app.use(cookieParser());
