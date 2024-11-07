@@ -1,7 +1,7 @@
-import moment from "moment";
-import { IUser } from "../../../../Entities/User";
-import { IAuthRepository } from "../../../../Interfaces/IAuthRepository";
-import { UserModal } from "../models/user.schema";
+import moment from 'moment';
+import { IUser } from '../../../../Entities/User';
+import { IAuthRepository } from '../../../../Interfaces/IAuthRepository';
+import { UserModal } from '../models/user.schema';
 
 export class AuthRepository implements IAuthRepository {
   private FilterFetchData(result: any): IUser | undefined {
@@ -16,19 +16,17 @@ export class AuthRepository implements IAuthRepository {
         profilePicture: result.profilePicture,
         emailVerified: result.emailVerified,
 
-        otpExpiration: moment(result.otpExpiration).format(
-          "MMMM D, YYYY - h:mm A"
-        ),
-        createdAt: moment(result.createdAt).format("MMMM D, YYYY - h:mm A"),
-        updatedAt: moment(result.updatedAt).format("MMMM D, YYYY - h:mm A"),
-        passwordResetExpires: moment(result.passwordResetExpires).format(
-          "MMMM D, YYYY - h:mm A"
-        ),
+        otpExpiration: moment(result.otpExpiration).format('MMMM D, YYYY - h:mm A'),
+        createdAt: moment(result.createdAt).format('MMMM D, YYYY - h:mm A'),
+        updatedAt: moment(result.updatedAt).format('MMMM D, YYYY - h:mm A'),
+        passwordResetExpires: moment(result.passwordResetExpires).format('MMMM D, YYYY - h:mm A')
       };
 
       if (result.browserName) {
         fetchData.browserName = result.browserName;
       }
+
+   
 
       if (result.deviceType) {
         fetchData.deviceType = result.deviceType;
@@ -40,6 +38,21 @@ export class AuthRepository implements IAuthRepository {
   }
 
   constructor() {}
+ async updateNewPassword(id: string, password: string): Promise<boolean> {
+   
+
+      let result=await UserModal.findByIdAndUpdate({_id:id},{$set:{password:password}},{upsert:true})
+      
+      return !!result
+  }
+  async authUserByPasswordVerification(token: string): Promise<IUser | undefined> {
+    let result=await UserModal.findOne({passwordResetToken:token,passwordResetExpires:{$gt:new Date()}}).select('-password')
+
+    return this.FilterFetchData(result)
+  }
+  async updatePasswordToken(authId: string, token: string, tokenExpiration: Date): Promise<void> {
+    await UserModal.findByIdAndUpdate({ _id: authId},{$set:{ passwordResetToken: token, passwordResetExpires: tokenExpiration }},{ upsert: true });
+  }
   async fetchDataById(userId: string): Promise<IUser | undefined> {
     const result = await UserModal.findById({ _id: userId });
     return this.FilterFetchData(result);
@@ -73,7 +86,7 @@ export class AuthRepository implements IAuthRepository {
       username: boolean;
     } = {
       email: false,
-      username: false,
+      username: false
     };
 
     let result_email = await UserModal.findOne({ email: email });
