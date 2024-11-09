@@ -16,24 +16,22 @@ const tokenClass = new JwtToken();
 
 export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
-     
-  // console.log(authHeader, "connection string");
-
+    
   if (!authHeader?.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "unauthorized token string" });
+    return res.status(401).json({ message: "unauthorized token string",user:{} });
   }
 
   const token = authHeader.split(" ")[1];
 
   let decodedToken = tokenClass.verifyAccessToken(token);
-  // console.log(decodedToken, ":::----decoded token");
+  console.log(decodedToken, ":::----decoded token");
 
   if (typeof decodedToken !== "string" && decodedToken.userId) {
     req.userId = decodedToken.userId;
-    // console.log("is verified");
+ 
 
     next();
   } else {
-    return res.status(403).json({ message: "Forbidden" });
+    return res.status(403).json({ message: "Forbidden",user:{} });
   }
 };

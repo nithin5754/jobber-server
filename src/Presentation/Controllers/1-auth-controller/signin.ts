@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { loginSchema } from "../../schemas/1-auth-schemas/signin.schema";
 import { BadRequestError } from "../../error/error.interface";
-import { isEmail } from "../../utils/helper.utils";
+import { firstLetterUpperCase, isEmail } from "../../utils/helper.utils";
 import { IUser } from "../../../Entities/User";
 import { IAuthService } from "../../../Interfaces/IAuthService";
 import { compare } from "bcryptjs";
@@ -35,7 +35,7 @@ export class SignIn {
       let type: "username" | "email" = "username";
       isValidEmail ? (type = "email") : (type = "username");
       const existingUser: IUser | undefined =
-        await this.authService.fetchUserDetails(username, type);
+        await this.authService.fetchUserDetails(firstLetterUpperCase(username), type);
       if (!existingUser || !existingUser.password) {
         throw new BadRequestError(
           "Invalid credentials",

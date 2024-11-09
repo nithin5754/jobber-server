@@ -12,6 +12,7 @@ import { JwtToken } from '../../External-libraries/6-token.ts/jwt.token';
 import { SignIn } from '../Controllers/1-auth-controller/signin';
 import { VerifyEmail } from '../Controllers/1-auth-controller/verify-email';
 import { ForgotPassword } from '../Controllers/1-auth-controller/forgotPassword';
+import { SignOut } from '../Controllers/1-auth-controller/signout';
 
 const authRepository = new AuthRepository();
 const crypto = new Crypto();
@@ -28,6 +29,9 @@ const signin_controller = new SignIn(authService);
 
 const verify_controller = new VerifyEmail(authService);
 const forgot_Password_Controller = new ForgotPassword(authService);
+
+
+const signOut_controller=new SignOut()
 const authRouter = (router: Router) => {
   router.route('/register').post(upload.single('profilePicture'), signup_controller.onCreateUser.bind(signup_controller));
   router.route('/login').post(upload.none(), signin_controller.read.bind(signin_controller));
@@ -36,7 +40,7 @@ const authRouter = (router: Router) => {
   router.route('/forgot-password').post(forgot_Password_Controller.forgotPassword.bind(forgot_Password_Controller));
 
   router.route('/reset-password/:token').put(forgot_Password_Controller.resetPassword.bind(forgot_Password_Controller));
-
+router.route('/signout').post(signOut_controller.onLogOut.bind(signOut_controller))
   return router;
 };
 

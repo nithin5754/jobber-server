@@ -45,15 +45,12 @@ export class ForgotPassword {
           username: checkUserExist.username as string
         }
       };
-
       await this.authservice.SendEmail(messageDetails);
-
       res.status(StatusCodes.OK).json({ message: 'Password reset email sent.' });
     } catch (error) {
       next(error);
     }
   };
-
   resetPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     const { error } = (await Promise.resolve(passwordSchema)).validate(req.body);
 
