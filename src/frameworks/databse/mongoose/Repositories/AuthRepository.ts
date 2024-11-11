@@ -57,6 +57,13 @@ export class AuthRepository implements IAuthRepository {
     const result = await UserModal.findById({ _id: userId });
     return this.FilterFetchData(result);
   }
+
+
+  async updateEmailToken(userId: string,email:string, token: string): Promise<void> {
+    await UserModal.findOneAndUpdate({ _id: userId,email:email},{$set:{ emailVerificationToken: token }},{ upsert: true });
+  }
+
+
   async updateVerifyEmailField(id: string, data: boolean): Promise<void> {
     await UserModal.findByIdAndUpdate({ _id: id }, { emailVerified: data });
   }

@@ -24,7 +24,7 @@ export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
   const token = authHeader.split(" ")[1];
 
   let decodedToken = tokenClass.verifyAccessToken(token);
-  console.log(decodedToken, ":::----decoded token");
+
 
   if (typeof decodedToken !== "string" && decodedToken.userId) {
     req.userId = decodedToken.userId;

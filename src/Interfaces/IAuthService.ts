@@ -32,4 +32,7 @@ export interface IAuthService {
   getUserByPasswordVerification(token: string): Promise<IUser | undefined>;
 
   getUpdateNewPassword(id: string, password: string): Promise<boolean>;
+
+
+  getUpdateEmailToken(userId: string,email:string, token: string): Promise<void>
 }

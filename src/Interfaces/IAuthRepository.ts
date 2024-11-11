@@ -22,4 +22,6 @@ export interface IAuthRepository {
   fetchDataById(userId: string): Promise<IUser | undefined>;
 
   updatePasswordToken(authId: string, token: string, tokenExpiration: Date): Promise<void>;
+
+   updateEmailToken(userId: string,email:string, token: string): Promise<void>
 }

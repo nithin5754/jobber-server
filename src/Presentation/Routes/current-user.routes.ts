@@ -34,6 +34,7 @@ const currentUserController=new CurrentUser(authService)
 const CurrentRouter = (router: Router):Router => {
   router.use(verifyJWT as RequestHandler);
   router.route('/current-user').get(currentUserController.currentUser.bind(currentUserController))
+  router.route('/resend-email').put(currentUserController.resendEmail.bind(currentUserController))
 
 
   return router;

@@ -10,6 +10,7 @@ const ErrorHandlingMiddleWare = (
   next:NextFunction
 
 ):void=> {
+
   if (error instanceof CustomError) {
     console.log('error templete', ` ${error.comingFrom}:`, error);
     res.status(error.statusCode).json(error.serializeErrors());

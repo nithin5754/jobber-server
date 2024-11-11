@@ -17,6 +17,9 @@ export class VerifyEmail {
     try {
       const { token } = req.body;
 
+
+      console.log(token,"helo token")
+
       if (!token) {
         throw new BadRequestError(
           "verification token error please try after sometime.",
@@ -55,6 +58,7 @@ export class VerifyEmail {
         .status(StatusCodes.OK)
         .json({ message: "Email verified successfully.", user: this.userData });
     } catch (error) {
+  
       next(error);
     }
   };

@@ -20,6 +20,9 @@ export class AuthService implements IAuthService {
     private mailer: IMailer,
     private fileConverter: IMulterConverter
   ) {}
+  getUpdateEmailToken(userId: string, email: string, token: string): Promise<void> {
+    return this.authRepo.updateEmailToken(userId,email,token)
+  }
   getUpdateNewPassword(id: string, password: string): Promise<boolean> {
    return this.authRepo.updateNewPassword(id,password)
   }
