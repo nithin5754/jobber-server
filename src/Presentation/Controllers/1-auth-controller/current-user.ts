@@ -12,12 +12,12 @@ export class CurrentUser {
   constructor(private authservice: IAuthService) {}
 
   currentUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    console.log(req.userId,"hello")
+    console.log(req.currentUser.userId,"hello")
     try {
       let user: IUser | null = null;
 
       console.log(req.session,"hell0")
-      let isCurrentUserExist: IUser | undefined = await this.authservice.getFetchDataById(req.userId);
+      let isCurrentUserExist: IUser | undefined = await this.authservice.getFetchDataById(req.currentUser.userId);
 
       if (isCurrentUserExist && Object.keys(isCurrentUserExist).length) {
         let fetchUser: IUser = omit(isCurrentUserExist, ['password']);
@@ -35,7 +35,7 @@ export class CurrentUser {
     try {
       const {email}=req.body 
 
-      const userId=req.userId
+      const userId=req.currentUser.userId
 
       if(!userId||!email){
          throw new BadRequestError("Credentials not found.Error","ResendEmail() error Credentials");

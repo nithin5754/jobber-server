@@ -113,6 +113,7 @@ export class SignUp {
         token: accessToken
       });
     } catch (error: any) {
+ 
       next(error);
     }
   };

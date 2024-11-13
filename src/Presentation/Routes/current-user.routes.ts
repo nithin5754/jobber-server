@@ -13,7 +13,6 @@ import { MulterFileConverter } from '../../External-libraries/5-multer-converter
 import { JwtToken } from '../../External-libraries/6-token.ts/jwt.token';
 
 import { CurrentUser } from '../Controllers/1-auth-controller/current-user';
-import { verifyJWT } from '../middlewares/authMiddleware';
 
 const authRepository = new AuthRepository();
 const crypto = new Crypto();
@@ -32,7 +31,7 @@ const currentUserController=new CurrentUser(authService)
 
 
 const CurrentRouter = (router: Router):Router => {
-  router.use(verifyJWT as RequestHandler);
+
   router.route('/current-user').get(currentUserController.currentUser.bind(currentUserController))
   router.route('/resend-email').put(currentUserController.resendEmail.bind(currentUserController))
 

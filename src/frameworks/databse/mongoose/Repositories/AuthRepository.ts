@@ -2,6 +2,7 @@ import moment from 'moment';
 import { IUser } from '../../../../Entities/User';
 import { IAuthRepository } from '../../../../Interfaces/IAuthRepository';
 import { UserModal } from '../models/user.schema';
+import { BuyerModal } from '../models/buyer.schema';
 
 export class AuthRepository implements IAuthRepository {
   private FilterFetchData(result: any): IUser | undefined {
@@ -110,7 +111,20 @@ export class AuthRepository implements IAuthRepository {
   }
   async createAuthUser(data: IUser): Promise<IUser | undefined> {
     let result = await UserModal.create(data);
+  
+    let filterData:IUser|undefined=this.FilterFetchData(result)
 
-    return this.FilterFetchData(result);
+   if(filterData){
+    const BuyerInitialDetails = {
+      userId:filterData.id,
+      purchasedGigs: [],
+      
+
+    };
+   let buyer= await BuyerModal.create(BuyerInitialDetails)
+
+   }
+
+    return filterData
   }
 }

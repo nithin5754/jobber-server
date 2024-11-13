@@ -13,6 +13,7 @@ import { SignIn } from '../Controllers/1-auth-controller/signin';
 import { VerifyEmail } from '../Controllers/1-auth-controller/verify-email';
 import { ForgotPassword } from '../Controllers/1-auth-controller/forgotPassword';
 import { SignOut } from '../Controllers/1-auth-controller/signout';
+import { RefreshToken } from '../Controllers/1-auth-controller/refersh-token';
 
 const authRepository = new AuthRepository();
 const crypto = new Crypto();
@@ -31,11 +32,14 @@ const verify_controller = new VerifyEmail(authService);
 const forgot_Password_Controller = new ForgotPassword(authService);
 
 
+const refreshToken=new RefreshToken(jwtToken,authService)
+
+
 const signOut_controller=new SignOut()
 const authRouter = (router: Router) => {
   router.route('/register').post(upload.single('profilePicture'), signup_controller.onCreateUser.bind(signup_controller));
   router.route('/login').post(upload.none(), signin_controller.read.bind(signin_controller));
-
+router.route('/refresh').get(refreshToken.onRefreshToken.bind(refreshToken))
   router.route('/verify-email').put(verify_controller.update.bind(verify_controller));
   router.route('/forgot-password').post(forgot_Password_Controller.forgotPassword.bind(forgot_Password_Controller));
 

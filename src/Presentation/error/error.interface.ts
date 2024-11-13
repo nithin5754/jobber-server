@@ -43,4 +43,14 @@ export class BadRequestError extends CustomError {
 }
 
 
+export class NotAuthorizedError extends CustomError {
+  statusCode = StatusCodes.UNAUTHORIZED;
+  status = 'error';
+
+  constructor(message: string, comingFrom: string) {
+    super(message, comingFrom);
+  }
+}
+
+
 
