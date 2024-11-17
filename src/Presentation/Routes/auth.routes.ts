@@ -1,50 +1,77 @@
 import { Router } from 'express';
-import { SignUp } from '../Controllers/1-auth-controller/signup';
-import { AuthService } from '../../Use Cases/1-auth-service/auth.service';
-import { AuthRepository } from '../../frameworks/databse/mongoose/Repositories/AuthRepository';
-import { Crypto } from '../../External-libraries/1-crypto/Crypto';
-import { Uuid } from '../../External-libraries/2-public-id/Uuid';
-import { CloudinaryUploads } from '../../External-libraries/3-cloudinary/Cloudinary-uploads';
-import { Mailer } from '../../External-libraries/4-mailer/mailer';
 import upload from '../middlewares/multer';
-import { MulterFileConverter } from '../../External-libraries/5-multer-converter/multer-converter';
-import { JwtToken } from '../../External-libraries/6-token.ts/jwt.token';
-import { SignIn } from '../Controllers/1-auth-controller/signin';
-import { VerifyEmail } from '../Controllers/1-auth-controller/verify-email';
-import { ForgotPassword } from '../Controllers/1-auth-controller/forgotPassword';
-import { SignOut } from '../Controllers/1-auth-controller/signout';
-import { RefreshToken } from '../Controllers/1-auth-controller/refersh-token';
+import { RegisterUseCase } from '../../Application/use-cases/1-auth-usecase/register.usecase';
+import { RegisterController } from '../Controllers/auth/register';
+import { signupSchema } from '../schemas/1-auth-schemas/signup.schemas';
+import services from '../../shared/Services';
+import { LoginUseCase } from '../../Application/use-cases/1-auth-usecase/login.usecase';
+import { Login as LoginController } from '../Controllers/auth/login';
+import { loginSchema } from '../schemas/1-auth-schemas/signin.schema';
+import { Refresh } from '../Controllers/auth/refresh';
+import { RefreshUsecase } from '../../Application/use-cases/1-auth-usecase/refersh.usecase';
+import { ForgotPassword } from '../Controllers/auth/forgotPassword';
+import { ForgotPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/forgotpassword.usecase';
+import { forgotPasswordSchema, passwordSchema } from '../schemas/1-auth-schemas/passwordSchema';
+import { ResetPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/reset-password.usecase';
+import { ResetPassword } from '../Controllers/auth/reset-password';
+import { VerifyEmailUsecase } from '../../Application/use-cases/1-auth-usecase/verify-email.usecase';
+import { VerifyEmail } from '../Controllers/auth/verify-email';
+import { SignOut } from '../Controllers/auth/signout';
 
-const authRepository = new AuthRepository();
-const crypto = new Crypto();
-const uuid = new Uuid();
-const uploads = new CloudinaryUploads();
-const multer = new MulterFileConverter();
-const mailer = new Mailer();
-const jwtToken = new JwtToken();
-const authService = new AuthService(authRepository, jwtToken, crypto, uuid, uploads, mailer, multer);
+/**
+ * @description INTERCEPTORS
+ */
 
-const signup_controller = new SignUp(authService);
+const registerInterceptor = new RegisterUseCase(
+  services.user,
+  services.mailer,
+  services.configService,
+  services.uniqueId,
+  services.multer,
+  services.cloudinary,
+  services.auth
+);
 
-const signin_controller = new SignIn(authService);
+const loginInterceptor = new LoginUseCase(services.user, services.auth);
 
-const verify_controller = new VerifyEmail(authService);
-const forgot_Password_Controller = new ForgotPassword(authService);
+const refreshInterceptor = new RefreshUsecase(services.auth, services.user);
 
+const forgotPasswordInterceptor = new ForgotPasswordUsecase(services.user, services.configService, services.mailer, services.uniqueId);
 
-const refreshToken=new RefreshToken(jwtToken,authService)
+const resetPasswordInterceptors = new ResetPasswordUsecase(services.user, services.auth);
 
+const verifyEmailInterceptor = new VerifyEmailUsecase(services.user);
 
-const signOut_controller=new SignOut()
+/**
+ * @description CONTROLLERS
+ */
+
+const registerController = new RegisterController(registerInterceptor, signupSchema);
+
+const loginController = new LoginController(loginInterceptor, loginSchema);
+
+const refreshController = new Refresh(refreshInterceptor);
+
+const forgotPasswordController = new ForgotPassword(forgotPasswordSchema, forgotPasswordInterceptor);
+
+const resetPasswordController = new ResetPassword(passwordSchema, resetPasswordInterceptors);
+
+const verifyEmailController = new VerifyEmail(verifyEmailInterceptor);
+
+const signOutController = new SignOut();
+
 const authRouter = (router: Router) => {
-  router.route('/register').post(upload.single('profilePicture'), signup_controller.onCreateUser.bind(signup_controller));
-  router.route('/login').post(upload.none(), signin_controller.read.bind(signin_controller));
-router.route('/refresh').get(refreshToken.onRefreshToken.bind(refreshToken))
-  router.route('/verify-email').put(verify_controller.update.bind(verify_controller));
-  router.route('/forgot-password').post(forgot_Password_Controller.forgotPassword.bind(forgot_Password_Controller));
+  router.route('/register').post(upload.single('profilePicture'), registerController.handle.bind(registerController));
+  router.route('/login').post(upload.none(), loginController.handle.bind(loginController));
+  router.route('/refresh').get(refreshController.handle.bind(refreshController));
+  router.route('/forgot-password').post(forgotPasswordController.handle.bind(forgotPasswordController));
 
-  router.route('/reset-password/:token').put(forgot_Password_Controller.resetPassword.bind(forgot_Password_Controller));
-router.route('/signout').post(signOut_controller.onLogOut.bind(signOut_controller))
+  router.route('/reset-password/:token').put(resetPasswordController.handle.bind(resetPasswordController));
+
+  router.route('/verify-email').put(verifyEmailController.handle.bind(verifyEmailController));
+
+  router.route('/signout').post(signOutController.handle.bind(signOutController));
+
   return router;
 };
 

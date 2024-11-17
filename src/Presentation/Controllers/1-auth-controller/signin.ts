@@ -8,7 +8,7 @@ import { compare } from "bcryptjs";
 import { StatusCodes } from "http-status-codes";
 
 import { omit } from "lodash";
-import { Console } from "console";
+
 
 export class SignIn {
   constructor(private authService: IAuthService) {}
@@ -21,7 +21,7 @@ export class SignIn {
     res: Response,
     next: NextFunction
   ): Promise<any> => {
-    console.log("LOGIN DATA FORM",req.body)
+
     const { error } = (await Promise.resolve(loginSchema)).validate(req.body);
     if (error?.details) {
       throw new BadRequestError(

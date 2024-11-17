@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { JwtToken } from '../../External-libraries/6-token.ts/jwt.token';
-import { IAuthPayload } from '../../External-libraries/6-token.ts/IToken.interface';
+
 import { JwtPayload } from 'jsonwebtoken';
 import { NotAuthorizedError } from '../error/error.interface';
+import { JwtToken } from '../../Infrastructure/External-libraries/6-token.ts/jwt.token';
+import { IAuthPayload } from '../../Infrastructure/External-libraries/6-token.ts/IToken.interface';
 
 declare global {
   namespace Express {
