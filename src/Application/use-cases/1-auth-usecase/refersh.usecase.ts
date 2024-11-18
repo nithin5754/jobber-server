@@ -29,7 +29,7 @@ export class RefreshUsecase implements IUseCase<IRfreshTokenDTO, IRefreshResult>
 
     const { userId, email, username } = decodedToken as JwtPayload;
 
-    const foundUser = await this.userService.findOne({ data: { id: userId } });
+    const foundUser = await this.userService.findOne({ data: { _id: userId } });
 
     if (!foundUser || foundUser.isNull || !foundUser.user) {
       throw new BadRequestError('Invalid refresh token', 'OnRefreshToken() method Token error');

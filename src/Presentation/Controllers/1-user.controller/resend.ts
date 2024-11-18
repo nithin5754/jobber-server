@@ -12,6 +12,8 @@ export class Resend implements IController {
 
       const userId = req.currentUser.userId;
 
+      console.log("controlller-userId",userId,"email",email)
+
       if (!userId || !email) {
         throw new BadRequestError('Credentials not found.Error', 'ResendEmail() error Credentials');
       }

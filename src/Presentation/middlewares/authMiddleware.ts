@@ -22,7 +22,6 @@ const tokenClass = new JwtToken();
 class AuthMiddleware {
   public verifyJWT = (req: Request, _res: Response, next: NextFunction): void => {
     const authHeader = req.headers.authorization;
-
     if (!authHeader?.startsWith('Bearer ')) {
       throw new NotAuthorizedError('Invalid request', 'jWT AUTH() method: Request not coming from api gateway');
     }

@@ -1,7 +1,9 @@
 import { Router } from "express";
 import { ResendUsecase } from "../../Application/use-cases/1-auth-usecase/resend.usecase";
 import services from "../../shared/Services";
-import { Resend } from "../Controllers/auth/resend";
+import { Resend } from "../Controllers/1-user.controller/resend";
+import { CurrentUserUsecase } from "../../Application/use-cases/1-auth-usecase/current-user.usecase";
+import { CurrentUser } from "../Controllers/1-user.controller/current-user";
 
 
 
@@ -13,16 +15,19 @@ const resendInterceptor=new ResendUsecase(
   services.uniqueId
 )
 
-
+const currentUserInterceptor=new CurrentUserUsecase(
+  services.user
+)
 
 
 const resendController=new Resend(resendInterceptor)
 
 
-
+const currentUserController=new CurrentUser(currentUserInterceptor)
 
 
 const CurrentRouter = (router: Router):Router => {
+  router.route('/current-user').get(currentUserController.handle.bind(currentUserController))
 
   router.route('/resend-email').put(resendController.handle.bind(resendController))
 

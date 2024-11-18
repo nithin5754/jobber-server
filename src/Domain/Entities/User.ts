@@ -1,4 +1,5 @@
 import moment from "moment";
+import { firstLetterUpperCase, lowerCase } from "../../Presentation/utils/helper.utils";
 
 
 
@@ -9,7 +10,7 @@ import moment from "moment";
  * 
  */
 export interface IUser {
-  id?:string;
+  _id?:string;
   profilePublicId?: string;
   username?: string;
   email?: string;
@@ -78,10 +79,10 @@ export class User {
   passwordResetExpires?: string;
 
   constructor(userData: UserParams) {
-    this.id = userData._id;
+    this.id = userData._id?.toString() as string;
     this.profilePublicId = userData.profilePublicId;
-    this.username = userData.username;
-    this.email = userData.email;
+    this.username = firstLetterUpperCase(userData?.username as string);
+    this.email = lowerCase(userData?.email as string);
     this.password = userData.password;
     this.country = userData.country;
     this.profilePicture = userData.profilePicture;

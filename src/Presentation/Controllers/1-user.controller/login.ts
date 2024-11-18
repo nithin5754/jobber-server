@@ -20,6 +20,12 @@ export class Login implements IController {
       const userData = await this.loginUseCase.execute({ userId: username, password });
 
       if (userData && userData.token && userData.user) {
+        res.cookie("jwt", userData.token?.refreshToken, {
+          httpOnly: true,
+          secure: true,
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+          sameSite: "none",
+        });
         res.status(StatusCodes.OK).json({
           message: 'User login Successfully',
           user: this.sanitizeTheData(userData.user, ['password']),

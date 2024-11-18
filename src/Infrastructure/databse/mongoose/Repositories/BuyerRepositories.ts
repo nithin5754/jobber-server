@@ -1,0 +1,85 @@
+import { Model } from "mongoose";
+import { Buyer, BuyerParams, IBuyerDocument } from "../../../../Domain/Entities/Buyer";
+import { IBuyerRepositories } from "../../../../Domain/interface/IBuyerRepositories";
+import { IRepoResponse, IRepoRequest } from "../../../../shared/IBaseRepository";
+
+
+
+
+export class BuyerRepositories implements IBuyerRepositories {
+  constructor(
+    private buyerModal:Model<IBuyerDocument>
+  ) {
+    
+  }
+ public async create(data: IRepoRequest): Promise<IRepoResponse> {
+    const result: IBuyerDocument | null = await this.buyerModal.create(data.buyer);
+
+    console.log("buyer",result)
+    return result ? { buyer: this.filterFetchResult(result) } : { isNull: true };
+  }
+ public async findOne(criteria: IRepoRequest): Promise<IRepoResponse> {
+    
+
+     
+    let result: IBuyerDocument[] | null = await this.buyerModal.aggregate([
+      {$match:{'userId':{$exists:true}}
+      },
+      {
+        $lookup:{
+          from:'users',
+          localField:'userId',
+          foreignField:'_id',
+          as:'user'
+        },
+      },
+      {
+        $unwind: '$user'
+      },
+      {
+        $match:{
+          [criteria.buyer?._id?'user._id':(criteria.buyer?.email?"user.email":"user.username")]:criteria.buyer?._id||criteria.buyer?.username||criteria.buyer?.email
+        }
+      },
+      {  
+        $lookup:{
+          from:'gigs',
+          localField:'purchasedGigs',
+          foreignField:'_id',
+          as:'projectGigs'
+        },
+      },
+
+      {
+        $project:{
+          userId: '$user._id', 
+          username:'$user.username',
+          email:'$user.email',
+          country:'$user.country',
+          profilePicture:'$user.profilePicture',
+          purchasedGigs:'$projectGigs',
+          isSeller:1,
+          createdAt:1,
+          updatedAt:1
+        }
+      }
+    ]).exec()
+   
+    return result?{
+      buyer:this.filterFetchResult(result[0])
+      
+    }:{isNull:true}
+  }
+  update(id: string, data: IRepoRequest): Promise<IRepoResponse> {
+    throw new Error("Method not implemented.");
+  }
+  delete(id: string): Promise<boolean> {
+    throw new Error("Method not implemented.");
+  }
+
+
+
+  private filterFetchResult(data: IBuyerDocument): Buyer {
+    return new Buyer(data as BuyerParams);
+  }
+}

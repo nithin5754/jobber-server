@@ -1,12 +1,12 @@
 import { ConfigType } from '../../../config';
 import { User } from '../../../Domain/Entities/User';
-import { IRepoResponse } from '../../../Domain/interface/IUserRepository';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/UserRepository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/UniqueId';
 import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/IMailer';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
 import { EMAIL_TEMPLATE, lowerCase } from '../../../Presentation/utils/helper.utils';
+import { IRepoResponse } from '../../../shared/IBaseRepository';
 import { IUseCase } from '../../../shared/IUseCase';
 
 export interface IResendDTO {
@@ -29,7 +29,8 @@ export class ResendUsecase implements IUseCase<IResendDTO, IResendResult> {
   public async execute(input: IResendDTO): Promise<IResendResult> {
     const { email, userId } = input;
     let found: IRepoResponse = await this.userservice.findOne({ data: { email: lowerCase(email) } });
-
+ 
+   console.log("found-1",found.user?.id)
     if (!found || found.isNull || !found.user || found.user.id !== userId) {
       throw new BadRequestError('user not found', 'ResendEmail() error');
     }

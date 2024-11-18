@@ -13,11 +13,11 @@ export class JwtToken implements IToken {
 
   generateToken(userId: string,email:string,username:string): { accessToken: string; refreshToken: string } {
     const accessToken: string = jwt.sign({userId,email,username}, this.jwt_key, {
-      expiresIn: "1m",
+      expiresIn: "1d",
     });
 
     const refreshToken: string = jwt.sign({userId,email,username}, this.refresh_token, {
-      expiresIn: "1d",
+      expiresIn: "7d",
     });
     return {
       accessToken,
@@ -37,7 +37,7 @@ export class JwtToken implements IToken {
   }
   accessTokenGenerator(userId: string,email:string,username:string): string {
     const accessToken: string = jwt.sign({userId,email,username}, this.jwt_key, {
-      expiresIn: "1m",
+      expiresIn: "7d",
     });
 
     return accessToken;

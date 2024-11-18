@@ -1,22 +1,22 @@
 import { Router } from 'express';
 import upload from '../middlewares/multer';
 import { RegisterUseCase } from '../../Application/use-cases/1-auth-usecase/register.usecase';
-import { RegisterController } from '../Controllers/auth/register';
+import { RegisterController } from '../Controllers/1-user.controller/register';
 import { signupSchema } from '../schemas/1-auth-schemas/signup.schemas';
 import services from '../../shared/Services';
 import { LoginUseCase } from '../../Application/use-cases/1-auth-usecase/login.usecase';
-import { Login as LoginController } from '../Controllers/auth/login';
+import { Login as LoginController } from '../Controllers/1-user.controller/login';
 import { loginSchema } from '../schemas/1-auth-schemas/signin.schema';
-import { Refresh } from '../Controllers/auth/refresh';
+import { Refresh } from '../Controllers/1-user.controller/refresh';
 import { RefreshUsecase } from '../../Application/use-cases/1-auth-usecase/refersh.usecase';
-import { ForgotPassword } from '../Controllers/auth/forgotPassword';
+import { ForgotPassword } from '../Controllers/1-user.controller/forgotPassword';
 import { ForgotPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/forgotpassword.usecase';
 import { forgotPasswordSchema, passwordSchema } from '../schemas/1-auth-schemas/passwordSchema';
 import { ResetPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/reset-password.usecase';
-import { ResetPassword } from '../Controllers/auth/reset-password';
+import { ResetPassword } from '../Controllers/1-user.controller/reset-password';
 import { VerifyEmailUsecase } from '../../Application/use-cases/1-auth-usecase/verify-email.usecase';
-import { VerifyEmail } from '../Controllers/auth/verify-email';
-import { SignOut } from '../Controllers/auth/signout';
+import { VerifyEmail } from '../Controllers/1-user.controller/verify-email';
+import { SignOut } from '../Controllers/1-user.controller/signout';
 
 /**
  * @description INTERCEPTORS

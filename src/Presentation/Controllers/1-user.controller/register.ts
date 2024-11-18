@@ -7,7 +7,8 @@ import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
 import { User } from '../../../Domain/Entities/User';
 import { UserTypeKey } from '../../../Domain/interface/Iuser';
-import { omit } from 'lodash';
+import {  omit } from 'lodash';
+import { firstLetterUpperCase, lowerCase } from '../../utils/helper.utils';
 
 export class RegisterController implements IController {
   constructor(private readonly registerUseCase: RegisterUseCase, private readonly validation: Joi.ObjectSchema<any>) {}
@@ -20,8 +21,8 @@ export class RegisterController implements IController {
       const profilePicture: Express.Multer.File | undefined = req.file;
 
       const newUserData: ICreateUserDTO = {
-        username,
-        email,
+        username:firstLetterUpperCase(username),
+        email:lowerCase(email),
         password,
         country,
         profilePicture: profilePicture as Express.Multer.File
@@ -29,7 +30,16 @@ export class RegisterController implements IController {
 
       const userData = await this.registerUseCase.execute(newUserData);
 
+   
+
       if (userData && userData.token && userData.user) {
+        res.cookie("jwt", userData.token?.refreshToken, {
+          httpOnly: true,
+          secure: true,
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+          sameSite: "none",
+        });
+
         res.status(StatusCodes.CREATED).json({
           message: 'created',
           user: this.sanitizeTheData(userData.user, ['password']),

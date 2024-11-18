@@ -1,7 +1,8 @@
 import { User } from '../../../Domain/Entities/User';
-import { IRepoResponse } from '../../../Domain/interface/IUserRepository';
+
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/UserRepository';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
+import { IRepoResponse } from '../../../shared/IBaseRepository';
 import { IUseCase } from '../../../shared/IUseCase';
 
 export interface IVerifyEmailDTO {
@@ -29,7 +30,7 @@ export class VerifyEmailUsecase implements IUseCase<IVerifyEmailDTO, IVerifyEmai
       }
     });
 
-    const updatedUser: IRepoResponse = await this.userservice.findOne({ data: { id: found.user.id } });
+    const updatedUser: IRepoResponse = await this.userservice.findOne({ data: { _id: found.user.id } });
 
     if (!updatedUser || !updatedUser.user || updatedUser.user?.emailVerified === false) {
       throw new BadRequestError('something went wrong .try again', 'VerifyEmail update() method error');
