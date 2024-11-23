@@ -1,9 +1,13 @@
 import { Buyer, IBuyer } from "../Domain/Entities/Buyer";
+import { Seller } from "../Domain/Entities/seller.entity";
 import { IUser, User } from "../Domain/Entities/User";
+import { ISeller } from "../Domain/interface/iseller.interface";
 
 export interface IRepoResponse {
   user?:User;
   buyer?:Buyer;
+  seller?:Seller;
+  sellerArray?:Seller[];
   isNull?:boolean;
   isUpdate?:boolean;
   
@@ -12,6 +16,9 @@ export interface IRepoResponse {
 export interface IRepoRequest {
   filter?:IUser
   data?:IUser
+  seller?:ISeller
+  sellerFilter?:ISeller
+  
   buyer?:IBuyer
   buyerFilter?:IBuyer
 }

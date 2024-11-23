@@ -4,14 +4,14 @@ import { User } from '../../../Domain/Entities/User';
 
 import { BadRequestError } from '../../../Presentation/error/error.interface';
 import { EMAIL_TEMPLATE } from '../../../Presentation/utils/helper.utils';
-import { IUseCase } from '../../../shared/IUseCase';
-import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/UserRepository';
-import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/UniqueId';
-import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer';
-import { MulterFileConverter } from '../../../Infrastructure/External-libraries/5-multer-converter/multer-converter';
-import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/Cloudinary-uploads';
-import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/jwt.token';
-import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/IMailer';
+import { IUseCase } from '../../../shared/iusecase';
+import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
+import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
+import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
+import { MulterFileConverter } from '../../../Infrastructure/External-libraries/5-multer-converter/multer-convertor.service';
+import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service';
+import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
+import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/imailer.interface';
 
 export interface ICreateUserDTO {
   username: string;

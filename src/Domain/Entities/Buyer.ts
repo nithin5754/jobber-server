@@ -4,7 +4,7 @@ import { ObjectId } from 'mongoose';
 export interface IBuyer {
   _id?: string;
   username?: string;
-  userId?:string;
+  userId?: string;
   email?: string;
   profilePicture?: string;
   country?: string;
@@ -51,15 +51,15 @@ export class Buyer {
   createdAt?: Date | string;
   updatedAt?: Date | string;
   constructor(input: BuyerParams) {
-    (this.id = input._id?.toString() as string),
-      (this.username = input.username),
-      (this.userId = input.userId?.toString() as string),
-      (this.country = input.country),
-      (this.email = input.email),
-      (this.profilePicture = input.profilePicture),
-      (this.isSeller = input.isSeller),
-      (this.purchasedGigs = input.purchasedGigs),
-      (this.createdAt = moment(input.createdAt).format('MMMM D, YYYY - h:mm A')),
-      (this.updatedAt = moment(input.updatedAt).format('MMMM D, YYYY - h:mm A'));
+    this.id = input._id?.toString() as string;
+    this.username = input.username;
+    this.userId = input.userId?.toString() as string;
+    this.country = input.country;
+    this.email = input.email;
+    this.profilePicture = input.profilePicture;
+    this.isSeller = input.isSeller;
+    this.purchasedGigs = input.purchasedGigs;
+    this.createdAt = moment(input.createdAt).format('MMMM D, YYYY - h:mm A');
+    this.updatedAt = moment(input.updatedAt).format('MMMM D, YYYY - h:mm A');
   }
 }

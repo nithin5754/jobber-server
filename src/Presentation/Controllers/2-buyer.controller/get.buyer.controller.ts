@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../shared/IController";
+import { IController } from "../../../shared/icontroller";
 import { BadRequestError } from "../../error/error.interface";
 import { GetBuyerUsecase, IGetBuyerDTO, IGetBuyerResult } from "../../../Application/use-cases/2-buyer-usecase/get-buyer.usecase";
 import { StatusCodes } from "http-status-codes";

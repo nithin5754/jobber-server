@@ -1,22 +1,22 @@
 import { Router } from 'express';
 import upload from '../middlewares/multer';
 import { RegisterUseCase } from '../../Application/use-cases/1-auth-usecase/register.usecase';
-import { RegisterController } from '../Controllers/1-user.controller/register';
+import { RegisterController } from '../Controllers/1-user.controller/register.user.controller';
 import { signupSchema } from '../schemas/1-auth-schemas/signup.schemas';
-import services from '../../shared/Services';
+import services from '../../shared/services';
 import { LoginUseCase } from '../../Application/use-cases/1-auth-usecase/login.usecase';
-import { Login as LoginController } from '../Controllers/1-user.controller/login';
+import { Login as LoginController } from '../Controllers/1-user.controller/login.user.controller';
 import { loginSchema } from '../schemas/1-auth-schemas/signin.schema';
-import { Refresh } from '../Controllers/1-user.controller/refresh';
-import { RefreshUsecase } from '../../Application/use-cases/1-auth-usecase/refersh.usecase';
-import { ForgotPassword } from '../Controllers/1-user.controller/forgotPassword';
-import { ForgotPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/forgotpassword.usecase';
+import { Refresh } from '../Controllers/1-user.controller/refresh.user.controller';
+import { RefreshUsecase } from '../../Application/use-cases/1-auth-usecase/refresh.usecase';
+import { ForgotPassword } from '../Controllers/1-user.controller/forgot-password.user.controller';
+import { ForgotPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/forgot-password.usecase';
 import { forgotPasswordSchema, passwordSchema } from '../schemas/1-auth-schemas/passwordSchema';
 import { ResetPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/reset-password.usecase';
-import { ResetPassword } from '../Controllers/1-user.controller/reset-password';
+import { ResetPassword } from '../Controllers/1-user.controller/reset-password.user.controller';
 import { VerifyEmailUsecase } from '../../Application/use-cases/1-auth-usecase/verify-email.usecase';
-import { VerifyEmail } from '../Controllers/1-user.controller/verify-email';
-import { SignOut } from '../Controllers/1-user.controller/signout';
+import { VerifyEmail } from '../Controllers/1-user.controller/verify-email.user.controller';
+import { SignOut } from '../Controllers/1-user.controller/signout.user.controller';
 
 /**
  * @description INTERCEPTORS

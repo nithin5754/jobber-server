@@ -2,7 +2,7 @@ import cloudinary, {
   UploadApiResponse,
   UploadApiErrorResponse,
 } from "cloudinary";
-import { ICloudinary } from "./ICloudinary";
+import { ICloudinary } from "./icoudinary.interface";
 
 
 export class CloudinaryUploads implements ICloudinary {

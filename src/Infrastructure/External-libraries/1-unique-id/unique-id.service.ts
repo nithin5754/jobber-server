@@ -1,7 +1,7 @@
 
 
 import crypto from 'crypto'
-import { IUniqueId } from "./IUniqueId";
+import { IUniqueId } from "./iuniqueId.interface";
 import { v4 as uuidV4 } from "uuid";
 
 

@@ -1,8 +1,8 @@
 
 import {  Router } from 'express';
 import { GetBuyerUsecase } from '../../Application/use-cases/2-buyer-usecase/get-buyer.usecase';
-import services from '../../shared/Services';
-import { GetBuyerByEmail } from '../Controllers/2-buyer.controller/getBuyer';
+import services from '../../shared/services';
+import { GetBuyerByEmail } from '../Controllers/2-buyer.controller/get.buyer.controller';
 
 
 

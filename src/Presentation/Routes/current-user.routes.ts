@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { ResendUsecase } from "../../Application/use-cases/1-auth-usecase/resend.usecase";
-import services from "../../shared/Services";
-import { Resend } from "../Controllers/1-user.controller/resend";
+import services from "../../shared/services";
+import { Resend } from "../Controllers/1-user.controller/resend.user.controller";
 import { CurrentUserUsecase } from "../../Application/use-cases/1-auth-usecase/current-user.usecase";
-import { CurrentUser } from "../Controllers/1-user.controller/current-user";
+import { CurrentUser } from "../Controllers/1-user.controller/current.user.controller";
 
 
 

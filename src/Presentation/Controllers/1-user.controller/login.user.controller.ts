@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/IController';
+import { IController } from '../../../shared/icontroller';
 import { LoginUseCase } from '../../../Application/use-cases/1-auth-usecase/login.usecase';
 import Joi from 'joi';
 import { BadRequestError } from '../../error/error.interface';
 import { omit } from 'lodash';
-import { UserTypeKey } from '../../../Domain/interface/Iuser';
+import { UserTypeKey } from '../../../Domain/interface/iuser.interface';
 import { User } from '../../../Domain/Entities/User';
 import { StatusCodes } from 'http-status-codes';
 

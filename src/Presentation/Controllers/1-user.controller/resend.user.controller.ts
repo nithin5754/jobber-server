@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/IController';
+import { IController } from '../../../shared/icontroller';
 import { StatusCodes } from 'http-status-codes';
 import { IResendDTO, IResendResult, ResendUsecase } from '../../../Application/use-cases/1-auth-usecase/resend.usecase';
 import { BadRequestError } from '../../error/error.interface';
@@ -12,7 +12,6 @@ export class Resend implements IController {
 
       const userId = req.currentUser.userId;
 
-      console.log("controlller-userId",userId,"email",email)
 
       if (!userId || !email) {
         throw new BadRequestError('Credentials not found.Error', 'ResendEmail() error Credentials');

@@ -1,4 +1,4 @@
-import { IMulterConverter } from "./IMulterConverter"
+import { IMulterConverter } from "./imulter-convertor.interface"
 
 
 

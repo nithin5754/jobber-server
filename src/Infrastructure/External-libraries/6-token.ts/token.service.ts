@@ -1,7 +1,7 @@
 
 import { compare, genSalt, hash } from "bcryptjs";
 import config from "../../../config";
-import {  IToken } from "./IToken.interface";
+import {  IToken } from "./itoken.interface";
 
 import jwt from "jsonwebtoken";
 

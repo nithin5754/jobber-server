@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/IController';
+import { IController } from '../../../shared/icontroller';
 import { ICreateUserDTO, RegisterUseCase } from '../../../Application/use-cases/1-auth-usecase/register.usecase';
 import { BadRequestError } from '../../error/error.interface';
 
 import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
 import { User } from '../../../Domain/Entities/User';
-import { UserTypeKey } from '../../../Domain/interface/Iuser';
+import { UserTypeKey } from '../../../Domain/interface/iuser.interface';
 import {  omit } from 'lodash';
 import { firstLetterUpperCase, lowerCase } from '../../utils/helper.utils';
 

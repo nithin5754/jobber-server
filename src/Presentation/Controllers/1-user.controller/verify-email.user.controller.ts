@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/IController';
+import { IController } from '../../../shared/icontroller';
 import { BadRequestError } from '../../error/error.interface';
 import { IVerifyEmailResult, VerifyEmailUsecase } from '../../../Application/use-cases/1-auth-usecase/verify-email.usecase';
 import { StatusCodes } from 'http-status-codes';
-import { UserTypeKey } from '../../../Domain/interface/Iuser';
+import { UserTypeKey } from '../../../Domain/interface/iuser.interface';
 import { User } from '../../../Domain/Entities/User';
 import { omit } from 'lodash';
 

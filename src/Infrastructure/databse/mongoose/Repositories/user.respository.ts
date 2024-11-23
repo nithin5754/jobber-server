@@ -1,9 +1,9 @@
 import { Model } from 'mongoose';
 import { IUser, User, UserParams } from '../../../../Domain/Entities/User';
-import { UserDocuments } from '../../../../Domain/interface/Iuser';
-import { IUserRepository } from '../../../../Domain/interface/IUserRepository';
-import { IRepoRequest, IRepoResponse } from '../../../../shared/IBaseRepository';
-import { BuyerRepositories } from './BuyerRepositories';
+import { UserDocuments } from '../../../../Domain/interface/iuser.interface';
+import { IUserRepository } from '../../../../Domain/interface/iuser.repository';
+import { IRepoRequest, IRepoResponse } from '../../../../shared/ibase-repository';
+import { BuyerRepositories } from './buyer.repository';
 
 export class UserRepository implements IUserRepository {
   constructor(private readonly model: Model<UserDocuments>, private readonly buyerservice: BuyerRepositories) {}
@@ -35,9 +35,8 @@ export class UserRepository implements IUserRepository {
   }
   public async findOne(criteria: IRepoRequest): Promise<IRepoResponse> {
     const result: UserDocuments | null = await this.model.findOne(criteria.data);
-   
 
-    return result ? {user: this.filterFetchResult(result) } : { isNull: true };
+    return result ? { user: this.filterFetchResult(result) } : { isNull: true };
   }
 
   public async update(id: string, data: IRepoRequest): Promise<IRepoResponse> {
@@ -50,11 +49,6 @@ export class UserRepository implements IUserRepository {
   }
 
   private filterFetchResult(data: UserDocuments): User {
-
-
-
-
-           
     return new User(data as UserParams);
   }
 }

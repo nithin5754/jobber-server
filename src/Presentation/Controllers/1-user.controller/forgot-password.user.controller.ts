@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/IController';
+import { IController } from '../../../shared/icontroller';
 import { BadRequestError } from '../../error/error.interface';
 import Joi from 'joi';
-import { ForgotPasswordUsecase, IForgotResult } from '../../../Application/use-cases/1-auth-usecase/forgotpassword.usecase';
+import { ForgotPasswordUsecase, IForgotResult } from '../../../Application/use-cases/1-auth-usecase/forgot-password.usecase';
 
 import { StatusCodes } from 'http-status-codes';
 

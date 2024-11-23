@@ -1,11 +1,10 @@
-import {  IEmailMessageDetails, IMailer } from "./interface/IMailer";
+import {  IEmailMessageDetails, IMailer } from "./interface/imailer.interface";
 import nodemailer, { Transporter } from "nodemailer";
 import Email from 'email-templates'
 import path from "path";
 import config from "../../../config";
 import { BadRequestError } from "../../../Presentation/error/error.interface";
 
-console.log("Template root path:", path.join(__dirname, "emails"));
 
 export class Mailer implements IMailer {   
   private _host: string = "smtp.gmail.com";

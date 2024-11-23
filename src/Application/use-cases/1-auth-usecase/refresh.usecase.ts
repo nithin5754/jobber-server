@@ -1,11 +1,11 @@
 import { JwtPayload } from 'jsonwebtoken';
 import { User } from '../../../Domain/Entities/User';
-import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/UserRepository';
-import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/jwt.token';
+import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
+import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IUseCase } from '../../../shared/IUseCase';
+import { IUseCase } from '../../../shared/iusecase';
 
-interface IRfreshTokenDTO {
+interface IRefreshTokenDTO {
   token: string;
 }
 
@@ -18,9 +18,9 @@ export interface IRefreshResult {
   };
 }
 
-export class RefreshUsecase implements IUseCase<IRfreshTokenDTO, IRefreshResult> {
+export class RefreshUsecase implements IUseCase<IRefreshTokenDTO, IRefreshResult> {
   constructor(private readonly authservice: JwtToken, private readonly userService: UserRepository) {}
-  public async execute(input: IRfreshTokenDTO): Promise<IRefreshResult> {
+  public async execute(input: IRefreshTokenDTO): Promise<IRefreshResult> {
     const decodedToken: JwtPayload | string | null = this.authservice.verifyRefreshToken(input.token);
 
     if (!decodedToken && typeof decodedToken === 'string') {
