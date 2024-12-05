@@ -4,7 +4,7 @@ import {
   ISellerRandomDTO,
   ISellerRandomResult,
   RandomSellersUsecase
-} from '../../../Application/use-cases/3-seller-usecase/random.usecase';
+} from '../../../Application/use-cases/3-seller-usecase/random.seller.usecase';
 import { BadRequestError } from '../../error/error.interface';
 import { StatusCodes } from 'http-status-codes';
 
@@ -27,7 +27,7 @@ export class RandomSeller implements IController {
       if (!found || !found.sellerArray || found.sellerArray.length < 1) {
         throw new BadRequestError('Missing Content', 'RandomSeller() Validation Error');
       }
-      res.status(StatusCodes.OK).json({ message: 'Seller profile', seller: found.sellerArray });
+      res.status(StatusCodes.OK).json({ message: 'Seller profile', sellerArray: found.sellerArray });
     } catch (error) {
       next(error);
     }

@@ -7,6 +7,7 @@ import { IRepoResponse } from '../../../shared/ibase-repository';
 import { IUseCase } from '../../../shared/iusecase';
 
 export interface ISellerUpdateDTO {
+  filter: string;
   sellerParams: ISeller;
 }
 
@@ -18,7 +19,7 @@ export class UpdateSellerUsecase implements IUseCase<ISellerUpdateDTO, ISellerUp
   constructor(private readonly sellerservice: SellerRepository, private readonly userservice: UserRepository) {}
   public async execute(input: ISellerUpdateDTO): Promise<ISellerUpdateResult> {
     const updatedSeller: IRepoResponse = await this.sellerservice.updateUsingOtherFilter({
-      sellerFilter: { _id: input.sellerParams._id },
+      sellerFilter: { _id: input.filter },
       seller: input.sellerParams
     });
 

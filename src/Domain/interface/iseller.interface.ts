@@ -12,7 +12,7 @@ export interface IPersonalInfoData {
 }
 export interface IExperience {
   [key: string]: string | number | boolean | undefined;
-  id?: string;
+ _id?: string;
   company: string;
   title: string;
   startDate: string;
@@ -23,7 +23,7 @@ export interface IExperience {
 
 export interface IEducation {
   [key: string]: string | number | undefined;
-  id?: string;
+ _id?: string;
   country: string;
   university: string;
   title: string;
@@ -33,14 +33,14 @@ export interface IEducation {
 
 export interface ILanguage {
   [key: string]: string | number | undefined;
-  id?: string;
+ _id?: string;
   language: string;
   level: string;
 }
 
 export interface ICertificate {
   [key: string]: string | number | undefined;
-  id?: string;
+ _id?: string;
   name: string;
   from: string;
   year: number | string;

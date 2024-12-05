@@ -11,7 +11,7 @@ export const routes = (app: Application, router: Router) => {
   app.use('/api/v1/current', authMiddleware.verifyJWT, CurrentRouter(router));
 
   app.use('/api/v1/buyer', authMiddleware.verifyJWT, BuyerRouter(router));
-  app.use('/api/v1/seller',SellerRouter(router))
+  app.use('/api/v1/seller',authMiddleware.verifyJWT,SellerRouter(router))
 
 };
 

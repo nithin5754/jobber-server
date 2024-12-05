@@ -6,6 +6,7 @@ import { ISeller } from "../Domain/interface/iseller.interface";
 export interface IRepoResponse {
   user?:User;
   buyer?:Buyer;
+  buyerArray?:Buyer[];
   seller?:Seller;
   sellerArray?:Seller[];
   isNull?:boolean;
@@ -16,6 +17,7 @@ export interface IRepoResponse {
 export interface IRepoRequest {
   filter?:IUser
   data?:IUser
+  count?:number
   seller?:ISeller
   sellerFilter?:ISeller
   

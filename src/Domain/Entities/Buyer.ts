@@ -35,8 +35,8 @@ export type BuyerParams = {
   profilePicture?: string;
   isSeller?: boolean;
   purchasedGigs?: string[];
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 export class Buyer {
@@ -59,7 +59,9 @@ export class Buyer {
     this.profilePicture = input.profilePicture;
     this.isSeller = input.isSeller;
     this.purchasedGigs = input.purchasedGigs;
-    this.createdAt = moment(input.createdAt).format('MMMM D, YYYY - h:mm A');
-    this.updatedAt = moment(input.updatedAt).format('MMMM D, YYYY - h:mm A');
+    // this.createdAt = moment(input.createdAt).format('MMMM D, YYYY - h:mm A');
+    // this.updatedAt = moment(input.updatedAt).format('MMMM D, YYYY - h:mm A');
+    this.createdAt=input.createdAt;
+    this.updatedAt=input.updatedAt;
   }
 }

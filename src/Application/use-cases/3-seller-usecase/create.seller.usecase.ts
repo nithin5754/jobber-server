@@ -22,9 +22,12 @@ export class CreateSellerUseCase implements IUseCase<ISellerCreateDTO, ISellerCr
     private readonly userservice: UserRepository
   ) {}
   public async execute(input: ISellerCreateDTO): Promise<ISellerCreateResult> {
+
+
     const result: IRepoResponse = await this.sellerservice.create({ seller: input.sellerParams });
 
- 
+
+    
 
     if (!result || !result.seller || result.isNull) {
       throw new BadRequestError('Error Occurred Creating Seller Profile', 'CreateSellerUseCase() validation error');

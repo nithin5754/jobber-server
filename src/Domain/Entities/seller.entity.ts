@@ -30,8 +30,8 @@ export class Seller {
   totalEarnings?: number;
   totalGigs?: number;
   paypal?: string;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt?: string|Date;
+  updatedAt?: string |Date;
 
   constructor(params: SellerParams) {
     this.id = params._id?.toString() as string;
@@ -60,7 +60,11 @@ export class Seller {
     this.totalEarnings = params.totalEarnings;
     this.totalGigs = params.totalGigs;
     this.paypal = params.paypal;
-    this.createdAt = moment(params.createdAt).format('MMMM D, YYYY - h:mm A');
-    this.updatedAt = moment(params.updatedAt).format('MMMM D, YYYY - h:mm A');
+    // this.createdAt = moment(params.createdAt).format('MMMM D, YYYY - h:mm A');
+    // this.updatedAt = moment(params.updatedAt).format('MMMM D, YYYY - h:mm A');
+    this.createdAt=params.createdAt;
+    this.updatedAt=params.updatedAt;
+
+
   }
 }

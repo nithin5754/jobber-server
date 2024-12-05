@@ -23,6 +23,8 @@ export class SellerRepository implements ISellerRepositories {
     }
   }
 
+  
+
   public async findOne(criteria: IRepoRequest): Promise<IRepoResponse> {
     const seller: ISellerDocument | null = await this.sellerDataBase.findOne(criteria.seller);
 

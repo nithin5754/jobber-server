@@ -8,8 +8,9 @@ import { IRepoResponse } from '../../../shared/ibase-repository';
 import { IUseCase } from '../../../shared/iusecase';
 
 export interface ISellerGetDTO {
-  _id?: string;
+  userId?: string;
   username?: string;
+  _id?:string;
 }
 
 export interface ISellerGetResult {
@@ -22,10 +23,11 @@ export class GetSellerUsecase implements IUseCase<ISellerGetDTO, ISellerGetResul
     const result: IRepoResponse | null = await this.sellerservice.findOne({ seller: input });
 
     if (!result || result.isNull || !result.seller) {
-      throw new BadRequestError('Sellers not Found', `GetSellerUsecase() Not Found by ${input._id || input.username}`);
+      throw new BadRequestError('Sellers not Found', `GetSellerUsecase() Not Found by ${input.userId || input.username||input._id}`);
     }
 
     await this.addUserDetails(result.seller, input);
+
 
     return result && result.seller
       ? {
@@ -40,7 +42,7 @@ export class GetSellerUsecase implements IUseCase<ISellerGetDTO, ISellerGetResul
     const userDetails: IRepoResponse = await this.userRepository.findOne({ data: { _id: seller.userId } });
 
     if (!userDetails) {
-      throw new BadRequestError('users not Found', `GetSellerUsecase() Not Found by ${input._id || input.username}`);
+      throw new BadRequestError('users not Found', `GetSellerUsecase() Not Found by ${input.userId || input.username}`);
     }
 
     seller.username = userDetails.user?.username;
