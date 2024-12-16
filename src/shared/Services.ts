@@ -1,8 +1,11 @@
 import config from "../config";
 import { BuyerModal } from "../Infrastructure/databse/mongoose/models/buyer.schema";
+import { GigModel } from "../Infrastructure/databse/mongoose/models/gig.schema";
 import { SellerModel } from "../Infrastructure/databse/mongoose/models/seller.schema";
 import { UserModal } from "../Infrastructure/databse/mongoose/models/user.schema";
 import { BuyerRepositories } from "../Infrastructure/databse/mongoose/Repositories/buyer.repository";
+import { GigRepository } from "../Infrastructure/databse/mongoose/Repositories/gig.repository";
+import { Search } from "../Infrastructure/databse/mongoose/Repositories/search.gig.repository";
 import { SellerRepository } from "../Infrastructure/databse/mongoose/Repositories/seller.respository";
 import { UserRepository } from "../Infrastructure/databse/mongoose/Repositories/user.respository";
 import { UniqueId } from "../Infrastructure/External-libraries/1-unique-id/unique-id.service";
@@ -15,12 +18,14 @@ const services = {
   buyer:new BuyerRepositories(BuyerModal),
   user: new UserRepository(UserModal,new BuyerRepositories(BuyerModal)),
   seller:new SellerRepository(SellerModel),
+  gig:new GigRepository(GigModel),
   cloudinary: new CloudinaryUploads(),
   uniqueId: new UniqueId(),
   multer: new MulterFileConverter(),
   mailer: new Mailer(),
   auth: new JwtToken(),
   configService:config,
+  search:new Search(GigModel)
   
 };
 

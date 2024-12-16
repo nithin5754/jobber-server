@@ -10,7 +10,7 @@ export class CreateSeller implements IController {
   constructor(private readonly sellerCreateUseCase: CreateSellerUseCase, private readonly validation: Joi.ObjectSchema<any>) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      console.log("body",req.body)
+
       await this.validateRequest(req);
 
       const seller: ISeller = {

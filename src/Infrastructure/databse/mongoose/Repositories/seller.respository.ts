@@ -82,6 +82,18 @@ export class SellerRepository implements ISellerRepositories {
         };
   }
 
+ public async find(): Promise<IRepoResponse> {
+  const sellers: ISellerDocument[] = await this.sellerDataBase.find();
+
+  return sellers && sellers.length > 0
+    ? {
+        sellerArray: this.fetchDataArray(sellers)
+      }
+    : {
+        isNull: true
+      };
+  }
+
   delete(id: string): Promise<boolean> {
     throw new Error('Method not implemented.');
   }

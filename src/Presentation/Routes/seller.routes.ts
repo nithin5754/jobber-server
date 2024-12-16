@@ -31,6 +31,7 @@ const sellerRandomSellersController = new RandomSeller(sellerRandomInterceptor);
 const sellerUpdateController = new UpdateSeller(sellerUpdateInterceptor, sellerSchema);
 const sellerSellerIdController = new SellerId(sellerGetInterceptor);
 const seedSeller=new SeedSeller(sellerSeedInterceptor)
+
 const SellerRouter = (router: Router): Router => {
   router.route('/create').post(createSellerController.handle.bind(createSellerController));
   router.route('/id').get(sellerGetByIdController.handle.bind(sellerGetByIdController));
