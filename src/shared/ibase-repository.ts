@@ -31,6 +31,15 @@ export interface IRepoRequest {
     max_price:string|null
     delivery_time:string|null
   }
+
+  gig_moreLike_filter?:{
+    id?:string
+    categories?: string;
+    // tags: string[];
+    // subCategories: string[];
+    expectedDelivery?: string;
+    basicDescription?:string
+  },
   gig?:ISellerGig
   buyer?:IBuyer
   buyerFilter?:IBuyer

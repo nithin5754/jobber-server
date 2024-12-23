@@ -1,18 +1,18 @@
 import { NextFunction, Request, Response } from 'express';
 import { IController } from '../../../shared/icontroller';
-import { ISellerGigSearchIdResult, SearchGigsUsecase } from '../../../Application/use-cases/4-gig-usecase/search.gig.usecase';
+import { ISellerGigSearchIdResult, SearchGigsUsecase } from '../../../Application/use-cases/5-search-usecase/search.gig.usecase';
 import { BadRequestError } from '../../error/error.interface';
 
 export class GigSearchController implements IController {
   private readonly ITEM_PER_PAGE='8';
-  private  oldQuery:string='';
+
   constructor(private readonly gig_search_usecase: SearchGigsUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
 
     try {
       const { query, minprice, maxprice, delivery_time } = req.query;
       let {  page} = req.params;
-
+console.log("query",query)
 
       if (!query) {
         throw new BadRequestError('Missing, Using Search Query', 'SearchGigsUsecase Controller() Error');

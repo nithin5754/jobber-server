@@ -5,12 +5,20 @@ import { GetByIdSellerGig, ISellerGigGetByIdResult } from '../../../Application/
 import { BadRequestError } from '../../error/error.interface';
 import { GetSellerGigs, ISellerGigGetBySellerIdResult } from '../../../Application/use-cases/4-gig-usecase/get-sellerId.gig.usecase';
 import { GetSellerPausedGigs, ISellerGigGetByPausedGigsResult } from '../../../Application/use-cases/4-gig-usecase/get-paused.gig.usecses';
+import {
+  MoreLikeThisResult,
+  MoreLikeThisUsecase
+} from '../../../Application/use-cases/4-gig-usecase/get-MoreGigsLikeThis';
+
+import { GetByCategorySellerGig, ISellerGigGetByCategoryResult } from '../../../Application/use-cases/4-gig-usecase/get-category.gig.usecase';
 
 export class GetGig implements IController {
   constructor(
     private readonly getById: GetByIdSellerGig,
     private readonly getSellerGigs: GetSellerGigs,
-    private readonly getPausedGigs: GetSellerPausedGigs
+    private readonly getPausedGigs: GetSellerPausedGigs,
+    private readonly getMoreLikeThis: MoreLikeThisUsecase,
+    private readonly getByCategorySellerGig:GetByCategorySellerGig
   ) {}
   handle(_req: Request, _res: Response, _next: NextFunction): Promise<void> {
     throw new Error('Method not implemented.');
@@ -43,16 +51,15 @@ export class GetGig implements IController {
         throw new BadRequestError('Not Found, Something Went Wrong', 'sellerGigs Controller() Missing');
       }
 
-      const gig: ISellerGigGetBySellerIdResult = await this.getSellerGigs.execute({
+      const found: ISellerGigGetBySellerIdResult = await this.getSellerGigs.execute({
         sellerId
       });
 
-      if (!gig || !gig.gigArray) {
+      if (!found || !found.gigArray) {
         throw new BadRequestError('Not Found, Something Went Wrong', 'sellerGigs Controller() Missing');
       }
 
-
-      res.status(StatusCodes.OK).json({ message: 'Get gig by id', gigArray: gig.gigArray });
+      res.status(StatusCodes.OK).json({ message: 'Get gig by id', gigArray: found.gigArray });
     } catch (error) {
       next(error);
     }
@@ -64,25 +71,53 @@ export class GetGig implements IController {
       if (!sellerId) {
         throw new BadRequestError('Not Found, Something Went Wrong', 'sellerGigs Controller() Missing');
       }
-      const gig: ISellerGigGetByPausedGigsResult = await this.getPausedGigs.execute({
+      const found: ISellerGigGetByPausedGigsResult = await this.getPausedGigs.execute({
         sellerId
       });
-      if (!gig || !gig.gigArray) {
-        throw new BadRequestError('Empty Gigs, Something Went Wrong', 'sellerInactiveGigs Controller() Missing');
-      }
-      res.status(StatusCodes.OK).json({ message: 'Seller gigs', gig: gig.gigArray });
+   
+      res.status(StatusCodes.OK).json({ message: 'Seller Inactive gigs', gigArray:found&&found.gigArray?found.gigArray:[] });
     } catch (error) {
       next(error);
     }
   }
 
-  // public async topRatedGigsByCategory (req: Request, res: Response): Promise<void> {
-  //   const category = await getUserSelectedGigCategory(`selectedCategories:${req.params.username}`);
-  //   const resultHits: ISellerGig[] = [];
-  //   const gigs: ISearchResult = await getTopRatedGigsByCategory(`${category}`);
-  //   for(const item of gigs.hits) {
-  //     resultHits.push(item._source as ISellerGig);
-  //   }
-  //   res.status(StatusCodes.OK).json({ message: 'Search top gigs results', total: gigs.total, gigs: resultHits });
-  // };
+  public async topRatedGigsByCategory (req: Request, res: Response): Promise<void> {
+    const category=req.params.category
+
+    if (!category) {
+      throw new BadRequestError('Not Found, Something Went Wrong', 'topRatedGigsByCategory() Missing');
+    }
+
+    const result:ISellerGigGetByCategoryResult=await this.getByCategorySellerGig.execute({category})
+
+    res.status(StatusCodes.OK).json({message: 'Search top gigs results', gigArray: result.gigs });
+  };
+
+  public async moreLikeThis(req: Request, res: Response, next: NextFunction): Promise<void> {   
+    try {
+      const gigId = req.params.gigId;
+      if (!gigId) {
+        throw new BadRequestError('Not Found, Something Went Wrong', 'moreLikeThis() Missing');
+      }
+
+      const gigs: MoreLikeThisResult = await this.getMoreLikeThis.execute({ gigId });
+
+      res.status(StatusCodes.OK).json({ message: 'More gigs like this result', gigArray: gigs.gigArray });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async gigsByCategory(req: Request, res: Response): Promise<void> {
+
+    const category=req.params.category
+
+    if (!category) {
+      throw new BadRequestError('Not Found, Something Went Wrong', 'gigsByCategory() Missing');
+    }
+
+    const result:ISellerGigGetByCategoryResult=await this.getByCategorySellerGig.execute({category})
+
+    res.status(StatusCodes.OK).json({ message: 'Search gigs category results', gigArray: result.gigs });
+  }
 }

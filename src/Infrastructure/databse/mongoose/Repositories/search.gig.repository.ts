@@ -5,6 +5,7 @@ import { IRepoRequest, IRepoResponse } from '../../../../shared/ibase-repository
 
 export class Search {
   private filter: any = {};
+  private moreLikeFilter:any={}
 
   constructor(private readonly gig_model: Model<SellerGigDocument>) {}
   
@@ -28,6 +29,42 @@ export class Search {
     };
   }
 
+
+
+  public async getMoreLikeThis(criteria:IRepoRequest):Promise<IRepoResponse>{
+
+
+    const result = await this.gig_model.find({
+      $and: [
+        {
+          $or: [
+            { basicDescription: { $regex: criteria.gig_moreLike_filter?.basicDescription, $options: 'i' } },
+            { expectedDelivery: { $regex: criteria.gig_moreLike_filter?.expectedDelivery, $options: 'i' } },
+            { categories: { $in: criteria.gig_moreLike_filter?.categories } }
+          ]
+        },
+        {
+          _id: { $ne: criteria.gig_moreLike_filter?.id }  
+        }
+      ]
+    });
+
+    
+ 
+    
+
+
+    return {
+      gigArray: result && this.convertToGigDataArray(result),
+      isNull: true
+    };
+
+    
+  }
+
+
+
+
   private priceFilter(min_price: string | null|undefined, max_price: string | null|undefined): void {
     if (min_price&&typeof min_price==='string') {
       this.filter.price = { ...this.filter.price, $gte: parseInt(min_price as string, 10) };
@@ -37,6 +74,8 @@ export class Search {
       this.filter.price = { ...this.filter.price, $lte: parseInt(max_price as string, 10) };
     }
   }
+
+
 
   private filterQuery(query: string): void {
     const searchRegex = { $regex: query, $options: 'i' };

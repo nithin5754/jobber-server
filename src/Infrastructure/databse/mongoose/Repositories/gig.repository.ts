@@ -30,14 +30,10 @@ export class GigRepository implements IGigRepository {
 
   public async find(criteria: IRepoRequest): Promise<IRepoResponse> {
 
-
-    // const result: SellerGigDocument[]  = await this.gig_model.aggregate([
-    //   { $match: criteria.gig?criteria.gig:{} }])
-
      const result: SellerGigDocument[]  = await this.gig_model.find(
       criteria.gig?criteria.gig:{} )
    
-  
+ 
       return{
         gigArray:this.convertToGigDataArray(result),
         isNull:result?false:true
@@ -45,35 +41,40 @@ export class GigRepository implements IGigRepository {
  
   }
 
+
+  
+  public async findByLimit(criteria: IRepoRequest,limit:number): Promise<IRepoResponse> {
+
+  
+    const result: SellerGigDocument[]  = await this.gig_model.find(
+      criteria.gig?criteria.gig:{} ).limit(limit??0)
+      
+
+      
+      return{
+       gigArray:this.convertToGigDataArray(result),
+       isNull:result?false:true
+     }
+
+ }
+
   public async update(id: string, data: IRepoRequest): Promise<IRepoResponse> {
-    if (!data.gig) {
-      return {
-        isUpdate: false,
-        isNull: true
-      };
-    }
+   
+
+    
     const document: SellerGigDocument | null = await this.gig_model.findOneAndUpdate(
       { _id: id },
       {
-        $set: {
-          title: data.gig.title,
-          description: data.gig.description,
-          categories: data.gig.categories,
-          subCategories: data.gig.subCategories,
-          tags: data.gig.tags,
-          price: data.gig.price,
-          coverImage: data.gig.coverImage,
-          expectedDelivery: data.gig.expectedDelivery,
-          basicTitle: data.gig.basicTitle,
-          basicDescription: data.gig.basicDescription
-        }
+        $set: data.gig
       },
       { new: true }
     ).exec();
 
+
+
     return {
-      isUpdate: !!document,
-      isNull: document === null || !document ? true : false
+      isNull: document === null || !document ? true : false,
+      gig:document?this.convertToGigData(document):undefined
     };
   }
   public async delete(id: string): Promise<boolean> {

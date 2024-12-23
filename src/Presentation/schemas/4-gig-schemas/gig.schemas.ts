@@ -42,12 +42,7 @@ const gigCreateSchema: ObjectSchema = Joi.object().keys({
     'any.required': 'Gig price is required',
     'number.greater': 'Gig price must be greater than $4.99'
   }),
-  // coverImage: Joi.string().required().messages({
-  //   'string.base': 'Please add a cover image',
-  //   'string.empty': 'Gig cover image is required',
-  //   'any.required': 'Gig cover image is required',
-  //   'array.min': 'Please add a cover image'
-  // }),
+
   expectedDelivery: Joi.string().required().messages({
     'string.base': 'Please add expected delivery',
     'string.empty': 'Gig expected delivery is required',
@@ -69,6 +64,7 @@ const gigCreateSchema: ObjectSchema = Joi.object().keys({
 });
 
 const gigUpdateSchema: ObjectSchema = Joi.object().keys({
+
   title: Joi.string().required().messages({
     'string.base': 'Please add a gig title',
     'string.empty': 'Gig title is required',
@@ -102,12 +98,7 @@ const gigUpdateSchema: ObjectSchema = Joi.object().keys({
     'any.required': 'Gig price is required',
     'number.greater': 'Gig price must be greater than $4.99'
   }),
-  // coverImage: Joi.string().required().messages({
-  //   'string.base': 'Please add a cover image',
-  //   'string.empty': 'Gig cover image is required',
-  //   'any.required': 'Gig cover image is required',
-  //   'array.min': 'Please add a cover image'
-  // }),
+
   expectedDelivery: Joi.string().required().messages({
     'string.base': 'Please add expected delivery',
     'string.empty': 'Gig expected delivery is required',
