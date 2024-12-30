@@ -19,6 +19,8 @@ public async handle(req: Request, res: Response, next: NextFunction): Promise<an
       secure: process.env.NODE_ENV === "production"  
     });
 
+    
+
     return res.status(200).json({ message: "cookie cleared",user:{} });
   } catch (error) {
     next(error);

@@ -1,19 +1,30 @@
 
 
-import { Application } from "express";
+import  { Server as httpServerType } from 'http';
 import { ConfigType } from "../../config";
 
 
-const serverConfig=(app:Application,config:ConfigType)=>{
+
+const serverConfig=(httpServer:httpServerType,config:ConfigType )=>{
 
 
 const startServer=()=>{
-  app.listen(config.PORT,()=>console.log("server started ....")
-  )
+  httpServer.listen(config.PORT,()=>console.log("server started ....")
+
+  
+)
+
 }
+
+
+
 return {
-  startServer
+  startServer 
+ 
 }
+
+
+
 
 }
 

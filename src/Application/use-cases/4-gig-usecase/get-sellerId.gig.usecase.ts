@@ -20,7 +20,8 @@ export class GetSellerGigs implements IUseCase<ISellerGigGetBySellerIdDTO, ISell
   public async execute(input: ISellerGigGetBySellerIdDTO): Promise<ISellerGigGetBySellerIdResult> {
     const found: IRepoResponse = await this.gigService.find({
       gig: {
-        sellerId: input.sellerId
+        sellerId: input.sellerId,
+        active:true 
       }
     });
 

@@ -25,7 +25,8 @@ export class GetByIdSellerGig implements IUseCase<ISellerGigGetByIdDTO, ISellerG
     
     const found:IRepoResponse=await this.gigService.findOne({
       gig:{
-        _id:input.gigId
+        _id:input.gigId,
+        active:true 
       }
     })
 
@@ -45,7 +46,7 @@ export class GetByIdSellerGig implements IUseCase<ISellerGigGetByIdDTO, ISellerG
 
 
   private async addUserDetails(gig: SellerGig): Promise<void> {
-    const userDetails: IRepoResponse = await this.userservice.findOne({ data: { _id: gig.userId } });
+    const userDetails: IRepoResponse = await this.userservice.findOne({ data: { _id: gig.userId} });
 
     if (!userDetails) {
       throw new BadRequestError('users not Found', `Get User Gig Usecase() Not Found by `);

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import services from '../../shared/services';
+import services from '../../shared/Services';
 
 import { CreateGigUsecase } from '../../Application/use-cases/4-gig-usecase/create.gig.usecase';
 import { CreateGig } from '../Controllers/4-gig.controller/create.gig.controller';

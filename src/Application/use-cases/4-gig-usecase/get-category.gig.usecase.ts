@@ -29,7 +29,8 @@ export class GetByCategorySellerGig implements IUseCase<ISellerGigGetByCategoryD
     
     const found:IRepoResponse=await this.gigService.findByLimit({
       gig:{
-        categories:firstLetterUpperCase(input.category)
+        categories:firstLetterUpperCase(input.category),
+        active:true
       }
     },8)
 

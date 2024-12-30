@@ -3,7 +3,7 @@ import upload from '../middlewares/multer';
 import { RegisterUseCase } from '../../Application/use-cases/1-auth-usecase/register.usecase';
 import { RegisterController } from '../Controllers/1-user.controller/register.user.controller';
 import { signupSchema } from '../schemas/1-auth-schemas/signup.schemas';
-import services from '../../shared/services';
+
 import { LoginUseCase } from '../../Application/use-cases/1-auth-usecase/login.usecase';
 import { Login as LoginController } from '../Controllers/1-user.controller/login.user.controller';
 import { loginSchema } from '../schemas/1-auth-schemas/signin.schema';
@@ -17,6 +17,7 @@ import { ResetPassword } from '../Controllers/1-user.controller/reset-password.u
 import { VerifyEmailUsecase } from '../../Application/use-cases/1-auth-usecase/verify-email.usecase';
 import { VerifyEmail } from '../Controllers/1-user.controller/verify-email.user.controller';
 import { SignOut } from '../Controllers/1-user.controller/signout.user.controller';
+import services from '../../shared/Services'
 
 /**
  * @description INTERCEPTORS
