@@ -20,6 +20,7 @@ import { GetByCategorySellerGig } from '../../Application/use-cases/4-gig-usecas
 import { UpdateGigUsecase } from '../../Application/use-cases/4-gig-usecase/updata.gig.usecase';
 import { UpdateGig } from '../Controllers/4-gig.controller/update.gig.controller';
 import { updateActiveGigUsecase } from '../../Application/use-cases/4-gig-usecase/update.active.gig.usecsase';
+import { CacheLoginUser } from '../../Infrastructure/databse/cache/Cache';
 
 const createGigInterceptor = new CreateGigUsecase(services.gig, services.uniqueId, services.multer, services.cloudinary, services.user);
 
@@ -41,9 +42,9 @@ const getMoreLikeThisInterceptor=new MoreLikeThisUsecase(services.search,service
 const updateInterceptor=new updateActiveGigUsecase(services.gig)
 
 const createController = new CreateGig(createGigInterceptor, gigCreateSchema)
-
+const gatewayCache=new CacheLoginUser()
 const updateController = new UpdateGig(updateGigInterceptor,updateInterceptor)
-const getGigsController = new GetGig(getByIdInterceptor, getSellerGigsInterceptor, getPauseGigsInterceptor,getMoreLikeThisInterceptor,getByCategoryInterceptor);
+const getGigsController = new GetGig(getByIdInterceptor, getSellerGigsInterceptor, getPauseGigsInterceptor,getMoreLikeThisInterceptor,getByCategoryInterceptor,gatewayCache);
 const deleteGigController = new DeleteGig(deleteGigInterceptor);
 const searchGigController = new GigSearchController(gigSearchInterceptor);
 
@@ -58,7 +59,7 @@ const GigRouter = (router: Router): Router => {
   router.route('/gig-pause/:sellerId').get(getGigsController.sellerInactiveGigs.bind(getGigsController));
 
   router.route('/gigId/:gigId').get(getGigsController.gigById.bind(getGigsController));
-  router.route('/category/:category').get(getGigsController.gigsByCategory.bind(getGigsController));
+  router.route('/category/:username').get(getGigsController.gigsByCategory.bind(getGigsController));
 
   router.route('/search/gig/:page').get(searchGigController.handle.bind(searchGigController));
 

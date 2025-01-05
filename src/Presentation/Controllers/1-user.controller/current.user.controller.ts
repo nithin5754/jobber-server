@@ -29,7 +29,7 @@ public async  handle(req: Request, res: Response, next: NextFunction): Promise<v
   }
 
 
-  res.status(StatusCodes.OK).json({ message: 'user successfully authorized', user:this.sanitizeTheData(result.user,['password']) });
+  res.status(StatusCodes.OK).json({ message: 'user successfully authorized', user:this.sanitizeTheData(result.user,['password','emailVerificationToken','browserName','deviceType','otp','otpExpiration','updatedAt','passwordResetExpires','passwordResetToken']) });
 
 
 

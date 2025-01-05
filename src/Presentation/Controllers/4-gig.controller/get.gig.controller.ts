@@ -11,6 +11,8 @@ import {
 } from '../../../Application/use-cases/4-gig-usecase/get-MoreGigsLikeThis';
 
 import { GetByCategorySellerGig, ISellerGigGetByCategoryResult } from '../../../Application/use-cases/4-gig-usecase/get-category.gig.usecase';
+import { CacheLoginUser, selectedCategory } from '../../../Infrastructure/databse/cache/Cache';
+
 
 export class GetGig implements IController {
   constructor(
@@ -18,7 +20,8 @@ export class GetGig implements IController {
     private readonly getSellerGigs: GetSellerGigs,
     private readonly getPausedGigs: GetSellerPausedGigs,
     private readonly getMoreLikeThis: MoreLikeThisUsecase,
-    private readonly getByCategorySellerGig:GetByCategorySellerGig
+    private readonly getByCategorySellerGig:GetByCategorySellerGig,
+    private readonly gatewayCache:CacheLoginUser,
   ) {}
   handle(_req: Request, _res: Response, _next: NextFunction): Promise<void> {
     throw new Error('Method not implemented.');
@@ -109,15 +112,20 @@ export class GetGig implements IController {
   }
 
   public async gigsByCategory(req: Request, res: Response): Promise<void> {
+   
+     
+    let category=this.gatewayCache.getUserSelectedGigCategory(`selectedCategories:${req.params.username}`,selectedCategory);
 
-    const category=req.params.category
 
     if (!category) {
-      throw new BadRequestError('Not Found, Something Went Wrong', 'gigsByCategory() Missing');
+      res.status(StatusCodes.OK).json({ message: 'Search gigs category results', gigArray: [] });
+    }else{
+
+
+      const result:ISellerGigGetByCategoryResult=await this.getByCategorySellerGig.execute({category})
+      res.status(StatusCodes.OK).json({ message: 'Search gigs category results', gigArray: result.gigs });
     }
 
-    const result:ISellerGigGetByCategoryResult=await this.getByCategorySellerGig.execute({category})
-
-    res.status(StatusCodes.OK).json({ message: 'Search gigs category results', gigArray: result.gigs });
+  
   }
 }

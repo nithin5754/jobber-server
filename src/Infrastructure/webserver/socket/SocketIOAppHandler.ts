@@ -2,6 +2,7 @@ import { Server, Socket } from "socket.io";
 import { SocketHandler } from "./SocketHandler";
 import { GeneralEventHandler } from "./events/GeneralEventHandler";
 import { UserEventHandler } from "./events/UserEventHandler";
+import { CategoryEventHandler } from "./events/CategoryEventHandler";
 
 
 
@@ -24,7 +25,8 @@ export class SocketIOAppHandler {
   constructor(private readonly io: Server) {
     this.eventHandler = [
       new UserEventHandler(io),
-      new GeneralEventHandler(io)
+      new GeneralEventHandler(io),
+      new CategoryEventHandler(io)
     ];
   }
 
@@ -34,7 +36,7 @@ export class SocketIOAppHandler {
 
     this.io.on(SocketEvents.CONNECTION,(socket:Socket)=>{
 
- 
+ console.log("socketId",socket.id)
 
       this.eventHandler.forEach((handler)=>handler.registerEvents(socket))
     })

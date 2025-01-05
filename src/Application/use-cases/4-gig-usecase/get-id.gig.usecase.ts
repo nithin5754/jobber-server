@@ -26,7 +26,7 @@ export class GetByIdSellerGig implements IUseCase<ISellerGigGetByIdDTO, ISellerG
     const found:IRepoResponse=await this.gigService.findOne({
       gig:{
         _id:input.gigId,
-        active:true 
+      
       }
     })
 

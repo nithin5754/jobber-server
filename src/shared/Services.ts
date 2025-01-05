@@ -1,9 +1,12 @@
 import config from "../config";
 import { BuyerModal } from "../Infrastructure/databse/mongoose/models/buyer.schema";
+import { ConversationModel } from "../Infrastructure/databse/mongoose/models/chat/conversation.schema";
+import { MessageModel } from "../Infrastructure/databse/mongoose/models/chat/message.schema";
 import { GigModel } from "../Infrastructure/databse/mongoose/models/gig.schema";
 import { SellerModel } from "../Infrastructure/databse/mongoose/models/seller.schema";
 import { UserModal } from "../Infrastructure/databse/mongoose/models/user.schema";
 import { BuyerRepositories } from "../Infrastructure/databse/mongoose/Repositories/buyer.repository";
+import { ChatRepository } from "../Infrastructure/databse/mongoose/Repositories/chat.repository";
 import { GigRepository } from "../Infrastructure/databse/mongoose/Repositories/gig.repository";
 import { Search } from "../Infrastructure/databse/mongoose/Repositories/search.gig.repository";
 import { SellerRepository } from "../Infrastructure/databse/mongoose/Repositories/seller.respository";
@@ -25,7 +28,8 @@ const services = {
   mailer: new Mailer(),
   auth: new JwtToken(),
   configService:config,
-  search:new Search(GigModel)
+  search:new Search(GigModel),
+  messageRepository:new ChatRepository(MessageModel,ConversationModel)
   
 };
 

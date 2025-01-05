@@ -23,7 +23,7 @@ export class MoreLikeThisUsecase implements IUseCase<MoreLikeThisDTO,MoreLikeThi
 
 
 
-  const gigDetails:IRepoResponse=await this.gig.findOne({gig:{_id:input.gigId,active:true }})
+  const gigDetails:IRepoResponse=await this.gig.findOne({gig:{_id:input.gigId}})
 
   if(!gigDetails||!gigDetails.gig||gigDetails.isNull){
     return {
