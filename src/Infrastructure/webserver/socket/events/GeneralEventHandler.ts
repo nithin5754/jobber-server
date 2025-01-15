@@ -20,7 +20,7 @@ export class GeneralEventHandler extends SocketHandler {
        
     socket.on('disconnect',(reason:string)=>{
       console.log(`Socket disconnected: ${socket.id}, Reason: ${reason}`);
-      this.loginCache.onlineUsers.filter((user) => user.socketId !== socket.id);
+      this.loginCache.removeLoggedInUserFromCache(socket.id);
     })
   }
 

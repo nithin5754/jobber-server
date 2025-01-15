@@ -22,6 +22,8 @@ export class CacheLoginUser {
 
   public saveLoggedInUserToCache(userId: string, socketId: string, username: string):OnlineUserType[] {
 
+
+
     const existingUser = this.onlineUsers.find((user) => user.userId === userId);
     const existingUserWithUsername = this.onlineUsers.find((user) => user.username === username);
     if (!existingUser && !existingUserWithUsername) {
@@ -29,6 +31,7 @@ export class CacheLoginUser {
 
     }
 
+ 
     return this.onlineUsers
   }
 

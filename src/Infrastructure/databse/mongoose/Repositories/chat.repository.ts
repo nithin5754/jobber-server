@@ -20,7 +20,20 @@ constructor(
 
 }
 
-
+public async updateOffer  (messageId: string, type: string): Promise<IRepoResponse> {
+  const message: IMessageDocument = await this.MessageModel.findOneAndUpdate(
+    { _id: messageId },
+    {
+      $set: {
+        [`offer.${type}`]: true
+      }
+    },
+    { new: true }
+  ) as IMessageDocument;
+  return {
+    MessageDetails:this.convertMessage(message)
+  }
+};
 
 
 
@@ -135,7 +148,16 @@ await this.ConversationModel.create(
 
   }
 
-
+  public async getUserMessages  (messageConversationId: string): Promise<IRepoResponse>  {
+    const messages: IMessageDocument[] = await this.MessageModel.aggregate([
+      { $match: { conversationId: messageConversationId } },
+      { $sort: { createdAt: 1 }}
+    ]);
+    return {
+      messageDetailsArray:this.convertMessageArray(messages)
+    }
+  };
+  
 
 
   public async updateMultiple(data: IRepoRequest): Promise<void> {

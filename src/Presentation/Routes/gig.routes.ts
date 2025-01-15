@@ -58,7 +58,7 @@ const GigRouter = (router: Router): Router => {
 
   router.route('/gig-pause/:sellerId').get(getGigsController.sellerInactiveGigs.bind(getGigsController));
 
-  router.route('/gigId/:gigId').get(getGigsController.gigById.bind(getGigsController));
+  router.route('/gig-gigId/:gigId').get(getGigsController.gigById.bind(getGigsController));
   router.route('/category/:username').get(getGigsController.gigsByCategory.bind(getGigsController));
 
   router.route('/search/gig/:page').get(searchGigController.handle.bind(searchGigController));

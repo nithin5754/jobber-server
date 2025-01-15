@@ -20,10 +20,12 @@ export class CreateMessage implements IController {
     try {
 
 
+
       const messageData: IChatData = {
         conversationId: req.body.conversationId,
         body: req.body.body,
         fileType: req.body.fileType,
+        file:req.body.file,
         fileSize: req.body.fileSize,
         fileName: req.body.fileName,
         gigId: req.body.gigId,
@@ -53,4 +55,8 @@ export class CreateMessage implements IController {
       next(error)
     }
   }
+
+
+
+
 }

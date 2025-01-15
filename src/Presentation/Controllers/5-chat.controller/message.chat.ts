@@ -13,6 +13,8 @@ export class Messages implements IController {
     
   }
  public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
+
+  console.log("messages")
     try {
       const { senderUsername, receiverUsername } = req.params;
 

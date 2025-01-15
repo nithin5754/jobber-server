@@ -3,6 +3,7 @@ import { SocketHandler } from "./SocketHandler";
 import { GeneralEventHandler } from "./events/GeneralEventHandler";
 import { UserEventHandler } from "./events/UserEventHandler";
 import { CategoryEventHandler } from "./events/CategoryEventHandler";
+import { CacheLoginUser } from "../../databse/cache/Cache";
 
 
 
@@ -35,8 +36,6 @@ export class SocketIOAppHandler {
 
 
     this.io.on(SocketEvents.CONNECTION,(socket:Socket)=>{
-
- console.log("socketId",socket.id)
 
       this.eventHandler.forEach((handler)=>handler.registerEvents(socket))
     })
