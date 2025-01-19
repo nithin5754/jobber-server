@@ -4,7 +4,7 @@ import { UserRepository } from '../../../Infrastructure/databse/mongoose/Reposit
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
 import { firstLetterUpperCase, isEmail, lowerCase } from '../../../Presentation/utils/helper.utils';
-import { IUseCase } from '../../../shared/iusecase';
+import { IUseCase } from '../../../shared/IUsecase';
 
 interface IUserLoginDTO {
   password: string;

@@ -5,8 +5,8 @@ import { IEducation, IExperience, ISeller } from '../../../Domain/interface/isel
 import { BuyerRepositories } from '../../../Infrastructure/databse/mongoose/Repositories/buyer.repository';
 import { SellerRepository } from '../../../Infrastructure/databse/mongoose/Repositories/seller.respository';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../shared/ibase-repository';
-import { IUseCase } from '../../../shared/iusecase';
+import { IRepoResponse } from '../../../shared/IBase-repository';
+import { IUseCase } from '../../../shared/IUsecase';
 import { faker } from '@faker-js/faker';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
 export interface ISellerSeedDTO {

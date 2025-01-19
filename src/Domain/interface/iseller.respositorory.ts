@@ -1,6 +1,6 @@
 
 
-import { IBaseRepository, IRepoRequest, IRepoResponse } from "../../shared/ibase-repository";
+import { IBaseRepository, IRepoRequest, IRepoResponse } from "../../shared/IBase-repository";
 
 
 

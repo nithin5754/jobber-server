@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/icontroller';
+import { IController } from '../../../shared/IController';
 import { LoginUseCase } from '../../../Application/use-cases/1-auth-usecase/login.usecase';
 import Joi from 'joi';
 import { BadRequestError } from '../../error/error.interface';

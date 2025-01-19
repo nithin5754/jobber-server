@@ -2,7 +2,7 @@
 import { ChatRepository } from '../../../Infrastructure/databse/mongoose/Repositories/chat.repository';
 
 
-import { IUseCase } from '../../../shared/iusecase';
+import { IUseCase } from '../../../shared/IUsecase';
 
 export interface IMarkSingleMessageDTO {
   id: string;

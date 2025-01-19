@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker';
 import { ISellerGig } from '../../../Domain/interface/igig.interface';
 
-import { IUseCase } from '../../../shared/iusecase';
+import { IUseCase } from '../../../shared/IUsecase';
 import { sample } from 'lodash';
 
-import { IRepoResponse } from '../../../shared/ibase-repository';
+import { IRepoResponse } from '../../../shared/IBase-repository';
 import { GigRepository } from '../../../Infrastructure/databse/mongoose/Repositories/gig.repository';
 
 import { Seller } from '../../../Domain/Entities/seller.entity';

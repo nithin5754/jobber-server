@@ -7,8 +7,8 @@ import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id
 import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service';
 import { MulterFileConverter } from '../../../Infrastructure/External-libraries/5-multer-converter/multer-convertor.service';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../shared/ibase-repository';
-import { IUseCase } from '../../../shared/iusecase';
+import { IRepoResponse } from '../../../shared/IBase-repository';
+import { IUseCase } from '../../../shared/IUsecase';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
 import { isNull } from 'lodash';
 

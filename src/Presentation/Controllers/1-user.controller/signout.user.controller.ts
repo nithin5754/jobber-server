@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../shared/icontroller";
+import { IController } from "../../../shared/IController";
 
 
 export class SignOut implements IController {

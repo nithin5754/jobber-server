@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { GetSellerUsecase, ISellerGetDTO, ISellerGetResult } from '../../../Application/use-cases/3-seller-usecase/get.seller.usecase';
-import { IController } from '../../../shared/icontroller';
+import { IController } from '../../../shared/IController';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestError } from '../../error/error.interface';
 

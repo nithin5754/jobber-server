@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Buyer, BuyerParams, IBuyer, IBuyerDocument } from '../../../../Domain/Entities/Buyer';
 import { IBuyerRepositories } from '../../../../Domain/interface/ibuyer.repository';
-import { IRepoResponse, IRepoRequest } from '../../../../shared/ibase-repository';
+import { IRepoResponse, IRepoRequest } from '../../../../shared/IBase-repository';
 
 export class BuyerRepositories implements IBuyerRepositories {
   constructor(private buyerModal: Model<IBuyerDocument>) {}

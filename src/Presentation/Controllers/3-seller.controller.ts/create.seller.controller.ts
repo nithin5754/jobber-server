@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/icontroller';
+import { IController } from '../../../shared/IController';
 import { ISeller } from '../../../Domain/interface/iseller.interface';
 import { CreateSellerUseCase, ISellerCreateResult } from '../../../Application/use-cases/3-seller-usecase/create.seller.usecase';
 import { StatusCodes } from 'http-status-codes';

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/icontroller';
+import { IController } from '../../../shared/IController';
 import { IRefreshResult, RefreshUsecase } from '../../../Application/use-cases/1-auth-usecase/refresh.usecase';
 import { BadRequestError } from '../../error/error.interface';
 import { User } from '../../../Domain/Entities/User';

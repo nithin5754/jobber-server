@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { IUser, User, UserParams } from '../../../../Domain/Entities/User';
 import { UserDocuments } from '../../../../Domain/interface/iuser.interface';
 import { IUserRepository } from '../../../../Domain/interface/iuser.repository';
-import { IRepoRequest, IRepoResponse } from '../../../../shared/ibase-repository';
+import { IRepoRequest, IRepoResponse } from '../../../../shared/IBase-repository';
 import { BuyerRepositories } from './buyer.repository';
 
 export class UserRepository implements IUserRepository {

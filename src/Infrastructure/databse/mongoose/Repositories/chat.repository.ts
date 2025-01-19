@@ -3,7 +3,7 @@ import { Message } from "../../../../Domain/Entities/Chat";
 import {  IConversation, IConversationDocument, IMessageDocument } from "../../../../Domain/interface/ichat.interface";
 import { IChatRepositories } from "../../../../Domain/interface/ichat.repository";
 
-import { IRepoRequest, IRepoResponse } from "../../../../shared/ibase-repository";
+import { IRepoRequest, IRepoResponse } from "../../../../shared/IBase-repository";
 
 
 

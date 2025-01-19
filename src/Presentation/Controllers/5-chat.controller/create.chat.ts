@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../shared/icontroller";
+import { IController } from "../../../shared/IController";
 import { CreateMessageUsecase, ICreateMessageResult } from "../../../Application/use-cases/6-chat.usecase/create-usecase";
 import { IChatData } from "../../../Domain/interface/ichat.interface";
 import { StatusCodes } from "http-status-codes";

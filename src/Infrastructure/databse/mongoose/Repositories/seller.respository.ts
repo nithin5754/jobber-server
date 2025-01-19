@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { ISellerDocument } from '../../../../Domain/interface/iseller.interface';
 import { ISellerRepositories } from '../../../../Domain/interface/iseller.respositorory';
-import { IRepoRequest, IRepoResponse } from '../../../../shared/ibase-repository';
+import { IRepoRequest, IRepoResponse } from '../../../../shared/IBase-repository';
 import { Seller } from '../../../../Domain/Entities/seller.entity';
 import { BadRequestError } from '../../../../Presentation/error/error.interface';
 

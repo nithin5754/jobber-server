@@ -3,7 +3,7 @@ import { User } from '../../../Domain/Entities/User';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IUseCase } from '../../../shared/iusecase';
+import { IUseCase } from '../../../shared/IUsecase';
 
 interface IRefreshTokenDTO {
   token: string;

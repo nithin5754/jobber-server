@@ -4,8 +4,8 @@ import { Message } from '../../../Domain/Entities/Chat';
 
 import { ChatRepository } from '../../../Infrastructure/databse/mongoose/Repositories/chat.repository';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../shared/ibase-repository';
-import { IUseCase } from '../../../shared/iusecase';
+import { IRepoResponse } from '../../../shared/IBase-repository';
+import { IUseCase } from '../../../shared/IUsecase';
 
 export interface IGetUserMessagesDTO {
  conversationId:string

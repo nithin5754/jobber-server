@@ -1,6 +1,6 @@
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
 import { GigRepository } from '../../../Infrastructure/databse/mongoose/Repositories/gig.repository';
-import { IUseCase } from '../../../shared/iusecase';
+import { IUseCase } from '../../../shared/IUsecase';
 
 export interface TopGigViewsDTO {
   categories: string;

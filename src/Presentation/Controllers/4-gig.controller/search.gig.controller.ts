@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { IController } from '../../../shared/icontroller';
+import { IController } from '../../../shared/IController';
 import { ISellerGigSearchIdResult, SearchGigsUsecase } from '../../../Application/use-cases/5-search-usecase/search.gig.usecase';
 import { BadRequestError } from '../../error/error.interface';
 

@@ -2,8 +2,8 @@
 import { GigRepository } from '../../../Infrastructure/databse/mongoose/Repositories/gig.repository';
 
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../shared/ibase-repository';
-import { IUseCase } from '../../../shared/iusecase';
+import { IRepoResponse } from '../../../shared/IBase-repository';
+import { IUseCase } from '../../../shared/IUsecase';
 
 
 export interface ISellerGigUpdateDTO {

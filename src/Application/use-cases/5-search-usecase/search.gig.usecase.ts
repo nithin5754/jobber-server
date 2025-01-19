@@ -3,8 +3,8 @@ import { GigRepository } from '../../../Infrastructure/databse/mongoose/Reposito
 import { Search } from '../../../Infrastructure/databse/mongoose/Repositories/search.gig.repository';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../shared/ibase-repository';
-import { IUseCase } from '../../../shared/iusecase';
+import { IRepoResponse } from '../../../shared/IBase-repository';
+import { IUseCase } from '../../../shared/IUsecase';
 
 export interface ISellerGigSearchIdDTO {
   query: string;

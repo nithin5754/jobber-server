@@ -3,8 +3,8 @@ import { ISeller } from '../../../Domain/interface/iseller.interface';
 import { SellerRepository } from '../../../Infrastructure/databse/mongoose/Repositories/seller.respository';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../shared/ibase-repository';
-import { IUseCase } from '../../../shared/iusecase';
+import { IRepoResponse } from '../../../shared/IBase-repository';
+import { IUseCase } from '../../../shared/IUsecase';
 
 export interface ISellerUpdateDTO {
   filter: string;
