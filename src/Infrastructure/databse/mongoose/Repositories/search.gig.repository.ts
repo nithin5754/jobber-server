@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import { ISellerGigParams, SellerGigDocument } from '../../../../Domain/interface/igig.interface';
+import { ISellerGigParams, SellerGigDocument } from '../../../../Domain/interface/IGig.interface';
 import { SellerGig } from '../../../../Domain/Entities/gig.entity';
 import { IRepoRequest, IRepoResponse } from '../../../../shared/IBase-repository';
 

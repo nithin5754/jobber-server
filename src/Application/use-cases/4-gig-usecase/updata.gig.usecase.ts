@@ -1,6 +1,6 @@
 
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
-import { ISellerGig } from '../../../Domain/interface/igig.interface';
+import { ISellerGig } from '../../../Domain/interface/IGig.interface';
 import { GigRepository } from '../../../Infrastructure/databse/mongoose/Repositories/gig.repository';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
 import { BadRequestError } from '../../../Presentation/error/error.interface';

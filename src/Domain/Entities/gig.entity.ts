@@ -1,5 +1,5 @@
 import moment from 'moment';
-import {  ISellerGigParams } from '../interface/igig.interface';
+import {  ISellerGigParams } from '../interface/IGig.interface';
 
 export class SellerGig{
   id?: string;

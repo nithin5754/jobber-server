@@ -1,6 +1,6 @@
 import { Model } from 'mongoose';
 import { Buyer, BuyerParams, IBuyer, IBuyerDocument } from '../../../../Domain/Entities/Buyer';
-import { IBuyerRepositories } from '../../../../Domain/interface/ibuyer.repository';
+import { IBuyerRepositories } from '../../../../Domain/interface/IBuyer.repository';
 import { IRepoResponse, IRepoRequest } from '../../../../shared/IBase-repository';
 
 export class BuyerRepositories implements IBuyerRepositories {

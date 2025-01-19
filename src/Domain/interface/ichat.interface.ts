@@ -1,5 +1,5 @@
 import mongoose, { ObjectId } from "mongoose";
-import { IOffer } from "./iorder";
+import { IOffer } from "./IOrder";
 
 
 

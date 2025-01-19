@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { ISellerGig } from '../../../Domain/interface/igig.interface';
+import { ISellerGig } from '../../../Domain/interface/IGig.interface';
 
 import { IUseCase } from '../../../shared/IUsecase';
 import { sample } from 'lodash';

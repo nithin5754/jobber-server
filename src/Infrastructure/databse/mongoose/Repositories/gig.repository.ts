@@ -1,7 +1,7 @@
 import { DeleteResult, Model } from 'mongoose';
 import { SellerGig } from '../../../../Domain/Entities/gig.entity';
-import { ISellerGigParams, SellerGigDocument } from '../../../../Domain/interface/igig.interface';
-import { IGigRepository } from '../../../../Domain/interface/igig.repository';
+import { ISellerGigParams, SellerGigDocument } from '../../../../Domain/interface/IGig.interface';
+import { IGigRepository } from '../../../../Domain/interface/IGig.repository';
 
 import { IRepoRequest, IRepoResponse } from '../../../../shared/IBase-repository';
 

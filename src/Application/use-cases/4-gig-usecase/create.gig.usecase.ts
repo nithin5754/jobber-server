@@ -1,7 +1,7 @@
 import { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
 import { ConfigType } from '../../../config';
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
-import { ISellerGig } from '../../../Domain/interface/igig.interface';
+import { ISellerGig } from '../../../Domain/interface/IGig.interface';
 import { GigRepository } from '../../../Infrastructure/databse/mongoose/Repositories/gig.repository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service';

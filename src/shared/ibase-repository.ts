@@ -3,9 +3,9 @@ import { Message } from '../Domain/Entities/Chat';
 import { SellerGig } from '../Domain/Entities/gig.entity';
 import { Seller } from '../Domain/Entities/seller.entity';
 import { IUser, User } from '../Domain/Entities/User';
-import { IChatData, IConversation,  } from '../Domain/interface/ichat.interface';
-import { ISellerGig } from '../Domain/interface/igig.interface';
-import { ISeller } from '../Domain/interface/iseller.interface';
+import { IChatData, IConversation,  } from '../Domain/interface/IChat.interface';
+import { ISellerGig } from '../Domain/interface/IGig.interface';
+import { ISeller } from '../Domain/interface/ISeller.interface';
 
 export interface IRepoResponse {
 

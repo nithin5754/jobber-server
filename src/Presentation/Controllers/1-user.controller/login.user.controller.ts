@@ -4,7 +4,7 @@ import { LoginUseCase } from '../../../Application/use-cases/1-auth-usecase/logi
 import Joi from 'joi';
 import { BadRequestError } from '../../error/error.interface';
 import { omit } from 'lodash';
-import { UserTypeKey } from '../../../Domain/interface/iuser.interface';
+import { UserTypeKey } from '../../../Domain/interface/IUser.interface';
 import { User } from '../../../Domain/Entities/User';
 import { StatusCodes } from 'http-status-codes';
 

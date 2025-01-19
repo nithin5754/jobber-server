@@ -3,7 +3,7 @@ import { IController } from '../../../shared/IController';
 import { BadRequestError } from '../../error/error.interface';
 import { IVerifyEmailResult, VerifyEmailUsecase } from '../../../Application/use-cases/1-auth-usecase/verify-email.usecase';
 import { StatusCodes } from 'http-status-codes';
-import { UserTypeKey } from '../../../Domain/interface/iuser.interface';
+import { UserTypeKey } from '../../../Domain/interface/IUser.interface';
 import { User } from '../../../Domain/Entities/User';
 import { omit } from 'lodash';
 

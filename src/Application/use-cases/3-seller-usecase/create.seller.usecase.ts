@@ -1,5 +1,5 @@
 import { Seller } from '../../../Domain/Entities/seller.entity';
-import { ISeller } from '../../../Domain/interface/iseller.interface';
+import { ISeller } from '../../../Domain/interface/ISeller.interface';
 import { BuyerRepositories } from '../../../Infrastructure/databse/mongoose/Repositories/buyer.repository';
 import { SellerRepository } from '../../../Infrastructure/databse/mongoose/Repositories/seller.respository';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';

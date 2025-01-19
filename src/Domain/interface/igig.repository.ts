@@ -1,5 +1,5 @@
 import { IBaseRepository, IRepoRequest } from "../../shared/IBase-repository";
-import { IRepoResponse } from "./iuser.repository";
+import { IRepoResponse } from "./IUser.repository";
 
 
 

@@ -3,7 +3,7 @@ import { ISellerUpdateResult, UpdateSellerUsecase } from '../../../Application/u
 import { IController } from '../../../shared/IController';
 import { BadRequestError } from '../../error/error.interface';
 import { Request, Response, NextFunction } from 'express';
-import { ISeller } from '../../../Domain/interface/iseller.interface';
+import { ISeller } from '../../../Domain/interface/ISeller.interface';
 import { StatusCodes } from 'http-status-codes';
 
 export class UpdateSeller implements IController {
