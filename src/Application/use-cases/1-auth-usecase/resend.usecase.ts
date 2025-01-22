@@ -1,12 +1,12 @@
 import { ConfigType } from '../../../config';
 import { User } from '../../../Domain/Entities/User';
-import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/user.respository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/imailer.interface';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
-import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { EMAIL_TEMPLATE, lowerCase } from '../../../Presentation/utils/helper.utils';
-import { IRepoResponse } from '../../../Shared/IBase-repository';
+import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { EMAIL_TEMPLATE, lowerCase } from '../../../Presentation/Utils/helper.utils';
+import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface IResendDTO {

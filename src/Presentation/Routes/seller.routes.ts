@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import { CreateSellerUseCase } from '../../Application/use-cases/3-seller-usecase/create.seller.usecase';
 import { CreateSeller } from '../Controllers/3-seller.controller.ts/create.seller.controller';
-import { sellerSchema } from '../schemas/3-seller/seller.schema';
+import { sellerSchema } from '../Schemas/3-seller/seller.schema';
 import services from '../../Shared/Services';
 import { GetSellerUsecase } from '../../Application/use-cases/3-seller-usecase/get.seller.usecase';
 import { GetSellerById } from '../Controllers/3-seller.controller.ts/get-id.seller.controller';

@@ -1,8 +1,8 @@
 import { Model } from "mongoose";
 import { Message } from "../../../../Domain/Entities/Chat";
-import {  IConversation, IConversationDocument, IMessageDocument } from "../../../../Domain/interface/IChat.interface";
-import { IChatRepositories } from "../../../../Domain/interface/IChat.repository";
-import { IRepoRequest, IRepoResponse } from "../../../../Shared/IBase-repository";
+import {  IConversation, IConversationDocument, IMessageDocument } from "../../../../Domain/Interface/IChat.interface";
+import { IChatRepositories } from "../../../../Domain/Interface/IChat.repository";
+import { IRepoRequest, IRepoResponse } from "../../../../Shared/IBaseRepository";
 
 
 

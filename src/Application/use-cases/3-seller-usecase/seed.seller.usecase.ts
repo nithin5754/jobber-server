@@ -1,14 +1,14 @@
 import { floor, random, sample, sampleSize } from 'lodash';
 import { Buyer } from '../../../Domain/Entities/Buyer';
 import { Seller } from '../../../Domain/Entities/seller.entity';
-import { IEducation, IExperience, ISeller } from '../../../Domain/interface/ISeller.interface';
-import { BuyerRepositories } from '../../../Infrastructure/databse/mongoose/Repositories/buyer.repository';
-import { SellerRepository } from '../../../Infrastructure/databse/mongoose/Repositories/seller.respository';
-import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../Shared/IBase-repository';
+import { IEducation, IExperience, ISeller } from '../../../Domain/Interface/ISeller.interface';
+import { BuyerRepositories } from '../../../Infrastructure/Databse/mongoose/Repositories/buyer.repository';
+import { SellerRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/seller.respository';
+import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
 import { faker } from '@faker-js/faker';
-import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/user.respository';
 export interface ISellerSeedDTO {
   size: number;
 }

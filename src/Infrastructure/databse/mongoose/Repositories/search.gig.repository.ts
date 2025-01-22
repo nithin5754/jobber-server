@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
-import { ISellerGigParams, SellerGigDocument } from '../../../../Domain/interface/IGig.interface';
+import { ISellerGigParams, SellerGigDocument } from '../../../../Domain/Interface/IGig.interface';
 import { SellerGig } from '../../../../Domain/Entities/gig.entity';
-import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBase-repository';
+import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBaseRepository';
 
 
 export class Search {

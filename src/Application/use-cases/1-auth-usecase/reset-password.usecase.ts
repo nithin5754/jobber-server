@@ -1,7 +1,7 @@
-import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/user.respository';
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
-import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../Shared/IBase-repository';
+import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface IResetPasswordDTO {

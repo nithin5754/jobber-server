@@ -1,5 +1,5 @@
 import mongoose, { Model, Schema, model } from 'mongoose';
-import { ISellerDocument } from '../../../../Domain/interface/ISeller.interface';
+import { ISellerDocument } from '../../../../Domain/Interface/ISeller.interface';
 
 const sellerSchema: Schema = new Schema(
   {

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { IController } from "../../../Shared/IController";
 import { ISellerSeedResult, SeedSellersUsecase } from "../../../Application/use-cases/3-seller-usecase/seed.seller.usecase";
-import { BadRequestError } from "../../error/error.interface";
+import { BadRequestError } from "../../Error/error.interface";
 import { StatusCodes } from "http-status-codes";
 
 

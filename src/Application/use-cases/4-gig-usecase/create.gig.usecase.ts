@@ -1,15 +1,15 @@
 import { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
 
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
-import { ISellerGig } from '../../../Domain/interface/IGig.interface';
-import { GigRepository } from '../../../Infrastructure/databse/mongoose/Repositories/gig.repository';
+import { ISellerGig } from '../../../Domain/Interface/IGig.interface';
+import { GigRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/gig.repository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service';
 import { MulterFileConverter } from '../../../Infrastructure/External-libraries/5-multer-converter/multer-convertor.service';
-import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../Shared/IBase-repository';
+import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
-import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/user.respository';
 
 
 export interface ISellerGigCreateDTO {

@@ -1,6 +1,6 @@
 import { genSalt, hash } from "bcryptjs";
 import mongoose, { Model } from "mongoose";
-import { UserDocuments } from "../../../../Domain/interface/IUser.interface";
+import { UserDocuments } from "../../../../Domain/Interface/IUser.interface";
 
 
 

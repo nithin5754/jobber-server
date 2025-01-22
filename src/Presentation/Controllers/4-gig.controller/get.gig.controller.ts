@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
 import { StatusCodes } from 'http-status-codes';
 import { GetByIdSellerGig, ISellerGigGetByIdResult } from '../../../Application/use-cases/4-gig-usecase/get-id.gig.usecase';
-import { BadRequestError } from '../../error/error.interface';
+import { BadRequestError } from '../../Error/error.interface';
 import { GetSellerGigs, ISellerGigGetBySellerIdResult } from '../../../Application/use-cases/4-gig-usecase/get-sellerId.gig.usecase';
 import { GetSellerPausedGigs, ISellerGigGetByPausedGigsResult } from '../../../Application/use-cases/4-gig-usecase/get-paused.gig.usecses';
 import {
@@ -11,7 +11,7 @@ import {
 } from '../../../Application/use-cases/4-gig-usecase/get-MoreGigsLikeThis';
 
 import { GetByCategorySellerGig, ISellerGigGetByCategoryResult } from '../../../Application/use-cases/4-gig-usecase/get-category.gig.usecase';
-import { CacheLoginUser, selectedCategory } from '../../../Infrastructure/databse/cache/Cache';
+import { CacheLoginUser, selectedCategory } from '../../../Infrastructure/Databse/cache/Cache';
 
 
 export class GetGig implements IController {

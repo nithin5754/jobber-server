@@ -3,8 +3,8 @@ import services from '../../Shared/Services';
 
 import { CreateGigUsecase } from '../../Application/use-cases/4-gig-usecase/create.gig.usecase';
 import { CreateGig } from '../Controllers/4-gig.controller/create.gig.controller';
-import { gigCreateSchema } from '../schemas/4-gig-schemas/gig.schemas';
-import upload from '../middlewares/multer';
+import { gigCreateSchema } from '../Schemas/4-gig-schemas/gig.schemas';
+import upload from '../Middlewares/multer';
 import { GetGig } from '../Controllers/4-gig.controller/get.gig.controller';
 import { GetByIdSellerGig } from '../../Application/use-cases/4-gig-usecase/get-id.gig.usecase';
 import { GetSellerGigs } from '../../Application/use-cases/4-gig-usecase/get-sellerId.gig.usecase';
@@ -20,7 +20,7 @@ import { GetByCategorySellerGig } from '../../Application/use-cases/4-gig-usecas
 import { UpdateGigUsecase } from '../../Application/use-cases/4-gig-usecase/updata.gig.usecase';
 import { UpdateGig } from '../Controllers/4-gig.controller/update.gig.controller';
 import { updateActiveGigUsecase } from '../../Application/use-cases/4-gig-usecase/update.active.gig.usecsase';
-import { CacheLoginUser } from '../../Infrastructure/databse/cache/Cache';
+import { CacheLoginUser } from '../../Infrastructure/Databse/cache/Cache';
 
 const createGigInterceptor = new CreateGigUsecase(services.gig, services.uniqueId, services.multer, services.cloudinary, services.user);
 

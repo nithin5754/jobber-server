@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io';
 import { SocketHandler } from '../SocketHandler';
-import { CacheLoginUser, OnlineUserType } from '../../../databse/cache/Cache';
+import { CacheLoginUser, OnlineUserType } from '../../../Databse/cache/Cache';
 import { SocketEvents } from '../SocketIOAppHandler';
 
 export class UserEventHandler extends SocketHandler {

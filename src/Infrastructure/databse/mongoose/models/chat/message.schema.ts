@@ -1,5 +1,5 @@
 import { Model, Schema, model } from 'mongoose';
-import { IMessageDocument } from '../../../../../Domain/interface/IChat.interface';
+import { IMessageDocument } from '../../../../../Domain/Interface/IChat.interface';
 
 const messageSchema: Schema = new Schema(
   {

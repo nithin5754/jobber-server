@@ -2,9 +2,9 @@ import { Request, Response, NextFunction } from 'express';
 
 import { LoginUseCase } from '../../../Application/use-cases/1-auth-usecase/login.usecase';
 import Joi from 'joi';
-import { BadRequestError } from '../../error/error.interface';
+import { BadRequestError } from '../../Error/error.interface';
 import { omit } from 'lodash';
-import { UserTypeKey } from '../../../Domain/interface/IUser.interface';
+import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import { User } from '../../../Domain/Entities/User';
 import { StatusCodes } from 'http-status-codes';
 import { IController } from '../../../Shared/IController';

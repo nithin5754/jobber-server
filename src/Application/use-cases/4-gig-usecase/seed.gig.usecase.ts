@@ -1,14 +1,14 @@
 import { faker } from '@faker-js/faker';
-import { ISellerGig } from '../../../Domain/interface/IGig.interface';
+import { ISellerGig } from '../../../Domain/Interface/IGig.interface';
 
 import { IUseCase } from '../../../Shared/IUsecase';
 import { sample } from 'lodash';
 
-import { IRepoResponse } from '../../../Shared/IBase-repository';
-import { GigRepository } from '../../../Infrastructure/databse/mongoose/Repositories/gig.repository';
+import { IRepoResponse } from '../../../Shared/IBaseRepository';
+import { GigRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/gig.repository';
 
 import { Seller } from '../../../Domain/Entities/seller.entity';
-import { SellerRepository } from '../../../Infrastructure/databse/mongoose/Repositories/seller.respository';
+import { SellerRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/seller.respository';
 
 export interface ISellerGigSeedDTO {}
 

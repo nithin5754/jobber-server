@@ -5,7 +5,7 @@ import {
   ISellerRandomResult,
   RandomSellersUsecase
 } from '../../../Application/use-cases/3-seller-usecase/random.seller.usecase';
-import { BadRequestError } from '../../error/error.interface';
+import { BadRequestError } from '../../Error/error.interface';
 import { StatusCodes } from 'http-status-codes';
 
 export class RandomSeller implements IController {

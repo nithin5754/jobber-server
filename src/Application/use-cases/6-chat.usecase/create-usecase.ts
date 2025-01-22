@@ -1,14 +1,14 @@
 import { UploadApiResponse, UploadApiErrorResponse } from 'cloudinary';
 import { io } from '../../..';
 import { Message } from '../../../Domain/Entities/Chat';
-import { IChatData } from '../../../Domain/interface/IChat.interface';
-import { ChatRepository } from '../../../Infrastructure/databse/mongoose/Repositories/chat.repository';
+import { IChatData } from '../../../Domain/Interface/IChat.interface';
+import { ChatRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/chat.repository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service';
 
-import { BadRequestError } from '../../../Presentation/error/error.interface';
+import { BadRequestError } from '../../../Presentation/Error/error.interface';
 
-import { IRepoResponse } from '../../../Shared/IBase-repository';
+import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface ICreateMessageDTO {

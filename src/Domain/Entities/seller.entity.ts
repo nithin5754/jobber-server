@@ -1,4 +1,4 @@
-import { ILanguage, IExperience, IEducation, ICertificate, SellerParams } from '../interface/ISeller.interface';
+import { ILanguage, IExperience, IEducation, ICertificate, SellerParams } from '../Interface/ISeller.interface';
 import _ from 'lodash';
 import moment from 'moment';
 

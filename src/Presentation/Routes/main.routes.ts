@@ -1,6 +1,6 @@
 import { Application, Router } from 'express';
 import authRouter from './auth.routes';
-import { authMiddleware } from '../middlewares/authMiddleware';
+import { authMiddleware } from '../Middlewares/authMiddleware';
 import CurrentRouter from './current-user.routes';
 import BuyerRouter from './buyer.routes';
 import SellerRouter from './seller.routes';

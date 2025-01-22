@@ -6,7 +6,7 @@ import {
   ISellerGigCreateResult
 } from '../../../Application/use-cases/4-gig-usecase/create.gig.usecase';
 
-import { BadRequestError } from '../../error/error.interface';
+import { BadRequestError } from '../../Error/error.interface';
 import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
 

@@ -1,9 +1,9 @@
 
 import { User } from "../../../Domain/Entities/User";
 
-import { UserRepository } from "../../../Infrastructure/databse/mongoose/Repositories/user.respository";
-import { BadRequestError } from "../../../Presentation/error/error.interface";
-import { IRepoResponse } from "../../../Shared/IBase-repository";
+import { UserRepository } from "../../../Infrastructure/Databse/mongoose/Repositories/user.respository";
+import { BadRequestError } from "../../../Presentation/Error/error.interface";
+import { IRepoResponse } from "../../../Shared/IBaseRepository";
 import { IUseCase } from "../../../Shared/IUsecase";
 // import { IUseCase } from "../../../shared/IUsecase";/
 

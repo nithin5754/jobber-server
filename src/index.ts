@@ -4,11 +4,11 @@ import expressConfig from './Infrastructure/webserver/express';
 import config from './config';
 import http, { Server as httpServerType } from 'http';
 import serverConfig from './Infrastructure/webserver/server';
-import connection from './Infrastructure/databse/mongoose/connection';
+import connection from './Infrastructure/Databse/mongoose/connection';
 import routes from './Presentation/Routes/main.routes';
-import ErrorHandlingMiddleWare from './Presentation/middlewares/error-handling.middleware';
+import ErrorHandlingMiddleWare from './Presentation/Middlewares/error-handling.middleware';
 import { Server } from 'socket.io';
-import ioMiddleware from './Presentation/middlewares/ioMiddleware';
+import ioMiddleware from './Presentation/Middlewares/ioMiddleware';
 import { SocketIOAppHandler } from './Infrastructure/webserver/socket/SocketIOAppHandler';
 // import { CacheLoginUser } from "./Infrastructure/databse/cache/Cache";
 

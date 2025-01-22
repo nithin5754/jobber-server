@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express"
-import { CustomError, IErrorResponse } from "../error/error.interface"
+import { CustomError, IErrorResponse } from "../Error/error.interface"
 
 
 

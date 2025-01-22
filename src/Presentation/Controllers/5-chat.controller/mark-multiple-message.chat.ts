@@ -4,7 +4,7 @@
 
 
 import { NextFunction,Request,Response } from "express";
-import { BadRequestError } from "../../error/error.interface";
+import { BadRequestError } from "../../Error/error.interface";
 import { StatusCodes } from "http-status-codes";
 import { IController } from "../../../Shared/IController";
 import {  MarkMultipleMessageAsReadUsecase } from "../../../Application/use-cases/6-chat.usecase/mark-multiple.message.usecase";

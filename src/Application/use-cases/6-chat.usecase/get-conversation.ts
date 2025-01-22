@@ -1,9 +1,9 @@
 
-import { IConversation } from '../../../Domain/interface/IChat.interface';
+import { IConversation } from '../../../Domain/Interface/IChat.interface';
 
-import { ChatRepository } from '../../../Infrastructure/databse/mongoose/Repositories/chat.repository';
-import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../Shared/IBase-repository';
+import { ChatRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/chat.repository';
+import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface IGetConversationDTO {

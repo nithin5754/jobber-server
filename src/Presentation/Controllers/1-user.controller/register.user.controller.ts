@@ -1,14 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
 import { ICreateUserDTO, RegisterUseCase } from '../../../Application/use-cases/1-auth-usecase/register.usecase';
-import { BadRequestError } from '../../error/error.interface';
+import { BadRequestError } from '../../Error/error.interface';
 
 import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
 import { User } from '../../../Domain/Entities/User';
-import { UserTypeKey } from '../../../Domain/interface/IUser.interface';
+import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import {  omit } from 'lodash';
-import { firstLetterUpperCase, lowerCase } from '../../utils/helper.utils';
+import { firstLetterUpperCase, lowerCase } from '../../Utils/helper.utils';
 
 export class RegisterController implements IController {
   constructor(private readonly registerUseCase: RegisterUseCase, private readonly validation: Joi.ObjectSchema<any>) {}
