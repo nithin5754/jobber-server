@@ -1,7 +1,7 @@
 
 import { IConversation } from '../../../Domain/Interface/IChat.interface';
 
-import { ChatRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/chat.repository';
+import { ChatRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/chat.repository';
 import { BadRequestError } from '../../../Presentation/Error/error.interface';
 import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';

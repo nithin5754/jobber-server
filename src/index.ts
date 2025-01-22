@@ -4,7 +4,7 @@ import expressConfig from './Infrastructure/webserver/express';
 import config from './config';
 import http, { Server as httpServerType } from 'http';
 import serverConfig from './Infrastructure/webserver/server';
-import connection from './Infrastructure/Databse/mongoose/connection';
+import connection from './Infrastructure/Databse/Mongoose/connection';
 import routes from './Presentation/Routes/main.routes';
 import ErrorHandlingMiddleWare from './Presentation/Middlewares/error-handling.middleware';
 import { Server } from 'socket.io';

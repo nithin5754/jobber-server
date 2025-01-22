@@ -1,6 +1,6 @@
 import { User } from '../../../Domain/Entities/User';
 
-import { UserRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/user.respository';
 import { BadRequestError } from '../../../Presentation/Error/error.interface';
 import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';

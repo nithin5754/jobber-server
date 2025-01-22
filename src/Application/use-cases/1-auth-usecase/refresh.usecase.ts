@@ -1,6 +1,6 @@
 import { JwtPayload } from 'jsonwebtoken';
 import { User } from '../../../Domain/Entities/User';
-import { UserRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/user.respository';
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/Error/error.interface';
 import { IUseCase } from '../../../Shared/IUsecase';

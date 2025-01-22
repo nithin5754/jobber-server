@@ -5,10 +5,10 @@ import { IUseCase } from '../../../Shared/IUsecase';
 import { sample } from 'lodash';
 
 import { IRepoResponse } from '../../../Shared/IBaseRepository';
-import { GigRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/gig.repository';
+import { GigRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/gig.repository';
 
 import { Seller } from '../../../Domain/Entities/seller.entity';
-import { SellerRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/seller.respository';
+import { SellerRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/seller.respository';
 
 export interface ISellerGigSeedDTO {}
 

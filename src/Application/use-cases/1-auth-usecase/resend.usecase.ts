@@ -1,6 +1,6 @@
 import { ConfigType } from '../../../config';
 import { User } from '../../../Domain/Entities/User';
-import { UserRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/user.respository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/imailer.interface';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';

@@ -1,5 +1,5 @@
 
-import { ChatRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/chat.repository';
+import { ChatRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/chat.repository';
 
 
 import { IUseCase } from '../../../Shared/IUsecase';

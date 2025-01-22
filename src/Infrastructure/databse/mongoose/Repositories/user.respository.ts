@@ -7,6 +7,7 @@ import { IRepoResponse, IUserRepository } from '../../../../Domain/Interface/IUs
 import { IRepoRequest } from '../../../../Shared/IBaseRepository';
 import { BuyerRepositories } from './buyer.repository';
 
+
 export class UserRepository implements IUserRepository {
   constructor(private readonly model: Model<UserDocuments>, private readonly buyerservice: BuyerRepositories) {}
   public async isUsernameOrEmailExist(username: string, email: string): Promise<{ username: boolean; email: boolean }> {

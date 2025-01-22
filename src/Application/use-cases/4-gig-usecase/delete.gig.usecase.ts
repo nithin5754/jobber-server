@@ -1,4 +1,4 @@
-import { GigRepository } from '../../../Infrastructure/Databse/mongoose/Repositories/gig.repository';
+import { GigRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/gig.repository';
 import { BadRequestError } from '../../../Presentation/Error/error.interface';
 import { IUseCase } from '../../../Shared/IUsecase';
 
