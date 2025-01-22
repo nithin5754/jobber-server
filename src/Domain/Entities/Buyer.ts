@@ -1,4 +1,4 @@
-import moment from 'moment';
+
 import { ObjectId } from 'mongoose';
 
 export interface IBuyer {

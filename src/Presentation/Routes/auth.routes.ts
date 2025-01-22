@@ -17,7 +17,8 @@ import { ResetPassword } from '../Controllers/1-user.controller/reset-password.u
 import { VerifyEmailUsecase } from '../../Application/use-cases/1-auth-usecase/verify-email.usecase';
 import { VerifyEmail } from '../Controllers/1-user.controller/verify-email.user.controller';
 import { SignOut } from '../Controllers/1-user.controller/signout.user.controller';
-import services from '../../shared/Services'
+import services from '../../Shared/Services';
+
 
 /**
  * @description INTERCEPTORS

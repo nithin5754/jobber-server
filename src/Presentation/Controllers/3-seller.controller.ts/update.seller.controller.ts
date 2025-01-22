@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { ISellerUpdateResult, UpdateSellerUsecase } from '../../../Application/use-cases/3-seller-usecase/update.seller.usercase';
-import { IController } from '../../../shared/IController';
+import { IController } from '../../../Shared/IController';
 import { BadRequestError } from '../../error/error.interface';
 import { Request, Response, NextFunction } from 'express';
 import { ISeller } from '../../../Domain/interface/ISeller.interface';

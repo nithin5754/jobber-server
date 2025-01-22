@@ -3,7 +3,7 @@ import { IChatData,  } from '../../../Domain/interface/IChat.interface';
 import { ChatRepository } from '../../../Infrastructure/databse/mongoose/Repositories/chat.repository';
 
 
-import { IUseCase } from '../../../shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface ICreateConversationDTO {
   data: IChatData;

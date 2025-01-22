@@ -1,9 +1,10 @@
 import { Model } from 'mongoose';
 import { IUser, User, UserParams } from '../../../../Domain/Entities/User';
 import { UserDocuments } from '../../../../Domain/interface/IUser.interface';
-import { IUserRepository } from '../../../../Domain/interface/IUser.repository';
-import { IRepoRequest, IRepoResponse } from '../../../../shared/IBase-repository';
+import { IRepoResponse, IUserRepository } from '../../../../Domain/interface/IUser.repository';
+
 import { BuyerRepositories } from './buyer.repository';
+import { IRepoRequest } from '../../../../Shared/IBase-repository';
 
 export class UserRepository implements IUserRepository {
   constructor(private readonly model: Model<UserDocuments>, private readonly buyerservice: BuyerRepositories) {}

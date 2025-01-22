@@ -1,9 +1,10 @@
 import { Model } from 'mongoose';
 import { ISellerDocument } from '../../../../Domain/interface/ISeller.interface';
 import { ISellerRepositories } from '../../../../Domain/interface/ISeller.respositorory';
-import { IRepoRequest, IRepoResponse } from '../../../../shared/IBase-repository';
+
 import { Seller } from '../../../../Domain/Entities/seller.entity';
 import { BadRequestError } from '../../../../Presentation/error/error.interface';
+import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBase-repository';
 
 export class SellerRepository implements ISellerRepositories {
   constructor(private readonly sellerDataBase: Model<ISellerDocument>) {}

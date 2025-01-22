@@ -1,4 +1,4 @@
-import { IBaseRepository, IRepoRequest, IRepoResponse } from "../../shared/IBase-repository";
+import { IBaseRepository, IRepoRequest, IRepoResponse } from "../../Shared/IBase-repository";
 
 
 

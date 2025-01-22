@@ -2,8 +2,8 @@ import { Message } from '../../../Domain/Entities/Chat';
 
 import { ChatRepository } from '../../../Infrastructure/databse/mongoose/Repositories/chat.repository';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
-import { IRepoResponse } from '../../../shared/IBase-repository';
-import { IUseCase } from '../../../shared/IUsecase';
+import { IRepoResponse } from '../../../Shared/IBase-repository';
+import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface IGetMessageDTO {
   sender: string;

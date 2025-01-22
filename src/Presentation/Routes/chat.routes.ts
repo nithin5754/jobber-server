@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { CreateMessageUsecase } from '../../Application/use-cases/6-chat.usecase/create-usecase';
-import services from '../../shared/Services';
+import services from '../../Shared/Services';
 import { CreateMessage } from '../Controllers/5-chat.controller/create.chat';
 import { GetMessageUsecase } from '../../Application/use-cases/6-chat.usecase/get-message.usecase';
 import { GetConversationUsecase } from '../../Application/use-cases/6-chat.usecase/get-conversation';

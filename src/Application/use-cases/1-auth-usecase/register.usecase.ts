@@ -4,7 +4,7 @@ import { User } from '../../../Domain/Entities/User';
 
 import { BadRequestError } from '../../../Presentation/error/error.interface';
 import { EMAIL_TEMPLATE } from '../../../Presentation/utils/helper.utils';
-import { IUseCase } from '../../../shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecase';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';

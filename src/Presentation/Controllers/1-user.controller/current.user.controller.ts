@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../shared/IController";
+
 import { BadRequestError } from "../../error/error.interface";
 import { CurrentUserUsecase, ICurrentUserResult } from "../../../Application/use-cases/1-auth-usecase/current-user.usecase";
 import { User } from "../../../Domain/Entities/User";
 import { UserTypeKey } from "../../../Domain/interface/IUser.interface";
 import { omit } from "lodash";
 import { StatusCodes } from "http-status-codes";
+import { IController } from "../../../Shared/IController";
 
 
 

@@ -5,9 +5,9 @@ import { NextFunction,Request,Response } from "express";
 import { BadRequestError } from "../../error/error.interface";
 import {  IGetMessageResult } from "../../../Application/use-cases/6-chat.usecase/get-message.usecase";
 import { StatusCodes } from "http-status-codes";
-import { IController } from "../../../shared/IController";
-import { GetUserMessagesUsecase } from "../../../Application/use-cases/6-chat.usecase/get-usermessages.uecase";
 
+import { GetUserMessagesUsecase } from "../../../Application/use-cases/6-chat.usecase/get-usermessages.uecase";
+import { IController } from "../../../Shared/IController";
 
 
 export class UserMessages implements IController {

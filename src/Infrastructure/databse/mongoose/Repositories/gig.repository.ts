@@ -2,8 +2,9 @@ import { DeleteResult, Model } from 'mongoose';
 import { SellerGig } from '../../../../Domain/Entities/gig.entity';
 import { ISellerGigParams, SellerGigDocument } from '../../../../Domain/interface/IGig.interface';
 import { IGigRepository } from '../../../../Domain/interface/IGig.repository';
+import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBase-repository';
 
-import { IRepoRequest, IRepoResponse } from '../../../../shared/IBase-repository';
+
 
 
 export class GigRepository implements IGigRepository {

@@ -7,7 +7,8 @@ import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
 import { BadRequestError } from '../../../Presentation/error/error.interface';
 import { EMAIL_TEMPLATE } from '../../../Presentation/utils/helper.utils';
-import { IUseCase } from '../../../shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecase';
+
 
 interface IForgotDTO {
   email: string;

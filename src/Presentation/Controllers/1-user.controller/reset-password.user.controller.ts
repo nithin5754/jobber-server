@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../shared/IController';
+import { IController } from '../../../Shared/IController';
 import { BadRequestError } from '../../error/error.interface';
 import Joi from 'joi';
 import {

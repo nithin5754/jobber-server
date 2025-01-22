@@ -2,8 +2,9 @@ import { Model } from "mongoose";
 import { Message } from "../../../../Domain/Entities/Chat";
 import {  IConversation, IConversationDocument, IMessageDocument } from "../../../../Domain/interface/IChat.interface";
 import { IChatRepositories } from "../../../../Domain/interface/IChat.repository";
+import { IRepoRequest, IRepoResponse } from "../../../../Shared/IBase-repository";
 
-import { IRepoRequest, IRepoResponse } from "../../../../shared/IBase-repository";
+
 
 
 
