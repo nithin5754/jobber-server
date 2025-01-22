@@ -1,5 +1,5 @@
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
-import { GigRepository } from '../../../Infrastructure/databse/mongoose/Repositories/gig.repository';
+
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface TopGigViewsDTO {
@@ -15,8 +15,8 @@ export interface TopGigViewsResult {
 }
 
 export class TopGigUsecase implements IUseCase<TopGigViewsDTO, TopGigViewsResult> {
-  constructor(private gigService: GigRepository) {}
-  execute(input: TopGigViewsDTO): Promise<TopGigViewsResult> {
+  constructor() {}
+  execute(_input: TopGigViewsDTO): Promise<TopGigViewsResult> {
     throw new Error('Method not implemented.');
   }
 }

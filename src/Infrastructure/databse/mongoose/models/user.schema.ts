@@ -88,7 +88,7 @@ UserSchema.pre("save", function (next) {
 });
 
 UserSchema.set("toJSON", {
-  transform: function (doc, ret) {
+  transform: function (_doc, ret) {
     delete ret.password;
     delete ret.__v;
   },

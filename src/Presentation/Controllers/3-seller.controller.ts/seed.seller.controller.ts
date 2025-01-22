@@ -14,6 +14,7 @@ export class SeedSeller implements IController {
   }
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
 
+   try {
     const count:number=parseInt(`${req.params.count??0}`)
 
     if(!count){
@@ -28,6 +29,9 @@ export class SeedSeller implements IController {
 
 
     res.status(StatusCodes.OK).json({ message:'Successfully Created test Sellers' });
+   } catch (error) {
+    next(error)
+   }
 
 
   }

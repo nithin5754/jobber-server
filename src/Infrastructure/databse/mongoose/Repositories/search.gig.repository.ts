@@ -6,7 +6,6 @@ import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBase-repository
 
 export class Search {
   private filter: any = {};
-  private moreLikeFilter:any={}
 
   constructor(private readonly gig_model: Model<SellerGigDocument>) {}
   

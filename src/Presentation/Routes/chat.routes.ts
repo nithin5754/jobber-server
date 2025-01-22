@@ -17,7 +17,7 @@ import { GetUserMessagesUsecase } from '../../Application/use-cases/6-chat.useca
 import { UserMessages } from '../Controllers/5-chat.controller/userMessages.chat';
 import { UpdateOfferReadUsecase } from '../../Application/use-cases/6-chat.usecase/update.offer.usecase';
 import { UpdateOfferMessages } from '../Controllers/5-chat.controller/update.chat';
-import { update } from 'lodash';
+
 
 
 //INTERCEPTORS

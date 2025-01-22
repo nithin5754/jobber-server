@@ -16,7 +16,7 @@ export interface ISellerGigSeedResult {}
 
 export class GigSeedUsecases implements IUseCase<ISellerGigSeedDTO, ISellerGigSeedResult> {
   constructor(private readonly gigService: GigRepository, private readonly sellerService: SellerRepository) {}
-  public async execute(input: ISellerGigSeedDTO): Promise<ISellerGigSeedResult> {
+  public async execute(_input: ISellerGigSeedDTO): Promise<ISellerGigSeedResult> {
     const seller: IRepoResponse = await this.sellerService.find();
 
     console.log("sellers",seller.sellerArray?.length)

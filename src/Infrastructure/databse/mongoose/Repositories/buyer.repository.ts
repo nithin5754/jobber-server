@@ -64,10 +64,10 @@ export class BuyerRepositories implements IBuyerRepositories {
         }
       : { isNull: true };
   }
-  update(id: string, data: IRepoRequest): Promise<IRepoResponse> {
+  update(_id: string, _data: IRepoRequest): Promise<IRepoResponse> {
     throw new Error('Method not implemented.');
   }
-  delete(id: string): Promise<boolean> {
+  delete(_id: string): Promise<boolean> {
     throw new Error('Method not implemented.');
   }
 

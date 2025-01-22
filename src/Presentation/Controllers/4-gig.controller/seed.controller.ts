@@ -14,7 +14,7 @@ export class GigSeedController implements IController {
     
   }
 
- public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
+ public async handle(_req: Request, res: Response, next: NextFunction): Promise<void> {
       
        try {
                

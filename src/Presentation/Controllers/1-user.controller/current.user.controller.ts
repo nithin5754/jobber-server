@@ -18,19 +18,24 @@ export class CurrentUser implements IController {
     
   }
 public async  handle(req: Request, res: Response, next: NextFunction): Promise<void> {
-      await this.validateRequest(req)
+    
+  try {
+    await this.validateRequest(req)
 
-  const userId:string=  req.currentUser.userId
-
-
-  const result:ICurrentUserResult=await this.currentUsecase.execute({userId})
-
-  if(!result){
-    throw new BadRequestError('Current User Credentials missing please login ', 'CurrentUser() method  error');
+    const userId:string=  req.currentUser.userId
+  
+  
+    const result:ICurrentUserResult=await this.currentUsecase.execute({userId})
+  
+    if(!result){
+      throw new BadRequestError('Current User Credentials missing please login ', 'CurrentUser() method  error');
+    }
+  
+  
+    res.status(StatusCodes.OK).json({ message: 'user successfully authorized', user:this.sanitizeTheData(result.user,['password','emailVerificationToken','browserName','deviceType','otp','otpExpiration','updatedAt','passwordResetExpires','passwordResetToken']) });
+  } catch (error) {
+    next(error)
   }
-
-
-  res.status(StatusCodes.OK).json({ message: 'user successfully authorized', user:this.sanitizeTheData(result.user,['password','emailVerificationToken','browserName','deviceType','otp','otpExpiration','updatedAt','passwordResetExpires','passwordResetToken']) });
 
 
 

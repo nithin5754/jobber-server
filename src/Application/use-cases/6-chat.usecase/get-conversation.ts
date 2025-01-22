@@ -1,4 +1,4 @@
-import { Message } from '../../../Domain/Entities/Chat';
+
 import { IConversation } from '../../../Domain/interface/IChat.interface';
 
 import { ChatRepository } from '../../../Infrastructure/databse/mongoose/Repositories/chat.repository';

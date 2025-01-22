@@ -1,5 +1,5 @@
 import { floor, random, sample, sampleSize } from 'lodash';
-import { Buyer, IBuyer } from '../../../Domain/Entities/Buyer';
+import { Buyer } from '../../../Domain/Entities/Buyer';
 import { Seller } from '../../../Domain/Entities/seller.entity';
 import { IEducation, IExperience, ISeller } from '../../../Domain/interface/ISeller.interface';
 import { BuyerRepositories } from '../../../Infrastructure/databse/mongoose/Repositories/buyer.repository';

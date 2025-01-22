@@ -15,23 +15,28 @@ export class GetBuyerByUsername implements IController {
     }
 
 public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
-      
-     const {username}=req.params
+try {
+        
+  const {username}=req.params
 
-     if(!username){
-      throw new BadRequestError('no buyer found', 'GetBuyerByUsername () method error');
-     }
+  if(!username){
+   throw new BadRequestError('no buyer found', 'GetBuyerByUsername () method error');
+  }
 
 
-     const result:IGetBuyerResult=await this.getBuyerUsecase.execute({username})
-   
+  const result:IGetBuyerResult=await this.getBuyerUsecase.execute({username})
 
-     if(!result.buyer){
-      throw new BadRequestError('no buyer found', 'GetBuyerByUsername () method error');
 
-     }
+  if(!result.buyer){
+   throw new BadRequestError('no buyer found', 'GetBuyerByUsername () method error');
 
-     res.status(StatusCodes.OK).json({ message: 'Buyer profile', buyer:result.buyer });
+  }
+
+  res.status(StatusCodes.OK).json({ message: 'Buyer profile', buyer:result.buyer });
+  
+} catch (error) {
+  next(error)
+}
 
 
        

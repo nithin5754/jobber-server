@@ -130,7 +130,7 @@ await this.ConversationModel.create(
       messageDetailsArray:this.convertMessageArray(messages)??[]
     }
   };
-  findOne(criteria: IRepoRequest): Promise<IRepoResponse> {
+  findOne(_criteria: IRepoRequest): Promise<IRepoResponse> {
     throw new Error("Method not implemented.");
   }
  public async update(id: string, data: IRepoRequest): Promise<IRepoResponse> {
@@ -169,7 +169,7 @@ await this.ConversationModel.create(
 
   }
 
-  delete(id: string): Promise<boolean> {
+  delete(_id: string): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
 

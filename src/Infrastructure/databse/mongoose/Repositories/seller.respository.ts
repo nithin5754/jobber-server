@@ -95,7 +95,7 @@ export class SellerRepository implements ISellerRepositories {
       };
   }
 
-  delete(id: string): Promise<boolean> {
+  delete(_id: string): Promise<boolean> {
     throw new Error('Method not implemented.');
   }
 

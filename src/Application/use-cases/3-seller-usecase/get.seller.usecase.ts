@@ -1,6 +1,6 @@
-import { omit } from 'lodash';
+
 import { Seller } from '../../../Domain/Entities/seller.entity';
-import { User } from '../../../Domain/Entities/User';
+
 import { SellerRepository } from '../../../Infrastructure/databse/mongoose/Repositories/seller.respository';
 import { UserRepository } from '../../../Infrastructure/databse/mongoose/Repositories/user.respository';
 import { BadRequestError } from '../../../Presentation/error/error.interface';

@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import { IUser, User, UserParams } from '../../../../Domain/Entities/User';
+import {  User, UserParams } from '../../../../Domain/Entities/User';
 import { UserDocuments } from '../../../../Domain/interface/IUser.interface';
 import { IRepoResponse, IUserRepository } from '../../../../Domain/interface/IUser.repository';
 
@@ -45,7 +45,7 @@ export class UserRepository implements IUserRepository {
 
     return { isUpdate: !!isUpdate };
   }
-  delete(id: string): Promise<boolean> {
+  delete(_id: string): Promise<boolean> {
     throw new Error('Method not implemented.');
   }
 
