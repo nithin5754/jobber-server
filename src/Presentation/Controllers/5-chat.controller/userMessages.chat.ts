@@ -3,10 +3,10 @@
 
 import { NextFunction,Request,Response } from "express";
 import { BadRequestError } from "../../Error/error.interface";
-import {  IGetMessageResult } from "../../../Application/use-cases/6-chat.usecase/get-message.usecase";
+import {  IGetMessageResult } from "../../../Application/UseCases/6-chat.usecase/get-message.usecase";
 import { StatusCodes } from "http-status-codes";
 
-import { GetUserMessagesUsecase } from "../../../Application/use-cases/6-chat.usecase/get-usermessages.uecase";
+import { GetUserMessagesUsecase } from "../../../Application/UseCases/6-chat.usecase/get-usermessages.uecase";
 import { IController } from "../../../Shared/IController";
 
 

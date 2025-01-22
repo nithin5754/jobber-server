@@ -4,7 +4,7 @@ import {
   CreateGigUsecase,
   ISellerGigCreateDTO,
   ISellerGigCreateResult
-} from '../../../Application/use-cases/4-gig-usecase/create.gig.usecase';
+} from '../../../Application/UseCases/4-gig-usecase/create.gig.usecase';
 
 import { BadRequestError } from '../../Error/error.interface';
 import Joi from 'joi';

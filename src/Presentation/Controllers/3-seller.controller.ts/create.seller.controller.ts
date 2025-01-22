@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
 import { ISeller } from '../../../Domain/Interface/ISeller.interface';
-import { CreateSellerUseCase, ISellerCreateResult } from '../../../Application/use-cases/3-seller-usecase/create.seller.usecase';
+import { CreateSellerUseCase, ISellerCreateResult } from '../../../Application/UseCases/3-seller-usecase/create.seller.usecase';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestError } from '../../Error/error.interface';
 import Joi from 'joi';

@@ -1,25 +1,25 @@
 import { Router } from 'express';
 import services from '../../Shared/Services';
 
-import { CreateGigUsecase } from '../../Application/use-cases/4-gig-usecase/create.gig.usecase';
+import { CreateGigUsecase } from '../../Application/UseCases/4-gig-usecase/create.gig.usecase';
 import { CreateGig } from '../Controllers/4-gig.controller/create.gig.controller';
 import { gigCreateSchema } from '../Schemas/4-gig-schemas/gig.schemas';
 import upload from '../Middlewares/multer';
 import { GetGig } from '../Controllers/4-gig.controller/get.gig.controller';
-import { GetByIdSellerGig } from '../../Application/use-cases/4-gig-usecase/get-id.gig.usecase';
-import { GetSellerGigs } from '../../Application/use-cases/4-gig-usecase/get-sellerId.gig.usecase';
-import { GetSellerPausedGigs } from '../../Application/use-cases/4-gig-usecase/get-paused.gig.usecses';
+import { GetByIdSellerGig } from '../../Application/UseCases/4-gig-usecase/get-id.gig.usecase';
+import { GetSellerGigs } from '../../Application/UseCases/4-gig-usecase/get-sellerId.gig.usecase';
+import { GetSellerPausedGigs } from '../../Application/UseCases/4-gig-usecase/get-paused.gig.usecses';
 import { DeleteGig } from '../Controllers/4-gig.controller/delete.gig.controller';
-import { DeleteGigUsecase } from '../../Application/use-cases/4-gig-usecase/delete.gig.usecase';
-import { SearchGigsUsecase } from '../../Application/use-cases/5-search-usecase/search.gig.usecase';
+import { DeleteGigUsecase } from '../../Application/UseCases/4-gig-usecase/delete.gig.usecase';
+import { SearchGigsUsecase } from '../../Application/UseCases/5-search-usecase/search.gig.usecase';
 import { GigSearchController } from '../Controllers/4-gig.controller/search.gig.controller';
-import { GigSeedUsecases } from '../../Application/use-cases/4-gig-usecase/seed.gig.usecase';
+import { GigSeedUsecases } from '../../Application/UseCases/4-gig-usecase/seed.gig.usecase';
 import { GigSeedController } from '../Controllers/4-gig.controller/seed.controller';
-import { MoreLikeThisUsecase } from '../../Application/use-cases/4-gig-usecase/get-MoreGigsLikeThis';
-import { GetByCategorySellerGig } from '../../Application/use-cases/4-gig-usecase/get-category.gig.usecase';
-import { UpdateGigUsecase } from '../../Application/use-cases/4-gig-usecase/updata.gig.usecase';
+import { MoreLikeThisUsecase } from '../../Application/UseCases/4-gig-usecase/get-MoreGigsLikeThis';
+import { GetByCategorySellerGig } from '../../Application/UseCases/4-gig-usecase/get-category.gig.usecase';
+import { UpdateGigUsecase } from '../../Application/UseCases/4-gig-usecase/updata.gig.usecase';
 import { UpdateGig } from '../Controllers/4-gig.controller/update.gig.controller';
-import { updateActiveGigUsecase } from '../../Application/use-cases/4-gig-usecase/update.active.gig.usecsase';
+import { updateActiveGigUsecase } from '../../Application/UseCases/4-gig-usecase/update.active.gig.usecsase';
 import { CacheLoginUser } from '../../Infrastructure/Databse/cache/Cache';
 
 const createGigInterceptor = new CreateGigUsecase(services.gig, services.uniqueId, services.multer, services.cloudinary, services.user);

@@ -1,20 +1,20 @@
 import { Router } from 'express';
 import upload from '../Middlewares/multer';
-import { RegisterUseCase } from '../../Application/use-cases/1-auth-usecase/register.usecase';
+import { RegisterUseCase } from '../../Application/UseCases/1AuthUsecase/register.usecase';
 import { RegisterController } from '../Controllers/1-user.controller/register.user.controller';
 import { signupSchema } from '../Schemas/1-auth-schemas/signup.schemas';
 
-import { LoginUseCase } from '../../Application/use-cases/1-auth-usecase/login.usecase';
+import { LoginUseCase } from '../../Application/UseCases/1AuthUsecase/login.usecase';
 import { Login as LoginController } from '../Controllers/1-user.controller/login.user.controller';
 import { loginSchema } from '../Schemas/1-auth-schemas/signin.schema';
 import { Refresh } from '../Controllers/1-user.controller/refresh.user.controller';
-import { RefreshUsecase } from '../../Application/use-cases/1-auth-usecase/refresh.usecase';
+import { RefreshUsecase } from '../../Application/UseCases/1AuthUsecase/refresh.usecase';
 import { ForgotPassword } from '../Controllers/1-user.controller/forgot-password.user.controller';
-import { ForgotPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/forgot-password.usecase';
+import { ForgotPasswordUsecase } from '../../Application/UseCases/1AuthUsecase/forgot-password.usecase';
 import { forgotPasswordSchema, passwordSchema } from '../Schemas/1-auth-schemas/passwordSchema';
-import { ResetPasswordUsecase } from '../../Application/use-cases/1-auth-usecase/reset-password.usecase';
+import { ResetPasswordUsecase } from '../../Application/UseCases/1AuthUsecase/reset-password.usecase';
 import { ResetPassword } from '../Controllers/1-user.controller/reset-password.user.controller';
-import { VerifyEmailUsecase } from '../../Application/use-cases/1-auth-usecase/verify-email.usecase';
+import { VerifyEmailUsecase } from '../../Application/UseCases/1AuthUsecase/verify-email.usecase';
 import { VerifyEmail } from '../Controllers/1-user.controller/verify-email.user.controller';
 import { SignOut } from '../Controllers/1-user.controller/signout.user.controller';
 import services from '../../Shared/Services';

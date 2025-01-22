@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
 import { BadRequestError } from "../../Error/error.interface";
-import { CurrentUserUsecase, ICurrentUserResult } from "../../../Application/use-cases/1-auth-usecase/current-user.usecase";
+import { CurrentUserUsecase, ICurrentUserResult } from "../../../Application/UseCases/1AuthUsecase/currentUser.usecase";
 import { User } from "../../../Domain/Entities/User";
 import { UserTypeKey } from "../../../Domain/Interface/IUser.interface";
 import { omit } from "lodash";

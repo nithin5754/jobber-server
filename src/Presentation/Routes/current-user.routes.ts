@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { ResendUsecase } from '../../Application/use-cases/1-auth-usecase/resend.usecase';
+import { ResendUsecase } from '../../Application/UseCases/1AuthUsecase/resend.usecase';
 import services from '../../Shared/Services';
 import { Resend } from '../Controllers/1-user.controller/resend.user.controller';
-import { CurrentUserUsecase } from '../../Application/use-cases/1-auth-usecase/current-user.usecase';
+import { CurrentUserUsecase } from '../../Application/UseCases/1AuthUsecase/currentUser.usecase';
 import { CurrentUser } from '../Controllers/1-user.controller/current.user.controller';
 
 const resendInterceptor = new ResendUsecase(services.user, services.mailer, services.configService, services.uniqueId);

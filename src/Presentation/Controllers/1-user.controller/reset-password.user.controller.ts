@@ -6,7 +6,7 @@ import {
   IResetPasswordDTO,
   IResetPasswordResult,
   ResetPasswordUsecase
-} from '../../../Application/use-cases/1-auth-usecase/reset-password.usecase';
+} from '../../../Application/UseCases/1AuthUsecase/reset-password.usecase';
 import { StatusCodes } from 'http-status-codes';
 
 export class ResetPassword implements IController {

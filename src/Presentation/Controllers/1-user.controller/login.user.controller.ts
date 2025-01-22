@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { LoginUseCase } from '../../../Application/use-cases/1-auth-usecase/login.usecase';
+import { LoginUseCase } from '../../../Application/UseCases/1AuthUsecase/login.usecase';
 import Joi from 'joi';
 import { BadRequestError } from '../../Error/error.interface';
 import { omit } from 'lodash';

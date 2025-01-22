@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
-import { IRefreshResult, RefreshUsecase } from '../../../Application/use-cases/1-auth-usecase/refresh.usecase';
+import { IRefreshResult, RefreshUsecase } from '../../../Application/UseCases/1AuthUsecase/refresh.usecase';
 import { BadRequestError } from '../../Error/error.interface';
 import { User } from '../../../Domain/Entities/User';
 import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';

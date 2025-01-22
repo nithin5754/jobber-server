@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
-import { ICreateUserDTO, RegisterUseCase } from '../../../Application/use-cases/1-auth-usecase/register.usecase';
+import { ICreateUserDTO, RegisterUseCase } from '../../../Application/UseCases/1AuthUsecase/register.usecase';
 import { BadRequestError } from '../../Error/error.interface';
 
 import Joi from 'joi';

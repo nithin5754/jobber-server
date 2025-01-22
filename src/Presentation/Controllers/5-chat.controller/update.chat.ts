@@ -3,7 +3,7 @@ import { IController } from '../../../Shared/IController';
 
 import { StatusCodes } from 'http-status-codes';
 
-import { IUpdateOfferResult, UpdateOfferReadUsecase } from '../../../Application/use-cases/6-chat.usecase/update.offer.usecase';
+import { IUpdateOfferResult, UpdateOfferReadUsecase } from '../../../Application/UseCases/6-chat.usecase/update.offer.usecase';
 import { BadRequestError } from '../../Error/error.interface';
 
 export class UpdateOfferMessages implements IController {

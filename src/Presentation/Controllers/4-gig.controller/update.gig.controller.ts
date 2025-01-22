@@ -6,8 +6,8 @@ import {
   ISellerGigUpdateDTO,
   ISellerGigUpdateResult,
   UpdateGigUsecase
-} from '../../../Application/use-cases/4-gig-usecase/updata.gig.usecase';
-import { updateActiveGigUsecase } from '../../../Application/use-cases/4-gig-usecase/update.active.gig.usecsase';
+} from '../../../Application/UseCases/4-gig-usecase/updata.gig.usecase';
+import { updateActiveGigUsecase } from '../../../Application/UseCases/4-gig-usecase/update.active.gig.usecsase';
 
 export class UpdateGig implements IController {
   constructor(private readonly updateGigInterceptor: UpdateGigUsecase,

@@ -8,7 +8,7 @@ import { BadRequestError } from "../../Error/error.interface";
 import { StatusCodes } from "http-status-codes";
 import { IController } from "../../../Shared/IController";
 
-import { ConversationListUsecase, IConversationListResult } from "../../../Application/use-cases/6-chat.usecase/conversation-list.usecase";
+import { ConversationListUsecase, IConversationListResult } from "../../../Application/UseCases/6-chat.usecase/conversation-list.usecase";
 
 
 

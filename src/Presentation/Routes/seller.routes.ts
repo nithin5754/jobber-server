@@ -1,18 +1,18 @@
 import { Router } from 'express';
 
-import { CreateSellerUseCase } from '../../Application/use-cases/3-seller-usecase/create.seller.usecase';
+import { CreateSellerUseCase } from '../../Application/UseCases/3-seller-usecase/create.seller.usecase';
 import { CreateSeller } from '../Controllers/3-seller.controller.ts/create.seller.controller';
 import { sellerSchema } from '../Schemas/3-seller/seller.schema';
 import services from '../../Shared/Services';
-import { GetSellerUsecase } from '../../Application/use-cases/3-seller-usecase/get.seller.usecase';
+import { GetSellerUsecase } from '../../Application/UseCases/3-seller-usecase/get.seller.usecase';
 import { GetSellerById } from '../Controllers/3-seller.controller.ts/get-id.seller.controller';
 import { GetSellerByUsername } from '../Controllers/3-seller.controller.ts/get-username.seller.controller';
-import { RandomSellersUsecase } from '../../Application/use-cases/3-seller-usecase/random.seller.usecase';
+import { RandomSellersUsecase } from '../../Application/UseCases/3-seller-usecase/random.seller.usecase';
 import { RandomSeller } from '../Controllers/3-seller.controller.ts/get-random.seller.controller';
-import { UpdateSellerUsecase } from '../../Application/use-cases/3-seller-usecase/update.seller.usercase';
+import { UpdateSellerUsecase } from '../../Application/UseCases/3-seller-usecase/update.seller.usercase';
 import { UpdateSeller } from '../Controllers/3-seller.controller.ts/update.seller.controller';
 import { SellerId } from '../Controllers/3-seller.controller.ts/sellerId.seller.controller';
-import { SeedSellersUsecase } from '../../Application/use-cases/3-seller-usecase/seed.seller.usecase';
+import { SeedSellersUsecase } from '../../Application/UseCases/3-seller-usecase/seed.seller.usecase';
 import { SeedSeller } from '../Controllers/3-seller.controller.ts/seed.seller.controller';
 
 const sellerCreateInterceptor = new CreateSellerUseCase(services.seller, services.buyer, services.user);

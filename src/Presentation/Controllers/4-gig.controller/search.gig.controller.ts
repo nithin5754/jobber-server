@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { IController } from '../../../Shared/IController';
-import { ISellerGigSearchIdResult, SearchGigsUsecase } from '../../../Application/use-cases/5-search-usecase/search.gig.usecase';
+import { ISellerGigSearchIdResult, SearchGigsUsecase } from '../../../Application/UseCases/5-search-usecase/search.gig.usecase';
 import { BadRequestError } from '../../Error/error.interface';
 
 export class GigSearchController implements IController {

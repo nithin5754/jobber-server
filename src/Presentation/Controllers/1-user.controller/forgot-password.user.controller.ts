@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
 import { BadRequestError } from '../../Error/error.interface';
 import Joi from 'joi';
-import { ForgotPasswordUsecase, IForgotResult } from '../../../Application/use-cases/1-auth-usecase/forgot-password.usecase';
+import { ForgotPasswordUsecase, IForgotResult } from '../../../Application/UseCases/1AuthUsecase/forgot-password.usecase';
 
 import { StatusCodes } from 'http-status-codes';
 
