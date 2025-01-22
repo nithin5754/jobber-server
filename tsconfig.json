@@ -6,8 +6,7 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "*": ["node_modules/*"],
-      "@src/*": ["src/*"]
+      "@shared/*": ["src/Shared/*"]
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
