@@ -8,7 +8,7 @@ import { BadRequestError } from '../../../Presentation/Error/error.interface';
 import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
 import { faker } from '@faker-js/faker';
-import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/UserRespository';
 export interface ISellerSeedDTO {
   size: number;
 }

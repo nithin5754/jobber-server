@@ -10,7 +10,7 @@ import { ChatRepository } from "../Infrastructure/Databse/Mongoose/Repositories/
 import { GigRepository } from "../Infrastructure/Databse/Mongoose/Repositories/gig.repository";
 import { Search } from "../Infrastructure/Databse/Mongoose/Repositories/search.gig.repository";
 import { SellerRepository } from "../Infrastructure/Databse/Mongoose/Repositories/seller.respository";
-import { UserRepository } from "../Infrastructure/Databse/Mongoose/Repositories/user.respository";
+import { UserRepository } from "../Infrastructure/Databse/Mongoose/Repositories/UserRespository";
 import { UniqueId } from "../Infrastructure/External-libraries/1-unique-id/unique-id.service";
 import { CloudinaryUploads } from "../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service";
 import { Mailer } from "../Infrastructure/External-libraries/4-mailer/mailer.service";

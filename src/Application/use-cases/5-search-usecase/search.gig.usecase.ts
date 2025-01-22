@@ -1,7 +1,7 @@
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
 
 import { Search } from '../../../Infrastructure/Databse/Mongoose/Repositories/search.gig.repository';
-import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/UserRespository';
 import { BadRequestError } from '../../../Presentation/Error/error.interface';
 import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';

@@ -3,7 +3,7 @@
 
 import { SellerGig } from "../../../Domain/Entities/gig.entity";
 import { GigRepository } from "../../../Infrastructure/Databse/Mongoose/Repositories/gig.repository";
-import { UserRepository } from "../../../Infrastructure/Databse/Mongoose/Repositories/user.respository";
+import { UserRepository } from "../../../Infrastructure/Databse/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/error.interface";
 import { firstLetterUpperCase } from "../../../Presentation/Utils/helper.utils";
 import { IRepoResponse } from "../../../Shared/IBaseRepository";;import { IUseCase } from "../../../Shared/IUsecase";

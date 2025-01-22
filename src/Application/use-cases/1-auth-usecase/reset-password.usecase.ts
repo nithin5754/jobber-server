@@ -1,4 +1,4 @@
-import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/user.respository';
+import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/UserRespository';
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/Error/error.interface';
 import { IRepoResponse } from '../../../Shared/IBaseRepository';
