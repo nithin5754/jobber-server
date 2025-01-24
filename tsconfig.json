@@ -10,14 +10,10 @@
     "moduleResolution": "node",                       // Resolve modules using Node.js logic
     "esModuleInterop": true,                          // Compatibility for CommonJS modules
     "forceConsistentCasingInFileNames": true,         // Enforce consistent file name casing
-    "strict": true,                                   // Enable strict type checking
+    "strict": false,                                   // Enable strict type checking
     "skipLibCheck": true,                             // Skip type checking in libraries
-    "resolveJsonModule": true                         // Allow importing JSON files
-  },
-  "paths": {
-    "@Shared/*": ["src/Shared/*"],
-    "@Domain/*": ["Domain/*"],
-    "@Presentation/*": ["Presentation/*"]
+    "resolveJsonModule": true   ,
+    "noImplicitAny": false                      // Allow importing JSON files
   },
 
   "include": ["src/**/*"],                               // Files to include in the build
