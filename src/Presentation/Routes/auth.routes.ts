@@ -17,7 +17,7 @@ import { ResetPassword } from '../Controllers/1-user.controller/reset-password.u
 import { VerifyEmailUsecase } from '../../Application/UseCases/1AuthUsecase/verify-email.usecase';
 import { VerifyEmail } from '../Controllers/1-user.controller/verify-email.user.controller';
 import { SignOut } from '../Controllers/1-user.controller/signout.user.controller';
-import services from '../../Shared/ServicesList';
+import services from '../../Shared/Services';
 
 
 /**
