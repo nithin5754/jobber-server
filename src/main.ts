@@ -1,15 +1,19 @@
 import express, { Application, Router } from 'express';
 import mongoose from 'mongoose';
-import expressConfig from './Infrastructure/webserver/express';
+
 import config from './config';
 import http, { Server as httpServerType } from 'http';
-import serverConfig from './Infrastructure/webserver/server';
-import connection from './Infrastructure/Database/Mongoose/connection';
+
 import routes from './Presentation/Routes/main.routes';
-import ErrorHandlingMiddleWare from './Presentation/Middlewares/error-handling.middleware';
+
 import { Server } from 'socket.io';
-import ioMiddleware from './Presentation/Middlewares/ioMiddleware';
-import { SocketIOAppHandler } from './Infrastructure/webserver/socket/SocketIOAppHandler';
+import ErrorHandlingMiddleWare from './Presentation/middlewares/error-handling.middleware';
+import ioMiddleware from './Presentation/middlewares/ioMiddleware';
+import expressConfig from './webserver/express';
+import serverConfig from './webserver/server';
+import { SocketIOAppHandler } from './webserver/socket/SocketIOAppHandler';
+import connection from './Database/Mongoose/connection';
+
 // import { CacheLoginUser } from "./Infrastructure/databse/cache/Cache";
 
 const app: Application = express();

@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { ICreateUserDTO, RegisterUseCase } from '../../../Application/UseCases/1AuthUsecase/register.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 
 import Joi from 'joi';
@@ -9,6 +8,7 @@ import { User } from '../../../Entities/User';
 import { UserTypeKey } from '../../../Interface/IUser.interface';
 import {  omit } from 'lodash';
 import { firstLetterUpperCase, lowerCase } from '../../../utils/helper.utils';
+import { RegisterUseCase, ICreateUserDTO } from '../../../UseCases/1AuthUsecase/register.usecase';
 
 export class RegisterController {
   constructor(private readonly registerUseCase: RegisterUseCase, private readonly validation: Joi.ObjectSchema<any>) {}

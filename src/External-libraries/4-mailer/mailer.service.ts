@@ -3,7 +3,8 @@ import nodemailer, { Transporter } from "nodemailer";
 import Email from 'email-templates'
 import path from "path";
 import config from "../../config";
-import { BadRequestError } from "../../Error/errorInterface";
+import { BadRequestError } from "../../Presentation/Error/errorInterface";
+
 
 
 export class Mailer implements IMailer {   

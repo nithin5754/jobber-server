@@ -1,9 +1,10 @@
 
 import { ISellerDocument } from '../../../Interface/ISeller.interface';
 import { Seller } from '../../../Entities/seller.entity';
-import { BadRequestError } from '../../../Error/errorInterface';
+
 import { IRepoRequest, IRepoResponse } from '../../../IBaseRepositories';
 import { SellerModel } from '../Models/seller.schema';
+import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 
 
   export async function createSeller(data: IRepoRequest): Promise<IRepoResponse> {

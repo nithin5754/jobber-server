@@ -3,8 +3,9 @@ import { Request, Response, NextFunction } from 'express';
 
 import { StatusCodes } from 'http-status-codes';
 
-import { IUpdateOfferResult, UpdateOfferReadUsecase } from '../../../Application/UseCases/6-chat.usecase/update.offer.usecase';
+
 import { BadRequestError } from '../../Error/errorInterface';
+import { UpdateOfferReadUsecase, IUpdateOfferResult } from '../../../UseCases/6-chat.usecase/update.offer.usecase';
 
 export class UpdateOfferMessages {
   constructor(private readonly update: UpdateOfferReadUsecase) {}

@@ -2,9 +2,10 @@ import { Request, Response, NextFunction } from 'express';
 
 import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
-import { ForgotPasswordUsecase, IForgotResult } from '../../../Application/UseCases/1AuthUsecase/forgot-password.usecase';
+
 
 import { StatusCodes } from 'http-status-codes';
+import { ForgotPasswordUsecase, IForgotResult } from '../../../UseCases/1AuthUsecase/forgot-password.usecase';
 
 export class ForgotPassword {
   constructor(private readonly validation: Joi.ObjectSchema<any>, private readonly forgotPasswordUsecase: ForgotPasswordUsecase) {}

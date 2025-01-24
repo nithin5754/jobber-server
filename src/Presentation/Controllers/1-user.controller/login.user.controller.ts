@@ -1,12 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { LoginUseCase } from '../../../Application/UseCases/1AuthUsecase/login.usecase';
+
 import Joi from 'joi';
 import { BadRequestError } from '../../Error/errorInterface';
 import { omit } from 'lodash';
 import { UserTypeKey } from '../../../Interface/IUser.interface';
 import { User } from '../../../Entities/User';
 import { StatusCodes } from 'http-status-codes';
+import { LoginUseCase } from '../../../UseCases/1AuthUsecase/login.usecase';
 
 
 export class Login  {

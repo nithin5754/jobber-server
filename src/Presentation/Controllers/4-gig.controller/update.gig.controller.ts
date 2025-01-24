@@ -2,12 +2,9 @@ import { Request, Response, NextFunction } from 'express';
 
 
 import { StatusCodes } from 'http-status-codes';
-import {
-  ISellerGigUpdateDTO,
-  ISellerGigUpdateResult,
-  UpdateGigUsecase
-} from '../../../Application/UseCases/4-gig-usecase/updata.gig.usecase';
-import { updateActiveGigUsecase } from '../../../Application/UseCases/4-gig-usecase/update.active.gig.usecsase';
+import { UpdateGigUsecase, ISellerGigUpdateDTO, ISellerGigUpdateResult } from '../../../UseCases/4-gig-usecase/updata.gig.usecase';
+import { updateActiveGigUsecase } from '../../../UseCases/4-gig-usecase/update.active.gig.usecsase';
+
 
 export class UpdateGig  {
   constructor(private readonly updateGigInterceptor: UpdateGigUsecase,

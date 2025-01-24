@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
+import { GigSeedUsecases } from "../../../UseCases/4-gig-usecase/seed.gig.usecase";
 
-import { GigSeedUsecases } from "../../../Application/UseCases/4-gig-usecase/seed.gig.usecase";
+
 
 
 

@@ -6,8 +6,9 @@ import { User } from "../../../Entities/User";
 import { UserTypeKey } from "../../../Interface/IUser.interface";
 import { omit } from "lodash";
 import { StatusCodes } from "http-status-codes";
-import { CurrentUserUsecase, ICurrentUserResult } from "../../../Application/UseCases/1AuthUsecase/currentUser.usecase";
+
 import { IController } from "../../../IController";
+import { CurrentUserUsecase, ICurrentUserResult } from "../../../UseCases/1AuthUsecase/currentUser.usecase";
 
 
 

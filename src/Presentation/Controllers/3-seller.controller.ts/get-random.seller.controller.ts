@@ -4,7 +4,7 @@ import {
   ISellerRandomDTO,
   ISellerRandomResult,
   RandomSellersUsecase
-} from '../../../Application/UseCases/3-seller-usecase/random.seller.usecase';
+} from '../../../UseCases/3-seller-usecase/random.seller.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 import { StatusCodes } from 'http-status-codes';
 

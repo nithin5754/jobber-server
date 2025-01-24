@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { ISellerGigSearchIdResult, SearchGigsUsecase } from '../../../Application/UseCases/5-search-usecase/search.gig.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
+import { SearchGigsUsecase, ISellerGigSearchIdResult } from '../../../UseCases/5-search-usecase/search.gig.usecase';
 
 export class GigSearchController  {
   private readonly ITEM_PER_PAGE='8';

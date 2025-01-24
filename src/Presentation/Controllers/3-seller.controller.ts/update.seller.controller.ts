@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { ISellerUpdateResult, UpdateSellerUsecase } from '../../../Application/UseCases/3-seller-usecase/update.seller.usercase';
+import { ISellerUpdateResult, UpdateSellerUsecase } from '../../../UseCases/3-seller-usecase/update.seller.usercase';
 
 import { BadRequestError } from '../../Error/errorInterface';
 import { Request, Response, NextFunction } from 'express';

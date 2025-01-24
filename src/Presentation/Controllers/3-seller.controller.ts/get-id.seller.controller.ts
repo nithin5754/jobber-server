@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { GetSellerUsecase, ISellerGetDTO, ISellerGetResult } from '../../../Application/UseCases/3-seller-usecase/get.seller.usecase';
+import { GetSellerUsecase, ISellerGetDTO, ISellerGetResult } from '../../../UseCases/3-seller-usecase/get.seller.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 import { StatusCodes } from 'http-status-codes';
 

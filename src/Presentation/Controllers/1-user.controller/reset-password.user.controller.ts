@@ -2,12 +2,9 @@ import { Request, Response, NextFunction } from 'express';
 
 import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
-import {
-  IResetPasswordDTO,
-  IResetPasswordResult,
-  ResetPasswordUsecase
-} from '../../../Application/UseCases/1AuthUsecase/reset-password.usecase';
+
 import { StatusCodes } from 'http-status-codes';
+import { IResetPasswordDTO, IResetPasswordResult, ResetPasswordUsecase } from '../../../UseCases/1AuthUsecase/reset-password.usecase';
 
 export class ResetPassword  {
   constructor(private readonly validation: Joi.ObjectSchema<any>, private readonly resetForgotUsecase: ResetPasswordUsecase) {}

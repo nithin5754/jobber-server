@@ -1,10 +1,11 @@
 
 import config from "./config";
-import { UniqueId } from "./Infrastructure/External-libraries/1-unique-id/unique-id.service";
-import { CloudinaryUploads } from "./Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service";
-import { Mailer } from "./Infrastructure/External-libraries/4-mailer/mailer.service";
-import { MulterFileConverter } from "./Infrastructure/External-libraries/5-multer-converter/multer-convertor.service";
-import { JwtToken } from "./Infrastructure/External-libraries/6-token.ts/token.service";
+import { UniqueId } from "./External-libraries/1-unique-id/unique-id.service";
+import { CloudinaryUploads } from "./External-libraries/3-cloudinary/cloudinary-uploads.service";
+import { Mailer } from "./External-libraries/4-mailer/mailer.service";
+import { MulterFileConverter } from "./External-libraries/5-multer-converter/multer-convertor.service";
+import { JwtToken } from "./External-libraries/6-token.ts/token.service";
+
 
 const services = {
 

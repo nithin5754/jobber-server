@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
 import { BadRequestError } from "../../Error/errorInterface";
-import { GetBuyerUsecase, IGetBuyerResult } from "../../../Application/UseCases/2-buyer-usecase/get-buyer.usecase";
+import { GetBuyerUsecase, IGetBuyerResult } from "../../../UseCases/2-buyer-usecase/get-buyer.usecase";
 import { StatusCodes } from "http-status-codes";
 
 

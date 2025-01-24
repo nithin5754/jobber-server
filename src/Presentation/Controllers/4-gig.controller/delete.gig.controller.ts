@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 import { StatusCodes } from "http-status-codes";
 import { BadRequestError } from "../../Error/errorInterface";
-import { DeleteGigUsecase } from "../../../Application/UseCases/4-gig-usecase/delete.gig.usecase";
+import { DeleteGigUsecase } from "../../../UseCases/4-gig-usecase/delete.gig.usecase";
 
 
 

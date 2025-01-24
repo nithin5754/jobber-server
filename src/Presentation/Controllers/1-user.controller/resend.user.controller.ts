@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { StatusCodes } from 'http-status-codes';
-import { IResendDTO, IResendResult, ResendUsecase } from '../../../Application/UseCases/1AuthUsecase/resend.usecase';
+
 import { BadRequestError } from '../../Error/errorInterface';
+import { ResendUsecase, IResendDTO, IResendResult } from '../../../UseCases/1AuthUsecase/resend.usecase';
 
 export class Resend  {
   constructor(private readonly resendUsecase: ResendUsecase) {}
