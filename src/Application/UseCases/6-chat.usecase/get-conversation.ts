@@ -3,7 +3,7 @@ import { IConversation } from '../../../Domain/Interface/IChat.interface';
 
 import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepository';
+import { IRepoResponse } from '../../../Shared/IBaseRepositories';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface IGetConversationDTO {

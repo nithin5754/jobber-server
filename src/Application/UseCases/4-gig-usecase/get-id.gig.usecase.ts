@@ -2,7 +2,7 @@ import { SellerGig } from "../../../Domain/Entities/gig.entity";
 import { GigRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/gig.repository";
 import { UserRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
-import { IRepoResponse } from "../../../Shared/IBaseRepository";;import { IUseCase } from "../../../Shared/IUsecase";
+import { IRepoResponse } from "../../../Shared/IBaseRepositories";;import { IUseCase } from "../../../Shared/IUsecase";
 
 
 

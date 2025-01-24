@@ -8,7 +8,7 @@ import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-
 
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 
-import { IRepoResponse } from '../../../Shared/IBaseRepository';
+import { IRepoResponse } from '../../../Shared/IBaseRepositories';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface ICreateMessageDTO {

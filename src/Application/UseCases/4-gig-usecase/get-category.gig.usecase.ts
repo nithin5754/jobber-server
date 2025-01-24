@@ -6,7 +6,7 @@ import { GigRepository } from "../../../Infrastructure/Database/Mongoose/Reposit
 import { UserRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
 import { firstLetterUpperCase } from "../../../Presentation/Utils/helper.utils";
-import { IRepoResponse } from "../../../Shared/IBaseRepository";;import { IUseCase } from "../../../Shared/IUsecase";
+import { IRepoResponse } from "../../../Shared/IBaseRepositories";;import { IUseCase } from "../../../Shared/IUsecase";
 
 
 

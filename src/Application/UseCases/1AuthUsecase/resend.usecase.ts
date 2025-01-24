@@ -6,7 +6,7 @@ import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { EMAIL_TEMPLATE, lowerCase } from '../../../Presentation/Utils/helper.utils';
-import { IRepoResponse } from '../../../Shared/IBaseRepository';
+import { IRepoResponse } from '../../../Shared/IBaseRepositories';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface IResendDTO {

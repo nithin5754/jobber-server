@@ -5,7 +5,7 @@ import { IEducation, IExperience, ISeller } from '../../../Domain/Interface/ISel
 import { BuyerRepositories } from '../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository';
 import { SellerRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepository';
+import { IRepoResponse } from '../../../Shared/IBaseRepositories';
 import { IUseCase } from '../../../Shared/IUsecase';
 import { faker } from '@faker-js/faker';
 import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';

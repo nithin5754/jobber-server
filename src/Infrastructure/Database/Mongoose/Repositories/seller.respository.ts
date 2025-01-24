@@ -4,7 +4,7 @@ import { ISellerRepositories } from '../../../../Domain/Interface/ISeller.respos
 
 import { Seller } from '../../../../Domain/Entities/seller.entity';
 import { BadRequestError } from '../../../../Presentation/Error/errorInterface';
-import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBaseRepository';
+import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBaseRepositories';
 
 export class SellerRepository implements ISellerRepositories {
   constructor(private readonly sellerDataBase: Model<ISellerDocument>) {}

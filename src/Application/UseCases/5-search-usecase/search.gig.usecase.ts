@@ -3,7 +3,7 @@ import { SellerGig } from '../../../Domain/Entities/gig.entity';
 import { Search } from '../../../Infrastructure/Database/Mongoose/Repositories/search.gig.repository';
 import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepository';
+import { IRepoResponse } from '../../../Shared/IBaseRepositories';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface ISellerGigSearchIdDTO {

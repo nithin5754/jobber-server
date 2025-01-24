@@ -4,7 +4,7 @@ import { ISellerGig } from '../../../Domain/Interface/IGig.interface';
 import { IUseCase } from '../../../Shared/IUsecase';
 import { sample } from 'lodash';
 
-import { IRepoResponse } from '../../../Shared/IBaseRepository';
+import { IRepoResponse } from '../../../Shared/IBaseRepositories';
 import { GigRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
 
 import { Seller } from '../../../Domain/Entities/seller.entity';

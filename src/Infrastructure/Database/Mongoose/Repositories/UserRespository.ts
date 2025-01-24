@@ -4,7 +4,7 @@ import { UserDocuments } from '../../../../Domain/Interface/IUser.interface';
 import { IRepoResponse, IUserRepository } from '../../../../Domain/Interface/IUser.repository';
 
 
-import { IRepoRequest } from '../../../../Shared/IBaseRepository';
+import { IRepoRequest } from '../../../../Shared/IBaseRepositories';
 import { BuyerRepositories } from './buyer.repository';
 
 
