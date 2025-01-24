@@ -1,8 +1,10 @@
-import { IUseCase } from "@src/Shared/IUsecases";
+
+import { IUseCase } from "src/Shared/IUsecases";
 import { User } from "../../../Domain/Entities/User";
 import { UserRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
-import { IRepoResponse } from "@src/Domain/Interface/IUser.repository";
+import { IRepoResponse } from "src/Shared/IBaseRepositories";
+
 
 
 
