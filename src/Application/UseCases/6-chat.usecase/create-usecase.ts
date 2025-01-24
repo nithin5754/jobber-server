@@ -1,5 +1,5 @@
 import { UploadApiResponse, UploadApiErrorResponse } from 'cloudinary';
-import { io } from '../../..';
+import { io } from '../../../main';
 import { Message } from '../../../Domain/Entities/Chat';
 import { IChatData } from '../../../Domain/Interface/IChat.interface';
 import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
