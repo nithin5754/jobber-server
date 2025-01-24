@@ -6,7 +6,7 @@ import { BuyerRepositories } from '../../../Infrastructure/Database/Mongoose/Rep
 import { SellerRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecases';
 import { faker } from '@faker-js/faker';
 import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 export interface ISellerSeedDTO {

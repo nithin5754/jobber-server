@@ -9,7 +9,7 @@ import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecases';
 
 export interface ICreateMessageDTO {
   messageData: IChatData;

@@ -6,7 +6,7 @@ import { User } from "../../../Domain/Entities/User";
 import { UserTypeKey } from "../../../Domain/Interface/IUser.interface";
 import { omit } from "lodash";
 import { StatusCodes } from "http-status-codes";
-import { IController } from "../../../Shared/IController";
+import { IController } from "../../../Shared/IControllers";
 
 
 

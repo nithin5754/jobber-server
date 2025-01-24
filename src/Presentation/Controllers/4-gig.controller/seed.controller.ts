@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../Shared/IController";
+import { IController } from "../../../Shared/IControllers";
 import { GigSeedUsecases } from "../../../Application/UseCases/4-gig-usecase/seed.gig.usecase";
 
 

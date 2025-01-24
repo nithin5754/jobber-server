@@ -7,7 +7,7 @@ import {  IGetMessageResult } from "../../../Application/UseCases/6-chat.usecase
 import { StatusCodes } from "http-status-codes";
 
 import { GetUserMessagesUsecase } from "../../../Application/UseCases/6-chat.usecase/get-usermessages.uecase";
-import { IController } from "../../../Shared/IController";
+import { IController } from "../../../Shared/IControllers";
 
 
 export class UserMessages implements IController {

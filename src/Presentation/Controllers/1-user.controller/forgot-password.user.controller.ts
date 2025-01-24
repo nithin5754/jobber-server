@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IController';
+import { IController } from '../../../Shared/IControllers';
 import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
 import { ForgotPasswordUsecase, IForgotResult } from '../../../Application/UseCases/1AuthUsecase/forgot-password.usecase';

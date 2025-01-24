@@ -5,7 +5,7 @@ import { UserRepository } from "../../../Infrastructure/Database/Mongoose/Reposi
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
 import { IRepoResponse } from "../../../Shared/IBaseRepositories";
 
-import { IUseCase } from "../../../Shared/IUsecase";
+import { IUseCase } from "../../../Shared/IUsecases";
 
 export interface MoreLikeThisDTO {
   gigId: string;

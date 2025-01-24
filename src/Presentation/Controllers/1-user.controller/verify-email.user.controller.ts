@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IController';
+import { IController } from '../../../Shared/IControllers';
 import { BadRequestError } from '../../Error/errorInterface';
 import { IVerifyEmailResult, VerifyEmailUsecase } from '../../../Application/UseCases/1AuthUsecase/verify-email.usecase';
 import { StatusCodes } from 'http-status-codes';

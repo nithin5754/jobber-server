@@ -3,7 +3,7 @@ import { User } from '../../../Domain/Entities/User';
 import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecases';
 
 export interface IVerifyEmailDTO {
   token: string;

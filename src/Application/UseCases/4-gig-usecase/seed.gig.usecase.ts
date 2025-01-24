@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { ISellerGig } from '../../../Domain/Interface/IGig.interface';
 
-import { IUseCase } from '../../../Shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecases';
 import { sample } from 'lodash';
 
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IController';
+import { IController } from '../../../Shared/IControllers';
 import { StatusCodes } from 'http-status-codes';
 import { IResendDTO, IResendResult, ResendUsecase } from '../../../Application/UseCases/1AuthUsecase/resend.usecase';
 import { BadRequestError } from '../../Error/errorInterface';

@@ -8,7 +8,7 @@ import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-
 import { MulterFileConverter } from '../../../Infrastructure/External-libraries/5-multer-converter/multer-convertor.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecases';
 import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 
 

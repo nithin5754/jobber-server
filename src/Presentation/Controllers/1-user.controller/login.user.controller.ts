@@ -7,7 +7,7 @@ import { omit } from 'lodash';
 import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import { User } from '../../../Domain/Entities/User';
 import { StatusCodes } from 'http-status-codes';
-import { IController } from '../../../Shared/IController';
+import { IController } from '../../../Shared/IControllers';
 
 export class Login implements IController {
   constructor(private readonly loginUseCase: LoginUseCase, private readonly validation: Joi.ObjectSchema<any>) {}

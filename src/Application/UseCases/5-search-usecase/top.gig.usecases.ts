@@ -1,6 +1,6 @@
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
 
-import { IUseCase } from '../../../Shared/IUsecase';
+import { IUseCase } from '../../../Shared/IUsecases';
 
 export interface TopGigViewsDTO {
   categories: string;

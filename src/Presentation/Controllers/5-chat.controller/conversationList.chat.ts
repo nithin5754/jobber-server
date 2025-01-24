@@ -6,7 +6,7 @@ import { NextFunction,Request,Response } from "express";
 import { BadRequestError } from "../../Error/errorInterface";
 
 import { StatusCodes } from "http-status-codes";
-import { IController } from "../../../Shared/IController";
+import { IController } from "../../../Shared/IControllers";
 
 import { ConversationListUsecase, IConversationListResult } from "../../../Application/UseCases/6-chat.usecase/conversation-list.usecase";
 

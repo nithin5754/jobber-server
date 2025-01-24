@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { ResendUsecase } from '../../Application/UseCases/1AuthUsecase/resend.usecase';
-import services from '../../Shared/Services';
+import services from '../../Shared/ServicesList';
 import { Resend } from '../Controllers/1-user.controller/resend.user.controller';
 import { CurrentUserUsecase } from '../../Application/UseCases/1AuthUsecase/currentUser.usecase';
 import { CurrentUser } from '../Controllers/1-user.controller/current.user.controller';
