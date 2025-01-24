@@ -1,11 +1,10 @@
 import { SellerGig } from "../../../Domain/Entities/gig.entity";
-import { GigRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/gig.repository";
-import { Search } from "../../../Infrastructure/Database/Mongoose/Repositories/search.gig.repository";
-import { UserRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
+import { IRepoResponse } from "../../../IBaseRepositories";
+import { findOneGIG } from "../../../Infrastructure/Database/Mongoose/Repositories/gig.repository";
+import { getMoreLikeThisSearch } from "../../../Infrastructure/Database/Mongoose/Repositories/search.gig.repository";
+import { findOneByUser } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
-import { IRepoResponse } from "../../../Shared/IBaseRepositories";
 
-import { IUseCase } from "../../../Shared/IUseCases";
 
 export interface MoreLikeThisDTO {
   gigId: string;
@@ -17,14 +16,13 @@ export interface MoreLikeThisResult {
 }
 
 
-export class MoreLikeThisUsecase implements IUseCase<MoreLikeThisDTO,MoreLikeThisResult> {
+export class MoreLikeThisUsecase  {
 
-  constructor(private readonly gigSearch: Search, private readonly userservice: UserRepository,private readonly gig:GigRepository) {}
  public async execute(input: MoreLikeThisDTO): Promise<MoreLikeThisResult> {
 
 
 
-  const gigDetails:IRepoResponse=await this.gig.findOne({gig:{_id:input.gigId}})
+  const gigDetails:IRepoResponse=await findOneGIG({gig:{_id:input.gigId}})
 
   if(!gigDetails||!gigDetails.gig||gigDetails.isNull){
     return {
@@ -35,7 +33,7 @@ export class MoreLikeThisUsecase implements IUseCase<MoreLikeThisDTO,MoreLikeThi
 
 
 
-      const result=await this.gigSearch.getMoreLikeThis({
+      const result=await getMoreLikeThisSearch({
         gig_moreLike_filter:{basicDescription:gigDetails.gig?.basicDescription,categories:gigDetails.gig.categories,expectedDelivery:gigDetails.gig.expectedDelivery,id:input.gigId}
       })
 
@@ -54,7 +52,7 @@ export class MoreLikeThisUsecase implements IUseCase<MoreLikeThisDTO,MoreLikeThi
     private async addUserDetails(item: SellerGig[]): Promise<void> {
       for (let i = 0; i < item.length; i++) {
         {
-          const userDetails: IRepoResponse = await this.userservice.findOne({ data: { _id: item[i].userId } });
+          const userDetails: IRepoResponse = await findOneByUser({ data: { _id: item[i].userId } });
   
           if (!userDetails) {
             throw new BadRequestError('users not Found', `Get User Gig Usecase() Not Found by `);

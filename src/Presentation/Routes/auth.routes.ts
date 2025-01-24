@@ -17,15 +17,13 @@ import { ResetPassword } from '../Controllers/1-user.controller/reset-password.u
 import { VerifyEmailUsecase } from '../../Application/UseCases/1AuthUsecase/verify-email.usecase';
 import { VerifyEmail } from '../Controllers/1-user.controller/verify-email.user.controller';
 import { SignOut } from '../Controllers/1-user.controller/signout.user.controller';
-import services from '../../Shared/Services';
-
+import services from '../../Services';
 
 /**
  * @description INTERCEPTORS
  */
 
 const registerInterceptor = new RegisterUseCase(
-  services.user,
   services.mailer,
   services.configService,
   services.uniqueId,
@@ -34,15 +32,15 @@ const registerInterceptor = new RegisterUseCase(
   services.auth
 );
 
-const loginInterceptor = new LoginUseCase(services.user, services.auth);
+const loginInterceptor = new LoginUseCase( services.auth);
 
-const refreshInterceptor = new RefreshUsecase(services.auth, services.user);
+const refreshInterceptor = new RefreshUsecase(services.auth);
 
-const forgotPasswordInterceptor = new ForgotPasswordUsecase(services.user, services.configService, services.mailer, services.uniqueId);
+const forgotPasswordInterceptor = new ForgotPasswordUsecase( services.configService, services.mailer, services.uniqueId);
 
-const resetPasswordInterceptors = new ResetPasswordUsecase(services.user, services.auth);
+const resetPasswordInterceptors = new ResetPasswordUsecase( services.auth);
 
-const verifyEmailInterceptor = new VerifyEmailUsecase(services.user);
+const verifyEmailInterceptor = new VerifyEmailUsecase();
 
 /**
  * @description CONTROLLERS

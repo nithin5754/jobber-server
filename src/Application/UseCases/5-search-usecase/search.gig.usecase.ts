@@ -1,10 +1,11 @@
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
+import { IRepoResponse } from '../../../IBaseRepositories';
 
-import { Search } from '../../../Infrastructure/Database/Mongoose/Repositories/search.gig.repository';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+
+import {searchGigs } from '../../../Infrastructure/Database/Mongoose/Repositories/search.gig.repository';
+import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
+
 
 export interface ISellerGigSearchIdDTO {
   query: string;
@@ -20,12 +21,12 @@ export interface ISellerGigSearchIdResult {
   totalGigLength: number;
 }
 
-export class SearchGigsUsecase implements IUseCase<ISellerGigSearchIdDTO, ISellerGigSearchIdResult> {
+export class SearchGigsUsecase {
   private paginateFilter: SellerGig[] = [];
   private totalLength = 0;
-  constructor(private readonly gigSearch: Search, private readonly userservice: UserRepository) {}
+
   public async execute(input: ISellerGigSearchIdDTO): Promise<ISellerGigSearchIdResult> {
-    const found: IRepoResponse = await this.gigSearch.searchGigs({
+    const found: IRepoResponse = await searchGigs({
       query: input.query,
       gig_filter: {
         min_price: input.max_price ? input.max_price : null,
@@ -60,7 +61,7 @@ export class SearchGigsUsecase implements IUseCase<ISellerGigSearchIdDTO, ISelle
   private async addUserDetails(item: SellerGig[]): Promise<void> {
     for (let i = 0; i < item.length; i++) {
       {
-        const userDetails: IRepoResponse = await this.userservice.findOne({ data: { _id: item[i].userId } });
+        const userDetails: IRepoResponse = await findOneByUser({ data: { _id: item[i].userId } });
 
         if (!userDetails) {
           throw new BadRequestError('users not Found', `Get User Gig Usecase() Not Found by `);

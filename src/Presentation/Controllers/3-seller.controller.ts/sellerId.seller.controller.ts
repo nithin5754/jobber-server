@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../Shared/IControllers";
+
 import { GetSellerUsecase, ISellerGetResult } from "../../../Application/UseCases/3-seller-usecase/get.seller.usecase";
 import { BadRequestError } from "../../Error/errorInterface";
 import { StatusCodes } from "http-status-codes";
 
 
 
-export class SellerId implements IController {
+export class SellerId  {
   constructor(private readonly getsellerUserCase:GetSellerUsecase) {
     
   }

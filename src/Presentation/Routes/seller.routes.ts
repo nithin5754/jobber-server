@@ -3,7 +3,7 @@ import { Router } from 'express';
 import { CreateSellerUseCase } from '../../Application/UseCases/3-seller-usecase/create.seller.usecase';
 import { CreateSeller } from '../Controllers/3-seller.controller.ts/create.seller.controller';
 import { sellerSchema } from '../Schemas/3-seller/seller.schema';
-import services from '../../Shared/Services';
+import services from '../../Services';
 import { GetSellerUsecase } from '../../Application/UseCases/3-seller-usecase/get.seller.usecase';
 import { GetSellerById } from '../Controllers/3-seller.controller.ts/get-id.seller.controller';
 import { GetSellerByUsername } from '../Controllers/3-seller.controller.ts/get-username.seller.controller';
@@ -15,12 +15,12 @@ import { SellerId } from '../Controllers/3-seller.controller.ts/sellerId.seller.
 import { SeedSellersUsecase } from '../../Application/UseCases/3-seller-usecase/seed.seller.usecase';
 import { SeedSeller } from '../Controllers/3-seller.controller.ts/seed.seller.controller';
 
-const sellerCreateInterceptor = new CreateSellerUseCase(services.seller, services.buyer, services.user);
-const sellerGetInterceptor = new GetSellerUsecase(services.seller, services.user);
-const sellerRandomInterceptor = new RandomSellersUsecase(services.seller, services.user);
-const sellerUpdateInterceptor = new UpdateSellerUsecase(services.seller, services.user);
+const sellerCreateInterceptor = new CreateSellerUseCase()
+const sellerGetInterceptor = new GetSellerUsecase();
+const sellerRandomInterceptor = new RandomSellersUsecase();
+const sellerUpdateInterceptor = new UpdateSellerUsecase();
 
-const sellerSeedInterceptor=new SeedSellersUsecase(services.buyer,services.seller,services.user)
+const sellerSeedInterceptor=new SeedSellersUsecase()
 
 
 

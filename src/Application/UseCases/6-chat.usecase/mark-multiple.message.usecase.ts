@@ -1,8 +1,7 @@
+import { updateMultipleChat } from "../../../Infrastructure/Database/Mongoose/Repositories/chat.repository";
 
-import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 
 
-import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface IMarkMultipleMessageDTO {
   messageId: string;
@@ -12,10 +11,10 @@ export interface IMarkMultipleMessageDTO {
 
 
 
-export class MarkMultipleMessageAsReadUsecase implements IUseCase<IMarkMultipleMessageDTO, void> {
-  constructor(private readonly messageService: ChatRepository) {}
+export class MarkMultipleMessageAsReadUsecase  {
+
   public async execute(input: IMarkMultipleMessageDTO): Promise<void> {
-   await this.messageService.updateMultiple({
+   await updateMultipleChat({
       updateFilterMultipleMessage: {
         _id: input.messageId,
         receiverUsername: input.receiverUsername,

@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { GetSellerUsecase, ISellerGetDTO, ISellerGetResult } from '../../../Application/UseCases/3-seller-usecase/get.seller.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 import { StatusCodes } from 'http-status-codes';
 
-export class GetSellerById implements IController {
+export class GetSellerById  {
   constructor(private readonly getsellerUsecase: GetSellerUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

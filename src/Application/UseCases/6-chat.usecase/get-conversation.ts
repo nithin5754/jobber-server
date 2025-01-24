@@ -1,10 +1,9 @@
 
 import { IConversation } from '../../../Domain/Interface/IChat.interface';
+import { IRepoResponse } from '../../../IBaseRepositories';
 
-import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
+import {  getConversationChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface IGetConversationDTO {
   sender: string;
@@ -15,10 +14,10 @@ export interface IGetConversationResult {
   conversations:IConversation[];
 }
 
-export class GetConversationUsecase implements IUseCase<IGetConversationDTO, IGetConversationResult> {
-  constructor(private readonly  chatRepo: ChatRepository) {}
+export class GetConversationUsecase  {
+
   public async execute(input: IGetConversationDTO): Promise<IGetConversationResult> {
-    const conversation:IRepoResponse = await this. chatRepo.getConversation(input.sender, input.receiver);
+    const conversation:IRepoResponse = await getConversationChat (input.sender, input.receiver);
 
     if (!conversation || !conversation.conversationDetailsArray) {
       throw new BadRequestError('Not Found/Empty', 'GetConversationUsecase() Missing');

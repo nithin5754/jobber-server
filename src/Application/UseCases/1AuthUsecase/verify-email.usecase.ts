@@ -1,9 +1,9 @@
 import { User } from '../../../Domain/Entities/User';
+import { IRepoResponse } from '../../../IBaseRepositories';
+import { findOneByUser ,updateUser} from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
+
 
 export interface IVerifyEmailDTO {
   token: string;
@@ -13,31 +13,30 @@ export interface IVerifyEmailResult {
   user: User;
 }
 
-export class VerifyEmailUsecase implements IUseCase<IVerifyEmailDTO, IVerifyEmailResult> {
-  constructor(private readonly userservice: UserRepository) {}
+export class VerifyEmailUsecase  {
   public async execute(input: IVerifyEmailDTO): Promise<IVerifyEmailResult> {
     const { token } = input;
 
-    const found: IRepoResponse = await this.userservice.findOne({ data: { emailVerificationToken: token } });
+    const found: IRepoResponse = await findOneByUser({ data: { emailVerificationToken: token } });
 
     if (!found || found.isNull || !found.user) {
       throw new BadRequestError('Verification token is either invalid or is already used.', 'VerifyEmail update() method error');
     }
 
-    await this.userservice.update(found.user.id as string, {
+    await updateUser(found.user.id as string, {
       data: {
         emailVerified: true
       }
     });
 
-    const updatedUser: IRepoResponse = await this.userservice.findOne({ data: { _id: found.user.id } });
+    const result: IRepoResponse = await findOneByUser({ data: { _id: found.user.id } });
 
-    if (!updatedUser || !updatedUser.user || updatedUser.user?.emailVerified === false) {
+    if (!result || !result.user || result.user?.emailVerified === false) {
       throw new BadRequestError('something went wrong .try again', 'VerifyEmail update() method error');
     }
 
     return {
-      user: updatedUser.user
+      user: result.user
     };
   }
 }

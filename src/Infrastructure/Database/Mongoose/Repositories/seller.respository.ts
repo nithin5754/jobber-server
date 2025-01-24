@@ -1,20 +1,18 @@
-import { Model } from 'mongoose';
-import { ISellerDocument } from '../../../../Domain/Interface/ISeller.interface';
-import { ISellerRepositories } from '../../../../Domain/Interface/ISeller.respositorory';
 
+import { ISellerDocument } from '../../../../Domain/Interface/ISeller.interface';
 import { Seller } from '../../../../Domain/Entities/seller.entity';
 import { BadRequestError } from '../../../../Presentation/Error/errorInterface';
-import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBaseRepositories';
+import { IRepoRequest, IRepoResponse } from '../../../../IBaseRepositories';
+import { SellerModel } from '../Models/seller.schema';
 
-export class SellerRepository implements ISellerRepositories {
-  constructor(private readonly sellerDataBase: Model<ISellerDocument>) {}
-  public async create(data: IRepoRequest): Promise<IRepoResponse> {
+
+  export async function createSeller(data: IRepoRequest): Promise<IRepoResponse> {
     try {
-      const seller: ISellerDocument | undefined = await this.sellerDataBase.create(data.seller);
+      const seller: ISellerDocument | undefined = await SellerModel.create(data.seller);
 
       return seller
         ? {
-            seller: this.fetchFilterData(seller)
+            seller:fetchFilterData(seller)
           }
         : {
             isNull: true
@@ -26,24 +24,24 @@ export class SellerRepository implements ISellerRepositories {
 
   
 
-  public async findOne(criteria: IRepoRequest): Promise<IRepoResponse> {
-    const seller: ISellerDocument | null = await this.sellerDataBase.findOne(criteria.seller);
+  export async function findOneSeller(criteria: IRepoRequest): Promise<IRepoResponse> {
+    const seller: ISellerDocument | null = await SellerModel.findOne(criteria.seller);
 
-    return seller ? { seller: this.fetchFilterData(seller) } : { isNull: true };
+    return seller ? { seller:fetchFilterData(seller) } : { isNull: true };
   }
-  public async update(id: string, seller: IRepoRequest): Promise<IRepoResponse> {
-    const result: ISellerDocument | null = await this.sellerDataBase.findByIdAndUpdate(id, { $set: seller }, { new: true });
+  export async function updateSeller(id: string, seller: IRepoRequest): Promise<IRepoResponse> {
+    const result: ISellerDocument | null = await SellerModel.findByIdAndUpdate(id, { $set: seller }, { new: true });
     return result
       ? {
-          seller: this.fetchFilterData(result)
+          seller:fetchFilterData(result)
         }
       : {
           isNull: true
         };
   }
 
-  public async updateUsingOtherFilter({ sellerFilter, seller }: IRepoRequest): Promise<IRepoResponse> {
-    const result: ISellerDocument | null = await this.sellerDataBase.findOneAndUpdate(
+  export async function updateUsingOtherFilterSeller({ sellerFilter, seller }: IRepoRequest): Promise<IRepoResponse> {
+    const result: ISellerDocument | null = await SellerModel.findOneAndUpdate(
       sellerFilter,
       {
         $set: {
@@ -64,51 +62,48 @@ export class SellerRepository implements ISellerRepositories {
     );
     return result
       ? {
-          seller: this.fetchFilterData(result)
+          seller:fetchFilterData(result)
         }
       : {
           isNull: true
         };
   }
 
-  public async randomSellers(size: number): Promise<IRepoResponse> {
-    const sellers: ISellerDocument[] = await this.sellerDataBase.aggregate([{ $sample: { size } }]);
+  export async function randomSellers(size: number): Promise<IRepoResponse> {
+    const sellers: ISellerDocument[] = await SellerModel.aggregate([{ $sample: { size } }]);
 
     return sellers && sellers.length > 0
       ? {
-          sellerArray: this.fetchDataArray(sellers)
+          sellerArray:fetchDataArray(sellers)
         }
       : {
           isNull: true
         };
   }
 
- public async find(): Promise<IRepoResponse> {
-  const sellers: ISellerDocument[] = await this.sellerDataBase.find();
+ export async function findSeller(): Promise<IRepoResponse> {
+  const sellers: ISellerDocument[] = await SellerModel.find();
 
   return sellers && sellers.length > 0
     ? {
-        sellerArray: this.fetchDataArray(sellers)
+        sellerArray:fetchDataArray(sellers)
       }
     : {
         isNull: true
       };
   }
 
-  delete(_id: string): Promise<boolean> {
-    throw new Error('Method not implemented.');
-  }
 
-  private fetchFilterData(data: ISellerDocument): Seller {
+function fetchFilterData(data: ISellerDocument): Seller {
     return new Seller(data);
   }
 
-  private fetchDataArray(data: ISellerDocument[]): Seller[] {
+function fetchDataArray(data: ISellerDocument[]): Seller[] {
     let sellersArray: Seller[] = [];
     for (let i = 0; i < data.length; i++) {
-      sellersArray.push(this.fetchFilterData(data[i]));
+      sellersArray.push(fetchFilterData(data[i]));
     }
 
     return sellersArray;
   }
-}
+// }

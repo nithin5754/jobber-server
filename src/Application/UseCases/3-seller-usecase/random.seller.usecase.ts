@@ -1,9 +1,9 @@
 import { Seller } from '../../../Domain/Entities/seller.entity';
-import { SellerRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { IRepoResponse } from '../../../IBaseRepositories';
+import { randomSellers } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
+import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
+
 
 
 export interface ISellerRandomDTO {
@@ -14,10 +14,10 @@ export interface ISellerRandomResult {
   sellerArray: Seller[] | null;
 }
 
-export class RandomSellersUsecase implements IUseCase<ISellerRandomDTO, ISellerRandomResult> {
-  constructor(private readonly sellerService: SellerRepository, private readonly userRepository: UserRepository) {}
+export class RandomSellersUsecase  {
+
   public async execute(input: ISellerRandomDTO): Promise<ISellerRandomResult> {
-    const result: IRepoResponse = await this.sellerService.randomSellers(input.size);
+    const result: IRepoResponse = await randomSellers(input.size);
 
     if (!result || result.isNull || !result.sellerArray || result.sellerArray.length <= 0) {
       throw new BadRequestError('Sellers not Found', 'RandomSellers() Not Found!');
@@ -32,7 +32,7 @@ export class RandomSellersUsecase implements IUseCase<ISellerRandomDTO, ISellerR
 
   private async addUserDetailsArray(sellerArray: Seller[]): Promise<void> {
     const sellerArrayDetails = sellerArray.map(async (params: Seller) => {
-      const userDetails: IRepoResponse = await this.userRepository.findOne({ data: { _id: params.userId } });
+      const userDetails: IRepoResponse = await findOneByUser({ data: { _id: params.userId } });
 
       if (!userDetails) {
         throw new BadRequestError('users not Found', `GetSellerUsecase() Not Found sellers}`);

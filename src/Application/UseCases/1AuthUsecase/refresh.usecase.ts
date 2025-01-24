@@ -1,9 +1,9 @@
 import { JwtPayload } from 'jsonwebtoken';
 import { User } from '../../../Domain/Entities/User';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IUseCase } from '../../../Shared/IUseCases';
+import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+
 
 interface IRefreshTokenDTO {
   token: string;
@@ -18,8 +18,8 @@ export interface IRefreshResult {
   };
 }
 
-export class RefreshUsecase implements IUseCase<IRefreshTokenDTO, IRefreshResult> {
-  constructor(private readonly authservice: JwtToken, private readonly userService: UserRepository) {}
+export class RefreshUsecase  {
+  constructor(private readonly authservice: JwtToken) {}
   public async execute(input: IRefreshTokenDTO): Promise<IRefreshResult> {
     const decodedToken: JwtPayload | string | null = this.authservice.verifyRefreshToken(input.token);
 
@@ -29,7 +29,7 @@ export class RefreshUsecase implements IUseCase<IRefreshTokenDTO, IRefreshResult
 
     const { userId, email, username } = decodedToken as JwtPayload;
 
-    const foundUser = await this.userService.findOne({ data: { _id: userId } });
+    const foundUser = await findOneByUser({ data: { _id: userId } });
 
     if (!foundUser || foundUser.isNull || !foundUser.user) {
       throw new BadRequestError('Invalid refresh token', 'OnRefreshToken() method Token error');

@@ -2,12 +2,12 @@
 
 
 import { SellerGig } from "../../../Domain/Entities/gig.entity";
-import { GigRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/gig.repository";
-import { UserRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
+import { IRepoResponse } from "../../../IBaseRepositories";
+import { findByLimitGIG } from "../../../Infrastructure/Database/Mongoose/Repositories/gig.repository";
+import { findOneByUser } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
 import { firstLetterUpperCase } from "../../../Presentation/Utils/helper.utils";
-import { IRepoResponse } from "../../../Shared/IBaseRepositories";
-import { IUseCase } from "../../../Shared/IUseCases";
+
 
 
 
@@ -21,13 +21,11 @@ export interface ISellerGigGetByCategoryResult {
   gigs:SellerGig[]
 }
 
-export class GetByCategorySellerGig implements IUseCase<ISellerGigGetByCategoryDTO, ISellerGigGetByCategoryResult> {
-  constructor(private readonly gigService: GigRepository,
-    private readonly userservice:UserRepository
-  ) {}
+export class GetByCategorySellerGig  {
+
   public async execute(input: ISellerGigGetByCategoryDTO): Promise<ISellerGigGetByCategoryResult> {
     
-    const found:IRepoResponse=await this.gigService.findByLimit({
+    const found:IRepoResponse=await findByLimitGIG({
       gig:{
         categories:firstLetterUpperCase(input.category),
         active:true
@@ -53,7 +51,7 @@ export class GetByCategorySellerGig implements IUseCase<ISellerGigGetByCategoryD
   private async addUserDetails(item: SellerGig[]): Promise<void> {
     for (let i = 0; i < item.length; i++) {
       {
-        const userDetails: IRepoResponse = await this.userservice.findOne({ data: { _id: item[i].userId } });
+        const userDetails: IRepoResponse = await findOneByUser({ data: { _id: item[i].userId } });
 
         if (!userDetails) {
           throw new BadRequestError('users not Found', `Get User Gig Usecase() Not Found by `);

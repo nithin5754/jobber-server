@@ -6,12 +6,12 @@
 import { NextFunction,Request,Response } from "express";
 import { BadRequestError } from "../../Error/errorInterface";
 import { StatusCodes } from "http-status-codes";
-import { IController } from "../../../Shared/IControllers";
+
 import {  MarkMultipleMessageAsReadUsecase } from "../../../Application/UseCases/6-chat.usecase/mark-multiple.message.usecase";
 
 
 
-export class MarkMultipleMessage implements IController {
+export class MarkMultipleMessage  {
   constructor(
     private readonly update:MarkMultipleMessageAsReadUsecase
   ) {

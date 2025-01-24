@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../Shared/IControllers";
+
 import { ISellerSeedResult, SeedSellersUsecase } from "../../../Application/UseCases/3-seller-usecase/seed.seller.usecase";
 import { BadRequestError } from "../../Error/errorInterface";
 import { StatusCodes } from "http-status-codes";
 
 
 
-export class SeedSeller implements IController {
+export class SeedSeller {
   constructor(
     private readonly seedUsecase:SeedSellersUsecase
   ) {

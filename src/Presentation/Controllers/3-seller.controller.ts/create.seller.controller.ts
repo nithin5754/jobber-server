@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { ISeller } from '../../../Domain/Interface/ISeller.interface';
 import { CreateSellerUseCase, ISellerCreateResult } from '../../../Application/UseCases/3-seller-usecase/create.seller.usecase';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
 
-export class CreateSeller implements IController {
+export class CreateSeller  {
   constructor(private readonly sellerCreateUseCase: CreateSellerUseCase, private readonly validation: Joi.ObjectSchema<any>) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

@@ -4,8 +4,7 @@ import { User } from '../../../Domain/Entities/User';
 
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { EMAIL_TEMPLATE } from '../../../Presentation/Utils/helper.utils';
-import { IUseCase } from '../../../Shared/IUseCases';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { createUser, isUsernameOrEmailExist } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
 import { MulterFileConverter } from '../../../Infrastructure/External-libraries/5-multer-converter/multer-convertor.service';
@@ -30,9 +29,8 @@ export interface ICreateUserResult {
   };
 }
 
-export class RegisterUseCase implements IUseCase<ICreateUserDTO, ICreateUserResult> {
+export class RegisterUseCase {
   constructor(
-    private readonly userService: UserRepository,
     private readonly mailerService: Mailer,
     private readonly configService: ConfigType,
     private readonly uniqueIdService: UniqueId,
@@ -85,7 +83,7 @@ export class RegisterUseCase implements IUseCase<ICreateUserDTO, ICreateUserResu
       emailVerificationToken: randomCharacters
     };
 
-    const userData = await this.userService.create({ data: newUserData });
+    const userData = await createUser({ data: newUserData });
 
     if (!userData || userData.isNull || !userData.user) {
       throw new BadRequestError('Failed to create user', 'SignUp creation error');
@@ -95,7 +93,7 @@ export class RegisterUseCase implements IUseCase<ICreateUserDTO, ICreateUserResu
   }
 
   private async validateUniqueUser(username: string, email: string): Promise<void> {
-    const existingUser = await this.userService.isUsernameOrEmailExist(email, username);
+    const existingUser = await isUsernameOrEmailExist(email, username);
 
     if (existingUser.email && existingUser.username) {
       throw new BadRequestError('Username and email already exist', 'SignUp validation error');

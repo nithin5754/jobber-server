@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { CreateMessageUsecase } from '../../Application/UseCases/6-chat.usecase/create-usecase';
-import services from '../../Shared/Services';
+import services from '../../Services';
 import { CreateMessage } from '../Controllers/5-chat.controller/create.chat';
 import { GetMessageUsecase } from '../../Application/UseCases/6-chat.usecase/get-message.usecase';
 import { GetConversationUsecase } from '../../Application/UseCases/6-chat.usecase/get-conversation';
@@ -22,16 +22,16 @@ import { UpdateOfferMessages } from '../Controllers/5-chat.controller/update.cha
 
 //INTERCEPTORS
 
-const createInterceptor = new CreateMessageUsecase(services.messageRepository,services.uniqueId, services.cloudinary,);
-const getMessageInterceptor = new GetMessageUsecase(services.messageRepository);
-const getConversationInterceptor = new GetConversationUsecase(services.messageRepository);
-const conversationListInterceptor = new ConversationListUsecase(services.messageRepository);
-const multipleMarkInterceptor=new MarkMultipleMessageAsReadUsecase(services.messageRepository)
-const createConversationInterceptor = new CreateConversationUsecase(services.messageRepository);
-const markMessageInterceptor = new MarkMessageAsReadUsecase(services.messageRepository)
-const getUserMessagesInterceptors=new GetUserMessagesUsecase(services.messageRepository)
+const createInterceptor = new CreateMessageUsecase(services.uniqueId, services.cloudinary,);
+const getMessageInterceptor = new GetMessageUsecase();
+const getConversationInterceptor = new GetConversationUsecase();
+const conversationListInterceptor = new ConversationListUsecase();
+const multipleMarkInterceptor=new MarkMultipleMessageAsReadUsecase()
+const createConversationInterceptor = new CreateConversationUsecase();
+const markMessageInterceptor = new MarkMessageAsReadUsecase()
+const getUserMessagesInterceptors=new GetUserMessagesUsecase()
 
-const updateOfferInterceptor=new UpdateOfferReadUsecase(services.messageRepository)
+const updateOfferInterceptor=new UpdateOfferReadUsecase()
 
 //CONTROLLERS
 

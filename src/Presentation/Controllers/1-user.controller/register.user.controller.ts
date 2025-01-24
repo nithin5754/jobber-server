@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { ICreateUserDTO, RegisterUseCase } from '../../../Application/UseCases/1AuthUsecase/register.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 
@@ -10,7 +10,7 @@ import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import {  omit } from 'lodash';
 import { firstLetterUpperCase, lowerCase } from '../../Utils/helper.utils';
 
-export class RegisterController implements IController {
+export class RegisterController {
   constructor(private readonly registerUseCase: RegisterUseCase, private readonly validation: Joi.ObjectSchema<any>) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

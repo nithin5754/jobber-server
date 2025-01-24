@@ -1,18 +1,18 @@
 
 import { IChatData,  } from '../../../Domain/Interface/IChat.interface';
-import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
+import { createConversationChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 
 
-import { IUseCase } from '../../../Shared/IUseCases';
+
 
 export interface ICreateConversationDTO {
   data: IChatData;
 }
 
-export class CreateConversationUsecase implements IUseCase<ICreateConversationDTO, void> {
-  constructor(private readonly messageService: ChatRepository) {}
+export class CreateConversationUsecase  {
+
   public async execute(input: ICreateConversationDTO): Promise<void> {
-    await this.messageService.createConversation({
+    await createConversationChat ({
       message: input.data
     });
   }

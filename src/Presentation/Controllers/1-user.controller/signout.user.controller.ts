@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../Shared/IControllers";
 
 
-export class SignOut implements IController {
+
+export class SignOut {
   constructor() {
     
   }

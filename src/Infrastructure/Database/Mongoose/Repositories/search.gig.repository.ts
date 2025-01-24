@@ -1,40 +1,40 @@
-import { Model } from 'mongoose';
-import { ISellerGigParams, SellerGigDocument } from '../../../../Domain/Interface/IGig.interface';
+
+import { ISellerGigParams } from '../../../../Domain/Interface/IGig.interface';
 import { SellerGig } from '../../../../Domain/Entities/gig.entity';
-import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBaseRepositories';
+import { IRepoRequest, IRepoResponse } from '../../../../IBaseRepositories';
+import { GigModel } from '../Models/gig.schema';
 
 
-export class Search {
-  private filter: any = {};
+let filter: any = {};
 
-  constructor(private readonly gig_model: Model<SellerGigDocument>) {}
+
   
-  public async searchGigs(criteria: IRepoRequest): Promise<IRepoResponse> {
-    this.filter={}
- this.filterQuery(criteria.query as string);
+ export async function searchGigs(criteria: IRepoRequest): Promise<IRepoResponse> {
+ filter={}
+filterQuery(criteria.query as string);
 
- this.priceFilter(criteria.gig_filter?.min_price,criteria.gig_filter?.max_price)
- this.deliveryTime(criteria.gig_filter?.delivery_time )
+priceFilter(criteria.gig_filter?.min_price,criteria.gig_filter?.max_price)
+deliveryTime(criteria.gig_filter?.delivery_time )
 
 
 
- const result=await this.gig_model.find(this.filter);
+ const result=await GigModel.find(filter);
 
 
 
 
     return {
-      gigArray: result && this.convertToGigDataArray(result),
+      gigArray: result &&convertToGigDataArray(result),
       isNull: true
     };
   }
 
 
 
-  public async getMoreLikeThis(criteria:IRepoRequest):Promise<IRepoResponse>{
+ export async function getMoreLikeThisSearch(criteria:IRepoRequest):Promise<IRepoResponse>{
 
 
-    const result = await this.gig_model.find({
+    const result = await GigModel.find({
       $and: [
         {
           $or: [
@@ -55,7 +55,7 @@ export class Search {
 
 
     return {
-      gigArray: result && this.convertToGigDataArray(result),
+      gigArray: result &&convertToGigDataArray(result),
       isNull: true
     };
 
@@ -65,21 +65,21 @@ export class Search {
 
 
 
-  private priceFilter(min_price: string | null|undefined, max_price: string | null|undefined): void {
+  function priceFilter(min_price: string | null|undefined, max_price: string | null|undefined): void {
     if (min_price&&typeof min_price==='string') {
-      this.filter.price = { ...this.filter.price, $gte: parseInt(min_price as string, 10) };
+   filter.price = { ...filter.price, $gte: parseInt(min_price as string, 10) };
     }
 
     if (max_price&&typeof max_price==='string') {
-      this.filter.price = { ...this.filter.price, $lte: parseInt(max_price as string, 10) };
+   filter.price = { ...filter.price, $lte: parseInt(max_price as string, 10) };
     }
   }
 
 
 
-  private filterQuery(query: string): void {
+  function filterQuery(query: string): void {
     const searchRegex = { $regex: query, $options: 'i' };
-    this.filter.$or = [
+ filter.$or = [
       { title: searchRegex },
       { username: searchRegex },
       { description: searchRegex },
@@ -91,10 +91,10 @@ export class Search {
     ];
   }
 
-  private deliveryTime(delivery_time: string | null | undefined): void {
+  function deliveryTime(delivery_time: string | null | undefined): void {
     if (delivery_time) {
       const value = parseInt(delivery_time, 10);
-      this.filter.expectedDelivery = {
+   filter.expectedDelivery = {
         $regex: new RegExp(`^(${value}) Days Delivery$`, 'i')
       };
     
@@ -103,7 +103,7 @@ export class Search {
   }
   
 
-  private convertToGigDataArray(data: ISellerGigParams[]): SellerGig[] {
+  function convertToGigDataArray(data: ISellerGigParams[]): SellerGig[] {
     let gigArray: SellerGig[] = [];
 
     for (let i = 0; i < data.length; i++) {
@@ -112,4 +112,4 @@ export class Search {
 
     return gigArray;
   }
-}
+

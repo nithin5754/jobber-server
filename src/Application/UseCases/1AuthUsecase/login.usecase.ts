@@ -1,10 +1,10 @@
 
 import { User } from '../../../Domain/Entities/User';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { firstLetterUpperCase, isEmail, lowerCase } from '../../../Presentation/Utils/helper.utils';
-import { IUseCase } from '../../../Shared/IUseCases';
+
 
 interface IUserLoginDTO {
   password: string;
@@ -20,8 +20,8 @@ interface IUserLoginResult {
   };
 }
 
-export class LoginUseCase implements IUseCase<IUserLoginDTO, IUserLoginResult> {
-  constructor(private readonly userService: UserRepository, private readonly authService: JwtToken) {}
+export class LoginUseCase  {
+  constructor( private readonly authService: JwtToken) {}
 
   public async execute(input: IUserLoginDTO): Promise<IUserLoginResult> {
     /** @description {userId either USERNAME or EMAIL } */
@@ -30,7 +30,7 @@ export class LoginUseCase implements IUseCase<IUserLoginDTO, IUserLoginResult> {
 
     const user = isValidEmail ? { email: lowerCase(userId) } : { username: firstLetterUpperCase(userId) };
 
-    const existingUser = await this.userService.findOne({ data: user });
+    const existingUser = await findOneByUser({ data: user });
     if (!existingUser || existingUser.isNull || !existingUser.user || !existingUser.user.password) {
       throw new BadRequestError('Invalid credentials', 'SignIn read() method error');
     }

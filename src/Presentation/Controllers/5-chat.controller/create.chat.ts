@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { IController } from "../../../Shared/IControllers";
+
 import { CreateMessageUsecase} from "../../../Application/UseCases/6-chat.usecase/create-usecase";
 import { IChatData } from "../../../Domain/Interface/IChat.interface";
 import { StatusCodes } from "http-status-codes";
@@ -9,7 +9,7 @@ import { CreateConversationUsecase } from "../../../Application/UseCases/6-chat.
 
 
 
-export class CreateMessage implements IController {
+export class CreateMessage {
   constructor(
     private readonly createMsg:CreateMessageUsecase,
     private readonly createConversation:CreateConversationUsecase

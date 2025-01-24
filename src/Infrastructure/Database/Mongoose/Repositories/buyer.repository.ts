@@ -1,19 +1,19 @@
-import { Model } from 'mongoose';
+
 import { Buyer, BuyerParams, IBuyer, IBuyerDocument } from '../../../../Domain/Entities/Buyer';
-import { IBuyerRepositories } from '../../../../Domain/Interface/IBuyer.repository';
-import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBaseRepositories';
+import { IRepoRequest, IRepoResponse } from '../../../../IBaseRepositories';
+import { BuyerModal } from '../Models/buyer.schema';
 
 
-export class BuyerRepositories implements IBuyerRepositories {
-  constructor(private buyerModal: Model<IBuyerDocument>) {}
-  public async create(data: IRepoRequest): Promise<IRepoResponse> {
-    const result: IBuyerDocument | null = await this.buyerModal.create(data.buyer);
+
+
+export async function createBuyer(data: IRepoRequest): Promise<IRepoResponse> {
+    const result: IBuyerDocument | null = await BuyerModal.create(data.buyer);
 
  
-    return result ? { buyer: this.filterFetchResult(result) } : { isNull: true };
+    return result ? { buyer:filterFetchResult(result) } : { isNull: true };
   }
-  public async findOne(criteria: IRepoRequest): Promise<IRepoResponse> {
-    let result: IBuyerDocument[] | null = await this.buyerModal
+export async function findOneBuyer(criteria: IRepoRequest): Promise<IRepoResponse> {
+    let result: IBuyerDocument[] | null = await BuyerModal
       .aggregate([
         { $match: { userId: { $exists: true } } },
         {
@@ -60,21 +60,16 @@ export class BuyerRepositories implements IBuyerRepositories {
 
     return result
       ? {
-          buyer: this.filterFetchResult(result[0])
+          buyer:filterFetchResult(result[0])
         }
       : { isNull: true };
   }
-  update(_id: string, _data: IRepoRequest): Promise<IRepoResponse> {
-    throw new Error('Method not implemented.');
-  }
-  delete(_id: string): Promise<boolean> {
-    throw new Error('Method not implemented.');
-  }
-
-  public async getRandomBuyers({count}: IRepoRequest): Promise<IRepoResponse> { 
 
 
-    let result: IBuyerDocument[] | null = await this.buyerModal
+export async function getRandomBuyers({count}: IRepoRequest): Promise<IRepoResponse> { 
+
+
+    let result: IBuyerDocument[] | null = await BuyerModal
       .aggregate([
         { $match: { userId: { $exists: true } } },
         { $sample: { size: count?count:10 } },
@@ -119,7 +114,7 @@ console.log("buyerarray",result)
 
 return result
 ? {
-    buyerArray: this.filterFetchResultArray(result)
+    buyerArray:filterFetchResultArray(result)
   }
 : { isNull: true }
 
@@ -127,17 +122,17 @@ return result
 
   }
 
-  public async updateUsingOtherFields({ buyerFilter, buyer }: IRepoRequest): Promise<IRepoResponse> {
-    const isUpdate = await this.buyerModal.findOneAndUpdate(buyerFilter, { $set: buyer });
+export async function updateUsingOtherFieldsBuyer({ buyerFilter, buyer }: IRepoRequest): Promise<IRepoResponse> {
+    const isUpdate = await BuyerModal.findOneAndUpdate(buyerFilter, { $set: buyer });
     return { isUpdate: !!isUpdate };
   }
 
-  private filterFetchResult(data: IBuyerDocument): Buyer {
+  function filterFetchResult(data: IBuyerDocument): Buyer {
     return new Buyer(data as BuyerParams);
   }
 
 
-  private filterFetchResultArray(data:IBuyerDocument[]):Buyer[] {
+  function filterFetchResultArray(data:IBuyerDocument[]):Buyer[] {
      let buyerArray:IBuyer[]=[]
       for (let i = 0; i < data.length; i++) {
          buyerArray.push(new Buyer(data[i] as BuyerParams))
@@ -149,4 +144,4 @@ return result
 
 
 
-}
+

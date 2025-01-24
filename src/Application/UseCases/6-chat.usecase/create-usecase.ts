@@ -2,14 +2,13 @@ import { UploadApiResponse, UploadApiErrorResponse } from 'cloudinary';
 import { io } from '../../../main';
 import { Message } from '../../../Domain/Entities/Chat';
 import { IChatData } from '../../../Domain/Interface/IChat.interface';
-import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
+import { createChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service';
 
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
+import { IRepoResponse } from '../../../IBaseRepositories';
 
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface ICreateMessageDTO {
   messageData: IChatData;
@@ -19,9 +18,8 @@ export interface ICreateMessageResult {
   message: Message;
 }
 
-export class CreateMessageUsecase implements IUseCase<ICreateMessageDTO, ICreateMessageResult> {
+export class CreateMessageUsecase  {
   constructor(
-    private readonly messageService: ChatRepository,
     private readonly uniqueIdService: UniqueId,
     private readonly cloudinaryService: CloudinaryUploads
   ) {}
@@ -39,7 +37,7 @@ export class CreateMessageUsecase implements IUseCase<ICreateMessageDTO, ICreate
 
 
 
-    const response: IRepoResponse = await this.messageService.create({
+    const response: IRepoResponse = await createChat({
       message: messageData
     });
 

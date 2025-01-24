@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { StatusCodes } from 'http-status-codes';
 import { IResendDTO, IResendResult, ResendUsecase } from '../../../Application/UseCases/1AuthUsecase/resend.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 
-export class Resend implements IController {
+export class Resend  {
   constructor(private readonly resendUsecase: ResendUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

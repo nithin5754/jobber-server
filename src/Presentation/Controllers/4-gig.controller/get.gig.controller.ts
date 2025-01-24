@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { StatusCodes } from 'http-status-codes';
 import { GetByIdSellerGig, ISellerGigGetByIdResult } from '../../../Application/UseCases/4-gig-usecase/get-id.gig.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
@@ -14,7 +14,7 @@ import { GetByCategorySellerGig, ISellerGigGetByCategoryResult } from '../../../
 import { CacheLoginUser, selectedCategory } from '../../../Infrastructure/Database/cache/Cache';
 
 
-export class GetGig implements IController {
+export class GetGig  {
   constructor(
     private readonly getById: GetByIdSellerGig,
     private readonly getSellerGigs: GetSellerGigs,

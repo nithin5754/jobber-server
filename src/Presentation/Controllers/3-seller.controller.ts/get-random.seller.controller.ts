@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import {
   ISellerRandomDTO,
   ISellerRandomResult,
@@ -8,7 +8,7 @@ import {
 import { BadRequestError } from '../../Error/errorInterface';
 import { StatusCodes } from 'http-status-codes';
 
-export class RandomSeller implements IController {
+export class RandomSeller {
   constructor(private randomsellerusecase: RandomSellersUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

@@ -1,13 +1,14 @@
 import { ConfigType } from '../../../config';
 import { User } from '../../../Domain/Entities/User';
-import { IRepoResponse } from '../../../Domain/Interface/IUser.repository';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { IRepoResponse } from '../../../IBaseRepositories';
+
+import { findOneByUser, updateUser} from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/imailer.interface';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { EMAIL_TEMPLATE } from '../../../Presentation/Utils/helper.utils';
-import { IUseCase } from '../../../Shared/IUseCases';
+
 
 
 
@@ -18,9 +19,8 @@ export interface IForgotResult {
   isPassword: boolean;
 }
 
-export class ForgotPasswordUsecase implements IUseCase<IForgotDTO, IForgotResult> {
+export class ForgotPasswordUsecase  {
   constructor(
-    private readonly userservice: UserRepository,
     private readonly configService: ConfigType,
     private readonly mailservice: Mailer,
     private readonly uniqueIdService: UniqueId
@@ -28,7 +28,7 @@ export class ForgotPasswordUsecase implements IUseCase<IForgotDTO, IForgotResult
   public async execute(input: IForgotDTO): Promise<IForgotResult> {
     const { email } = input;
 
-    let checkUserExist: IRepoResponse = await this.userservice.findOne({ data: { email } });
+    let checkUserExist: IRepoResponse = await findOneByUser({ data: { email } });
 
     if (!checkUserExist || checkUserExist.isNull || !checkUserExist.user) {
       throw new BadRequestError('Error .User not found', 'ForgotPassword forgotPassword() method error');
@@ -41,7 +41,7 @@ export class ForgotPasswordUsecase implements IUseCase<IForgotDTO, IForgotResult
 
     return {
       isPassword: !!(await Promise.all([
-        this.userservice.update(checkUserExist.user.id as string, {
+        updateUser(checkUserExist.user.id as string, {
           data: { passwordResetToken: randomCharacters, passwordResetExpires: date }
         }),
         this.sendVerificationEmail(checkUserExist.user, randomCharacters)

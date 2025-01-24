@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 
 import { StatusCodes } from 'http-status-codes';
 import {
@@ -9,7 +9,7 @@ import {
 } from '../../../Application/UseCases/4-gig-usecase/updata.gig.usecase';
 import { updateActiveGigUsecase } from '../../../Application/UseCases/4-gig-usecase/update.active.gig.usecsase';
 
-export class UpdateGig implements IController {
+export class UpdateGig  {
   constructor(private readonly updateGigInterceptor: UpdateGigUsecase,
     private readonly updateActiveGig:updateActiveGigUsecase
   ) {}

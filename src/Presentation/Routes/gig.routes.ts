@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import services from '../../Shared/Services';
+import services from '../../Services';
 
 import { CreateGigUsecase } from '../../Application/UseCases/4-gig-usecase/create.gig.usecase';
 import { CreateGig } from '../Controllers/4-gig.controller/create.gig.controller';
@@ -22,24 +22,24 @@ import { UpdateGig } from '../Controllers/4-gig.controller/update.gig.controller
 import { updateActiveGigUsecase } from '../../Application/UseCases/4-gig-usecase/update.active.gig.usecsase';
 import { CacheLoginUser } from '../../Infrastructure/Database/cache/Cache';
 
-const createGigInterceptor = new CreateGigUsecase(services.gig, services.uniqueId, services.multer, services.cloudinary, services.user);
+const createGigInterceptor = new CreateGigUsecase( services.uniqueId, services.multer, services.cloudinary);
 
-const updateGigInterceptor = new UpdateGigUsecase(services.gig,services.user);
+const updateGigInterceptor = new UpdateGigUsecase();
 
-const getByIdInterceptor = new GetByIdSellerGig(services.gig, services.user);
+const getByIdInterceptor = new GetByIdSellerGig( );
 
-const getByCategoryInterceptor = new GetByCategorySellerGig(services.gig, services.user);
-const getSellerGigsInterceptor = new GetSellerGigs(services.gig,services.user);
-const getPauseGigsInterceptor = new GetSellerPausedGigs(services.gig,services.user);
-const deleteGigInterceptor = new DeleteGigUsecase(services.gig);
+const getByCategoryInterceptor = new GetByCategorySellerGig( );
+const getSellerGigsInterceptor = new GetSellerGigs();
+const getPauseGigsInterceptor = new GetSellerPausedGigs();
+const deleteGigInterceptor = new DeleteGigUsecase();
 
-const gigSearchInterceptor = new SearchGigsUsecase(services.search, services.user);
+const gigSearchInterceptor = new SearchGigsUsecase( );
 
-const gigSeedInterceptor = new GigSeedUsecases(services.gig, services.seller);
+const gigSeedInterceptor = new GigSeedUsecases();
 
-const getMoreLikeThisInterceptor=new MoreLikeThisUsecase(services.search,services.user,services.gig)
+const getMoreLikeThisInterceptor=new MoreLikeThisUsecase()
 
-const updateInterceptor=new updateActiveGigUsecase(services.gig)
+const updateInterceptor=new updateActiveGigUsecase()
 
 const createController = new CreateGig(createGigInterceptor, gigCreateSchema)
 const gatewayCache=new CacheLoginUser()

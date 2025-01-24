@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import { BadRequestError } from '../../Error/errorInterface';
 import { StatusCodes } from 'http-status-codes';
-import { IController } from '../../../Shared/IControllers';
+
 import { MarkMessageAsReadUsecase } from '../../../Application/UseCases/6-chat.usecase/mark-single.message.usecase';
 
-export class MarkSingleMessage implements IController {
+export class MarkSingleMessage  {
   constructor(private readonly update: MarkMessageAsReadUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

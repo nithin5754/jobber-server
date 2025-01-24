@@ -1,34 +1,27 @@
-
-
 import { Message } from '../../../Domain/Entities/Chat';
+import { IRepoResponse } from '../../../IBaseRepositories';
+import { getUserMessagesChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 
-import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface IGetUserMessagesDTO {
- conversationId:string
+  conversationId: string;
 }
 
 export interface IGetUserMessagesResult {
-  messages:Message[];
+  messages: Message[];
 }
 
-export class GetUserMessagesUsecase implements IUseCase<IGetUserMessagesDTO, IGetUserMessagesResult> {
-  constructor(private readonly  chatRepo: ChatRepository) {}
+export class GetUserMessagesUsecase {
   public async execute(input: IGetUserMessagesDTO): Promise<IGetUserMessagesResult> {
-    const result:IRepoResponse = await this. chatRepo.getUserMessages(input.conversationId)
+    const result: IRepoResponse = await getUserMessagesChat(input.conversationId);
 
     if (!result || !result.messageDetailsArray) {
       throw new BadRequestError('Not Found/Empty', 'GetConversationUsecase() Missing');
     }
 
     return {
-     messages:result.messageDetailsArray
+      messages: result.messageDetailsArray
     };
   }
-
-
-  
 }

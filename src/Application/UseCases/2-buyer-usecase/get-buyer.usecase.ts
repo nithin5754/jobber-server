@@ -1,8 +1,8 @@
 import { Buyer } from "../../../Domain/Entities/Buyer";
-import { BuyerRepositories } from "../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository";
+import { IRepoResponse } from "../../../IBaseRepositories";
+import {  findOneBuyer } from "../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
-import { IRepoResponse } from "../../../Shared/IBaseRepositories";
-import { IUseCase } from "../../../Shared/IUseCases";
+
 
 
 
@@ -23,15 +23,12 @@ export interface IGetBuyerResult{
 
 
 
-export class GetBuyerUsecase implements IUseCase<IGetBuyerDTO,IGetBuyerResult> {
+export class GetBuyerUsecase  {
 
- constructor (
-  private buyerservice:BuyerRepositories
- ){}
 
  public async execute(input: IGetBuyerDTO): Promise<IGetBuyerResult> {
 
-  const found:IRepoResponse=await this.buyerservice.findOne({buyer:
+  const found:IRepoResponse=await findOneBuyer({buyer:
     input.email?
     {email:input.email}
     :

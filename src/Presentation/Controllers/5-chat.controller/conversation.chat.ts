@@ -2,12 +2,12 @@ import { NextFunction,Request,Response } from "express";
 import { BadRequestError } from "../../Error/errorInterface";
 
 import { StatusCodes } from "http-status-codes";
-import { IController } from "../../../Shared/IControllers";
+
 import { GetConversationUsecase, IGetConversationResult } from "../../../Application/UseCases/6-chat.usecase/get-conversation";
 
 
 
-export class Conversation implements IController {
+export class Conversation  {
   constructor(
     private readonly getConversation:GetConversationUsecase
   ) {}

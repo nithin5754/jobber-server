@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { ISellerGigSearchIdResult, SearchGigsUsecase } from '../../../Application/UseCases/5-search-usecase/search.gig.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 
-export class GigSearchController implements IController {
+export class GigSearchController  {
   private readonly ITEM_PER_PAGE='8';
 
   constructor(private readonly gig_search_usecase: SearchGigsUsecase) {}

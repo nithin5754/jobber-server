@@ -1,12 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 
 import { BadRequestError } from "../../Error/errorInterface";
-import { CurrentUserUsecase, ICurrentUserResult } from "../../../Application/UseCases/1AuthUsecase/currentUser.usecase";
+
 import { User } from "../../../Domain/Entities/User";
 import { UserTypeKey } from "../../../Domain/Interface/IUser.interface";
 import { omit } from "lodash";
 import { StatusCodes } from "http-status-codes";
-import { IController } from "../../../Shared/IControllers";
+import { CurrentUserUsecase, ICurrentUserResult } from "../../../Application/UseCases/1AuthUsecase/currentUser.usecase";
+import { IController } from "../../../IController";
+
 
 
 
@@ -51,4 +53,12 @@ public async  handle(req: Request, res: Response, next: NextFunction): Promise<v
   private sanitizeTheData(data: User, RemoveItem: UserTypeKey[]): User {
     return omit(data, RemoveItem) as User;
   }
+
+
+
+
+
+
+
+  
 }

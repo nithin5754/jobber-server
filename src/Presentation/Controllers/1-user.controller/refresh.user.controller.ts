@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { IRefreshResult, RefreshUsecase } from '../../../Application/UseCases/1AuthUsecase/refresh.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 import { User } from '../../../Domain/Entities/User';
@@ -7,7 +7,7 @@ import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import { omit } from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 
-export class Refresh implements IController {
+export class Refresh  {
   constructor(private readonly refreshUsecase: RefreshUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

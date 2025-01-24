@@ -1,6 +1,6 @@
-import { GigRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
+import { deleteGig } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IUseCase } from '../../../Shared/IUseCases';
+
 
 export interface ISellerGigDeleteDTO {
   gigId: string;
@@ -11,11 +11,11 @@ export interface ISellerGigDeleteResult {
   isDelete: boolean;
 }
 
-export class DeleteGigUsecase implements IUseCase<ISellerGigDeleteDTO, ISellerGigDeleteResult> {
-  constructor(private readonly gigService: GigRepository) {}
+export class DeleteGigUsecase {
+
 
   public async execute(input: ISellerGigDeleteDTO): Promise<ISellerGigDeleteResult> {
-    const isDelete: boolean = await this.gigService.deleteGig({
+    const isDelete: boolean = await deleteGig({
       gig: {
         _id: input.gigId,
         sellerId: input.sellerId

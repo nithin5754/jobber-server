@@ -2,14 +2,14 @@ import { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
 
 import { SellerGig } from '../../../Domain/Entities/gig.entity';
 import { ISellerGig } from '../../../Domain/Interface/IGig.interface';
-import { GigRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
+import { countGig, createGIG, findOneGIG } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service';
 import { MulterFileConverter } from '../../../Infrastructure/External-libraries/5-multer-converter/multer-convertor.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+
+import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { IRepoResponse } from '../../../IBaseRepositories';
 
 
 export interface ISellerGigCreateDTO {
@@ -21,16 +21,16 @@ export interface ISellerGigCreateResult {
   sellerGig: SellerGig;
 }
 
-export class CreateGigUsecase implements IUseCase<ISellerGigCreateDTO, ISellerGigCreateResult> {
+export class CreateGigUsecase  {
   constructor(
-    private readonly gigService: GigRepository,
+
     private readonly uniqueIdService: UniqueId,
     private readonly multerService: MulterFileConverter,
     private readonly cloudinaryService: CloudinaryUploads,
-    private readonly userservice: UserRepository
+
   ) {}
   public async execute(input: ISellerGigCreateDTO): Promise<ISellerGigCreateResult> {
-    const isFound: IRepoResponse = await this.gigService.findOne({
+    const isFound: IRepoResponse = await findOneGIG({
       gig: {
         title: input.data.title
       }
@@ -58,7 +58,7 @@ export class CreateGigUsecase implements IUseCase<ISellerGigCreateDTO, ISellerGi
 
     const [_, { url }] = await Promise.all([this.generateRandomCharacters(), this.uploadPhotoGetUrlAndId(coverImage)]);
 
-    const count = await this.gigService.countGig();
+    const count = await countGig();
 
     const newGigData: ISellerGig = {
       ...data,
@@ -66,7 +66,7 @@ export class CreateGigUsecase implements IUseCase<ISellerGigCreateDTO, ISellerGi
       coverImage: url as string
     };
 
-    const result: IRepoResponse = await this.gigService.create({ gig: newGigData });
+    const result: IRepoResponse = await createGIG({ gig: newGigData });
 
     if (!result || result.isNull || !result.gig) {
       throw new BadRequestError('Failed to create gig', 'Seller Gig creation error');
@@ -109,7 +109,7 @@ export class CreateGigUsecase implements IUseCase<ISellerGigCreateDTO, ISellerGi
   }
 
   private async addUserDetails(gig: SellerGig): Promise<void> {
-    const userDetails: IRepoResponse = await this.userservice.findOne({ data: { _id: gig.userId } });
+    const userDetails: IRepoResponse = await findOneByUser({ data: { _id: gig.userId } });
 
     if (!userDetails) {
       throw new BadRequestError('users not Found', `Get User Gig Usecase() Not Found by `);

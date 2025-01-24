@@ -1,10 +1,9 @@
-
-
 import { User } from "../../../Domain/Entities/User";
-import { UserRepository } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
+import { IRepoResponse } from "../../../IBaseRepositories";
+import { findOneByUser } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
-import { IRepoResponse } from "../../../Shared/IBaseRepositories";
-import { IUseCase } from "../../../Shared/IUseCases";
+
+
 
 
 export interface ICurrentUseDTO {
@@ -15,20 +14,14 @@ export interface ICurrentUserResult {
     user:User
 }
 
+export class CurrentUserUsecase  {
 
-
-export class CurrentUserUsecase implements IUseCase<ICurrentUseDTO,ICurrentUserResult> {
-  constructor(
-    private readonly userService:UserRepository
-  ) {
-    
-  }
  public async execute(input: ICurrentUseDTO): Promise<ICurrentUserResult> {
    const {userId}=input
 
 
 
-   const found:IRepoResponse= await this.userService.findOne({data:{_id:userId}});
+   const found:IRepoResponse= await findOneByUser({data:{_id:userId}});
 
 
 

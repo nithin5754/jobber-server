@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { BadRequestError } from '../../Error/errorInterface';
 import { IVerifyEmailResult, VerifyEmailUsecase } from '../../../Application/UseCases/1AuthUsecase/verify-email.usecase';
 import { StatusCodes } from 'http-status-codes';
@@ -7,7 +7,7 @@ import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import { User } from '../../../Domain/Entities/User';
 import { omit } from 'lodash';
 
-export class VerifyEmail implements IController {
+export class VerifyEmail  {
   constructor(private verifyEmailusecase: VerifyEmailUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

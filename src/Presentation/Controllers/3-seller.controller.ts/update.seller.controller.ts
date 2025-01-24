@@ -1,12 +1,12 @@
 import Joi from 'joi';
 import { ISellerUpdateResult, UpdateSellerUsecase } from '../../../Application/UseCases/3-seller-usecase/update.seller.usercase';
-import { IController } from '../../../Shared/IControllers';
+
 import { BadRequestError } from '../../Error/errorInterface';
 import { Request, Response, NextFunction } from 'express';
 import { ISeller } from '../../../Domain/Interface/ISeller.interface';
 import { StatusCodes } from 'http-status-codes';
 
-export class UpdateSeller implements IController {
+export class UpdateSeller  {
   constructor(private updatesellerusecase: UpdateSellerUsecase, private validation: Joi.ObjectSchema<any>) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
          try {

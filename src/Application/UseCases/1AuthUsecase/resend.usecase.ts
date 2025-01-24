@@ -1,13 +1,13 @@
 import { ConfigType } from '../../../config';
 import { User } from '../../../Domain/Entities/User';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { IRepoResponse } from '../../../IBaseRepositories';
+import { findOneByUser, updateUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/imailer.interface';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { EMAIL_TEMPLATE, lowerCase } from '../../../Presentation/Utils/helper.utils';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
+
 
 export interface IResendDTO {
   email: string;
@@ -18,9 +18,8 @@ export interface IResendResult {
   isSend: boolean;
 }
 
-export class ResendUsecase implements IUseCase<IResendDTO, IResendResult> {
+export class ResendUsecase  {
   constructor(
-    private readonly userservice: UserRepository,
     private readonly mailerService: Mailer,
     private readonly configService: ConfigType,
     private readonly uniqueIdService: UniqueId
@@ -28,7 +27,7 @@ export class ResendUsecase implements IUseCase<IResendDTO, IResendResult> {
 
   public async execute(input: IResendDTO): Promise<IResendResult> {
     const { email, userId } = input;
-    let found: IRepoResponse = await this.userservice.findOne({ data: { email: lowerCase(email) } });
+    let found: IRepoResponse = await findOneByUser({ data: { email: lowerCase(email) } });
  
 
     if (!found || found.isNull || !found.user || found.user.id !== userId) {
@@ -39,7 +38,7 @@ export class ResendUsecase implements IUseCase<IResendDTO, IResendResult> {
 
     return {
       isSend: !!(await Promise.all([
-        this.userservice.update(found.user.id, { data: { emailVerificationToken: randomCharacters } }),
+        updateUser(found.user.id, { data: { emailVerificationToken: randomCharacters } }),
 
         this.sendVerificationEmail(found.user, randomCharacters)
       ]))

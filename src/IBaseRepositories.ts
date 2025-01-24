@@ -1,16 +1,15 @@
-import { Buyer, IBuyer } from '../Domain/Entities/Buyer';
-import { Message } from '../Domain/Entities/Chat';
-import { SellerGig } from '../Domain/Entities/gig.entity';
-import { Seller } from '../Domain/Entities/seller.entity';
-import { IUser, User } from '../Domain/Entities/User';
-import { IChatData, IConversation,  } from '../Domain/Interface/IChat.interface';
-import { ISellerGig } from '../Domain/Interface/IGig.interface';
-import { ISeller } from '../Domain/Interface/ISeller.interface';
+import { Buyer, IBuyer } from "./Domain/Entities/Buyer";
+import { Message } from "./Domain/Entities/Chat";
+import { SellerGig } from "./Domain/Entities/gig.entity";
+import { Seller } from "./Domain/Entities/seller.entity";
+import { User, IUser } from "./Domain/Entities/User";
+import { IConversation, IChatData } from "./Domain/Interface/IChat.interface";
+import { ISellerGig } from "./Domain/Interface/IGig.interface";
+import { ISeller } from "./Domain/Interface/ISeller.interface";
+
 
 export interface IRepoResponse {
-
   user?: User;
-
   buyer?: Buyer;
   buyerArray?: Buyer[];
   seller?: Seller;
@@ -26,7 +25,6 @@ export interface IRepoResponse {
 }
 
 export interface IRepoRequest {
-
   filter?: IUser;
   data?: IUser;
   query?: string;

@@ -2,13 +2,14 @@ import { floor, random, sample, sampleSize } from 'lodash';
 import { Buyer } from '../../../Domain/Entities/Buyer';
 import { Seller } from '../../../Domain/Entities/seller.entity';
 import { IEducation, IExperience, ISeller } from '../../../Domain/Interface/ISeller.interface';
-import { BuyerRepositories } from '../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository';
-import { SellerRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
+import {  getRandomBuyers, updateUsingOtherFieldsBuyer } from '../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository';
+import { createSeller, findOneSeller } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
+
+
 import { faker } from '@faker-js/faker';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { IRepoResponse } from '../../../IBaseRepositories';
 export interface ISellerSeedDTO {
   size: number;
 }
@@ -17,12 +18,8 @@ export interface ISellerSeedResult {
   iSucess: boolean;
 }
 
-export class SeedSellersUsecase implements IUseCase<ISellerSeedDTO, ISellerSeedResult> {
-  constructor(
-    private readonly buyerService: BuyerRepositories,
-    private readonly sellerService: SellerRepository,
-    private readonly userservice: UserRepository
-  ) {}
+export class SeedSellersUsecase  {
+
 
   public async execute(input: ISellerSeedDTO): Promise<ISellerSeedResult> {
     const { size } = input;
@@ -37,7 +34,7 @@ export class SeedSellersUsecase implements IUseCase<ISellerSeedDTO, ISellerSeedR
   }
 
   private async getRandomBuyers(count: number): Promise<Buyer[]> {
-    const buyers: IRepoResponse = await this.buyerService.getRandomBuyers({ count: parseInt(`${count}`, 10) });
+    const buyers: IRepoResponse = await getRandomBuyers({ count: parseInt(`${count}`, 10) });
 
     if (!buyers || buyers.isNull || !buyers.buyerArray || buyers.buyerArray.length < 1) {
       throw new BadRequestError('Not Found', 'SeedSellersUsecase seller() method error');
@@ -58,13 +55,13 @@ export class SeedSellersUsecase implements IUseCase<ISellerSeedDTO, ISellerSeedR
 
       const create: ISeller = this.newSellerData(buyer);
 
-      const result: IRepoResponse = await this.sellerService.create({ seller: create });
+      const result: IRepoResponse = await createSeller({ seller: create });
 
       if (!result || !result.seller || result.isNull) {
         throw new BadRequestError('Error Occurred Creating Seller Profile', 'CreateSellerUseCase() validation error');
       }
 
-      await this.buyerService.updateUsingOtherFields({ buyerFilter: { userId: result.seller.userId }, buyer: { isSeller: true } });
+      await updateUsingOtherFieldsBuyer({ buyerFilter: { userId: result.seller.userId }, buyer: { isSeller: true } });
 
       await this.addUserDetails(result.seller);
     }
@@ -73,7 +70,7 @@ export class SeedSellersUsecase implements IUseCase<ISellerSeedDTO, ISellerSeedR
   }
 
   private async isSellerExist(email: string): Promise<Seller | null> {
-    const result: IRepoResponse = await this.sellerService.findOne({ seller: { email: `${email}` } });
+    const result: IRepoResponse = await findOneSeller({ seller: { email: `${email}` } });
 
     return result.seller ?? null;
   }
@@ -138,7 +135,7 @@ export class SeedSellersUsecase implements IUseCase<ISellerSeedDTO, ISellerSeedR
   }
 
   private async addUserDetails(seller: Seller): Promise<void> {
-    const userDetails: IRepoResponse = await this.userservice.findOne({ data: { _id: seller.userId } });
+    const userDetails: IRepoResponse = await findOneByUser({ data: { _id: seller.userId } });
 
     if (!userDetails) {
       throw new BadRequestError('users not Found', `SeedSellersUsecase() Not Found by `);

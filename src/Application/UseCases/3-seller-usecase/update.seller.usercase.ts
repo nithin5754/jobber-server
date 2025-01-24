@@ -1,10 +1,9 @@
 import { Seller } from '../../../Domain/Entities/seller.entity';
 import { ISeller } from '../../../Domain/Interface/ISeller.interface';
-import { SellerRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
-import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
+import { IRepoResponse } from '../../../IBaseRepositories';
+import { updateUsingOtherFilterSeller } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
+import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface ISellerUpdateDTO {
   filter: string;
@@ -15,10 +14,10 @@ export interface ISellerUpdateResult {
   seller: Seller;
 }
 
-export class UpdateSellerUsecase implements IUseCase<ISellerUpdateDTO, ISellerUpdateResult> {
-  constructor(private readonly sellerservice: SellerRepository, private readonly userservice: UserRepository) {}
+export class UpdateSellerUsecase  {
+
   public async execute(input: ISellerUpdateDTO): Promise<ISellerUpdateResult> {
-    const updatedSeller: IRepoResponse = await this.sellerservice.updateUsingOtherFilter({
+    const updatedSeller: IRepoResponse = await updateUsingOtherFilterSeller({
       sellerFilter: { _id: input.filter },
       seller: input.sellerParams
     });
@@ -35,7 +34,7 @@ export class UpdateSellerUsecase implements IUseCase<ISellerUpdateDTO, ISellerUp
   }
 
   private async addUserDetails(seller: Seller, input: ISellerUpdateDTO): Promise<void> {
-    const userDetails: IRepoResponse = await this.userservice.findOne({ data: { _id: seller.userId } });
+    const userDetails: IRepoResponse = await findOneByUser({ data: { _id: seller.userId } });
 
     if (!userDetails) {
       throw new BadRequestError(

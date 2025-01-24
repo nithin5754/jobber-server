@@ -1,10 +1,7 @@
-
-import { GigRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
+import { IRepoResponse } from '../../../IBaseRepositories';
+import { updateGIG } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
 
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUseCases';
-
 
 export interface ISellerGigUpdateDTO {
   id: string;
@@ -13,8 +10,7 @@ export interface ISellerGigUpdateDTO {
 
 export interface ISellerGigUpdateResult {}
 
-export class updateActiveGigUsecase implements IUseCase<ISellerGigUpdateDTO, ISellerGigUpdateResult> {
-  constructor(private readonly gigService: GigRepository) {}
+export class updateActiveGigUsecase {
   public async execute(input: ISellerGigUpdateDTO): Promise<ISellerGigUpdateResult> {
     await this.processGigUpdate(input);
 
@@ -24,7 +20,7 @@ export class updateActiveGigUsecase implements IUseCase<ISellerGigUpdateDTO, ISe
   private async processGigUpdate(input: ISellerGigUpdateDTO): Promise<void> {
     const { id, active } = input;
 
-    const result: IRepoResponse = await this.gigService.update(id, { gig: { active } });
+    const result: IRepoResponse = await updateGIG(id, { gig: { active } });
 
     if (!result || result.isNull) {
       throw new BadRequestError('Failed to create gig', 'Seller Gig update error');

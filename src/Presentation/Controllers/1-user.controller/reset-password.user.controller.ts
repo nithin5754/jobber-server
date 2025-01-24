@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
 import {
@@ -9,7 +9,7 @@ import {
 } from '../../../Application/UseCases/1AuthUsecase/reset-password.usecase';
 import { StatusCodes } from 'http-status-codes';
 
-export class ResetPassword implements IController {
+export class ResetPassword  {
   constructor(private readonly validation: Joi.ObjectSchema<any>, private readonly resetForgotUsecase: ResetPasswordUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

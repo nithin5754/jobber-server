@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 
 import { StatusCodes } from 'http-status-codes';
 
 import { IUpdateOfferResult, UpdateOfferReadUsecase } from '../../../Application/UseCases/6-chat.usecase/update.offer.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
 
-export class UpdateOfferMessages implements IController {
+export class UpdateOfferMessages {
   constructor(private readonly update: UpdateOfferReadUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IController } from '../../../Shared/IControllers';
+
 import {
   CreateGigUsecase,
   ISellerGigCreateDTO,
@@ -10,7 +10,7 @@ import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
 
-export class CreateGig implements IController {
+export class CreateGig  {
   constructor(private readonly createGigUsecase: CreateGigUsecase, private readonly validation: Joi.ObjectSchema<any>) {}
 
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {

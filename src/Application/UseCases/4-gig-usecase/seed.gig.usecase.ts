@@ -1,23 +1,22 @@
 import { faker } from '@faker-js/faker';
 import { ISellerGig } from '../../../Domain/Interface/IGig.interface';
 
-import { IUseCase } from '../../../Shared/IUseCases';
+
 import { sample } from 'lodash';
 
-import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { GigRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
+import { createGIG } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
 
 import { Seller } from '../../../Domain/Entities/seller.entity';
-import { SellerRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
+import { findSeller } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
+import { IRepoResponse } from '../../../IBaseRepositories';
 
 export interface ISellerGigSeedDTO {}
 
 export interface ISellerGigSeedResult {}
 
-export class GigSeedUsecases implements IUseCase<ISellerGigSeedDTO, ISellerGigSeedResult> {
-  constructor(private readonly gigService: GigRepository, private readonly sellerService: SellerRepository) {}
+export class GigSeedUsecases  {
   public async execute(_input: ISellerGigSeedDTO): Promise<ISellerGigSeedResult> {
-    const seller: IRepoResponse = await this.sellerService.find();
+    const seller: IRepoResponse = await findSeller();
 
     console.log("sellers",seller.sellerArray?.length)
 
@@ -73,7 +72,7 @@ export class GigSeedUsecases implements IUseCase<ISellerGigSeedDTO, ISellerGigSe
       };
       console.log(`***SEEDING GIG*** - ${i + 1} of ${count}`);
 
-   await this.gigService.create({ gig: gig });
+   await createGIG({ gig: gig });
     }
 
     return true;

@@ -1,29 +1,27 @@
-import { Model } from 'mongoose';
+
 import {  User, UserParams } from '../../../../Domain/Entities/User';
 import { UserDocuments } from '../../../../Domain/Interface/IUser.interface';
-import { IRepoResponse, IUserRepository } from '../../../../Domain/Interface/IUser.repository';
+
+import { IRepoRequest, IRepoResponse } from '../../../../IBaseRepositories';
+import { UserModal } from '../Models/user.schema';
+import { BuyerModal } from '../Models/buyer.schema';
 
 
-import { IRepoRequest } from '../../../../Shared/IBaseRepositories';
-import { BuyerRepositories } from './buyer.repository';
 
-
-export class UserRepository implements IUserRepository {
-  constructor(private readonly model: Model<UserDocuments>, private readonly buyerservice: BuyerRepositories) {}
-  public async isUsernameOrEmailExist(username: string, email: string): Promise<{ username: boolean; email: boolean }> {
-    const result: UserDocuments[] | null = await this.model.find({ username, email });
+  export  async function isUsernameOrEmailExist(username: string, email: string): Promise<{ username: boolean; email: boolean }> {
+    const result: UserDocuments[] | null = await UserModal.find({ username, email });
 
     const isEmailExist: boolean = result.some((user: UserDocuments) => user.email === email);
     const isUserNameExist: boolean = result.some((user: UserDocuments) => user.username === username);
 
     return { email: isEmailExist, username: isUserNameExist };
   }
-  public async updateUsingOtherFields({ filter, data }: IRepoRequest): Promise<IRepoResponse> {
-    const isUpdate = await this.model.findByIdAndUpdate(filter, { $set: data });
+  export async function updateUsingOtherFieldsUser({ filter, data }: IRepoRequest): Promise<IRepoResponse> {
+    const isUpdate = await UserModal.findByIdAndUpdate(filter, { $set: data });
     return { isUpdate: !!isUpdate };
   }
-  public async create(data: IRepoRequest): Promise<IRepoResponse> {
-    const result: UserDocuments | null = await this.model.create(data.data);
+  export async function createUser(data: IRepoRequest): Promise<IRepoResponse> {
+    const result: UserDocuments | null = await UserModal.create(data.data);
 
     if (result) {
       const buyerInitialDetails = {
@@ -31,27 +29,24 @@ export class UserRepository implements IUserRepository {
         purchasedGigs: []
       };
 
-      await this.buyerservice.create({ buyer: buyerInitialDetails });
+      await BuyerModal.create({ buyer: buyerInitialDetails });
     }
 
-    return result ? { user: this.filterFetchResult(result) } : { isNull: true };
+    return result ? { user: filterFetchResult(result) } : { isNull: true };
   }
-  public async findOne(criteria: IRepoRequest): Promise<IRepoResponse> {
-    const result: UserDocuments | null = await this.model.findOne(criteria.data);
+  export async function findOneByUser(criteria: IRepoRequest): Promise<IRepoResponse> {
+    const result: UserDocuments | null = await UserModal.findOne(criteria.data);
 
-    return result ? { user: this.filterFetchResult(result) } : { isNull: true };
+    return result ? { user: filterFetchResult(result) } : { isNull: true };
   }
 
-  public async update(id: string, data: IRepoRequest): Promise<IRepoResponse> {
-    const isUpdate = await this.model.findByIdAndUpdate({ _id: id }, { $set: data.data }, { upsert: true });
+  export async function updateUser(id: string, data: IRepoRequest): Promise<IRepoResponse> {
+    const isUpdate = await UserModal.findByIdAndUpdate({ _id: id }, { $set: data.data }, { upsert: true });
 
     return { isUpdate: !!isUpdate };
   }
-  delete(_id: string): Promise<boolean> {
-    throw new Error('Method not implemented.');
-  }
 
-  private filterFetchResult(data: UserDocuments): User {
+  export  function filterFetchResult(data: UserDocuments): User {
     return new User(data as UserParams);
   }
-}
+
