@@ -18,7 +18,7 @@ export default function expressConfig(app: Application, _config: ConfigType) {
 
   app.use(
     cors({
-      origin: ["http://localhost:3000"],
+      origin: ["http://localhost:3000","https://jobber-client.vercel.app","http://jobber-client.vercel.app","https://www.jobber.phaseex.live"],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       credentials: true,
     })

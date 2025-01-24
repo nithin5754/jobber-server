@@ -29,9 +29,16 @@ connection(mongoose, config).connectToMongo();
 const httpServer: httpServerType = http.createServer(app);
 
 io = new Server(httpServer, {
-  transports: ['websocket', 'polling'], 
+  transports: ['websocket', 'polling'],
   cors: {
-    origin: ['http://localhost:3000', 'http://localhost:5173'],
+    origin: [
+      'http://localhost:3000',
+      'https://jobber-client.vercel.app',
+      'http://jobber-client.vercel.app',
+      'https://www.jobber.phaseex.live',
+       'http://www.jobber.phaseex.live'
+    ],
+
     credentials: true
   }
 });
