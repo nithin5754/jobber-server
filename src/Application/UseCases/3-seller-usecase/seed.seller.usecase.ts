@@ -2,13 +2,13 @@ import { floor, random, sample, sampleSize } from 'lodash';
 import { Buyer } from '../../../Domain/Entities/Buyer';
 import { Seller } from '../../../Domain/Entities/seller.entity';
 import { IEducation, IExperience, ISeller } from '../../../Domain/Interface/ISeller.interface';
-import { BuyerRepositories } from '../../../Infrastructure/Databse/Mongoose/Repositories/buyer.repository';
-import { SellerRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/seller.respository';
-import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { BuyerRepositories } from '../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository';
+import { SellerRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
+import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
 import { faker } from '@faker-js/faker';
-import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/UserRespository';
+import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 export interface ISellerSeedDTO {
   size: number;
 }

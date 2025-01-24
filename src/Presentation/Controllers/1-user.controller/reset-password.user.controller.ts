@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
-import { BadRequestError } from '../../Error/error.interface';
+import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
 import {
   IResetPasswordDTO,

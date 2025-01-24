@@ -1,6 +1,6 @@
 import { Buyer } from "../../../Domain/Entities/Buyer";
-import { BuyerRepositories } from "../../../Infrastructure/Databse/Mongoose/Repositories/buyer.repository";
-import { BadRequestError } from "../../../Presentation/Error/error.interface";
+import { BuyerRepositories } from "../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository";
+import { BadRequestError } from "../../../Presentation/Error/errorInterface";
 import { IRepoResponse } from "../../../Shared/IBaseRepository";
 import { IUseCase } from "../../../Shared/IUsecase";
 

@@ -2,10 +2,10 @@ import { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
 import { ConfigType } from '../../../config';
 import { User } from '../../../Domain/Entities/User';
 
-import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { EMAIL_TEMPLATE } from '../../../Presentation/Utils/helper.utils';
 import { IUseCase } from '../../../Shared/IUsecase';
-import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/UserRespository';
+import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
 import { MulterFileConverter } from '../../../Infrastructure/External-libraries/5-multer-converter/multer-convertor.service';

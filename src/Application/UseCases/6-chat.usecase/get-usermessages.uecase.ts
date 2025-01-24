@@ -2,8 +2,8 @@
 
 import { Message } from '../../../Domain/Entities/Chat';
 
-import { ChatRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/chat.repository';
-import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
+import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IRepoResponse } from '../../../Shared/IBaseRepository';
 import { IUseCase } from '../../../Shared/IUsecase';
 

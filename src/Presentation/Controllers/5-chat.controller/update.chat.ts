@@ -4,7 +4,7 @@ import { IController } from '../../../Shared/IController';
 import { StatusCodes } from 'http-status-codes';
 
 import { IUpdateOfferResult, UpdateOfferReadUsecase } from '../../../Application/UseCases/6-chat.usecase/update.offer.usecase';
-import { BadRequestError } from '../../Error/error.interface';
+import { BadRequestError } from '../../Error/errorInterface';
 
 export class UpdateOfferMessages implements IController {
   constructor(private readonly update: UpdateOfferReadUsecase) {}

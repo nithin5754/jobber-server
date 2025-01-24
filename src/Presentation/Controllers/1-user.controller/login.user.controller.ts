@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 
 import { LoginUseCase } from '../../../Application/UseCases/1AuthUsecase/login.usecase';
 import Joi from 'joi';
-import { BadRequestError } from '../../Error/error.interface';
+import { BadRequestError } from '../../Error/errorInterface';
 import { omit } from 'lodash';
 import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import { User } from '../../../Domain/Entities/User';

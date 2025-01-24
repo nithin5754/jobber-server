@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
 import { IRefreshResult, RefreshUsecase } from '../../../Application/UseCases/1AuthUsecase/refresh.usecase';
-import { BadRequestError } from '../../Error/error.interface';
+import { BadRequestError } from '../../Error/errorInterface';
 import { User } from '../../../Domain/Entities/User';
 import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import { omit } from 'lodash';

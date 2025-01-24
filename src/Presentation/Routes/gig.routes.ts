@@ -20,7 +20,7 @@ import { GetByCategorySellerGig } from '../../Application/UseCases/4-gig-usecase
 import { UpdateGigUsecase } from '../../Application/UseCases/4-gig-usecase/updata.gig.usecase';
 import { UpdateGig } from '../Controllers/4-gig.controller/update.gig.controller';
 import { updateActiveGigUsecase } from '../../Application/UseCases/4-gig-usecase/update.active.gig.usecsase';
-import { CacheLoginUser } from '../../Infrastructure/Databse/cache/Cache';
+import { CacheLoginUser } from '../../Infrastructure/Database/cache/Cache';
 
 const createGigInterceptor = new CreateGigUsecase(services.gig, services.uniqueId, services.multer, services.cloudinary, services.user);
 

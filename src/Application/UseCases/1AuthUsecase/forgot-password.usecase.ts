@@ -1,11 +1,11 @@
 import { ConfigType } from '../../../config';
 import { User } from '../../../Domain/Entities/User';
 import { IRepoResponse } from '../../../Domain/Interface/IUser.repository';
-import { UserRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/UserRespository';
+import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/imailer.interface';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
-import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { EMAIL_TEMPLATE } from '../../../Presentation/Utils/helper.utils';
 import { IUseCase } from '../../../Shared/IUsecase';
 

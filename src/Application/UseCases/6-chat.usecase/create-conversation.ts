@@ -1,6 +1,6 @@
 
 import { IChatData,  } from '../../../Domain/Interface/IChat.interface';
-import { ChatRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/chat.repository';
+import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 
 
 import { IUseCase } from '../../../Shared/IUsecase';

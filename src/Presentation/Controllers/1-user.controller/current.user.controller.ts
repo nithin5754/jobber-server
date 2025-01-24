@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { BadRequestError } from "../../Error/error.interface";
+import { BadRequestError } from "../../Error/errorInterface";
 import { CurrentUserUsecase, ICurrentUserResult } from "../../../Application/UseCases/1AuthUsecase/currentUser.usecase";
 import { User } from "../../../Domain/Entities/User";
 import { UserTypeKey } from "../../../Domain/Interface/IUser.interface";

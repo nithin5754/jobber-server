@@ -3,7 +3,7 @@ import { ISellerDocument } from '../../../../Domain/Interface/ISeller.interface'
 import { ISellerRepositories } from '../../../../Domain/Interface/ISeller.respositorory';
 
 import { Seller } from '../../../../Domain/Entities/seller.entity';
-import { BadRequestError } from '../../../../Presentation/Error/error.interface';
+import { BadRequestError } from '../../../../Presentation/Error/errorInterface';
 import { IRepoRequest, IRepoResponse } from '../../../../Shared/IBaseRepository';
 
 export class SellerRepository implements ISellerRepositories {

@@ -1,5 +1,5 @@
 import { NextFunction,Request,Response } from "express";
-import { BadRequestError } from "../../Error/error.interface";
+import { BadRequestError } from "../../Error/errorInterface";
 import { GetMessageUsecase, IGetMessageResult } from "../../../Application/UseCases/6-chat.usecase/get-message.usecase";
 import { StatusCodes } from "http-status-codes";
 import { IController } from "../../../Shared/IController";

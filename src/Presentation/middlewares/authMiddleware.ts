@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
 import { JwtPayload } from 'jsonwebtoken';
-import { NotAuthorizedError } from '../Error/error.interface';
+import { NotAuthorizedError } from '../Error/errorInterface';
 import { JwtToken } from '../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { IAuthPayload } from '../../Infrastructure/External-libraries/6-token.ts/itoken.interface';
 

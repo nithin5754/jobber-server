@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { GetSellerUsecase, ISellerGetDTO, ISellerGetResult } from '../../../Application/UseCases/3-seller-usecase/get.seller.usecase';
 import { IController } from '../../../Shared/IController';
 import { StatusCodes } from 'http-status-codes';
-import { BadRequestError } from '../../Error/error.interface';
+import { BadRequestError } from '../../Error/errorInterface';
 
 export class GetSellerByUsername implements IController {
   constructor(private readonly getsellerUsecase: GetSellerUsecase) {}

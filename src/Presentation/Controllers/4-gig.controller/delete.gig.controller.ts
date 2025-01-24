@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { IController } from "../../../Shared/IController";
 import { StatusCodes } from "http-status-codes";
-import { BadRequestError } from "../../Error/error.interface";
+import { BadRequestError } from "../../Error/errorInterface";
 import { DeleteGigUsecase } from "../../../Application/UseCases/4-gig-usecase/delete.gig.usecase";
 
 

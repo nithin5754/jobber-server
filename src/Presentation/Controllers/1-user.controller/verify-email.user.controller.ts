@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
-import { BadRequestError } from '../../Error/error.interface';
+import { BadRequestError } from '../../Error/errorInterface';
 import { IVerifyEmailResult, VerifyEmailUsecase } from '../../../Application/UseCases/1AuthUsecase/verify-email.usecase';
 import { StatusCodes } from 'http-status-codes';
 import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';

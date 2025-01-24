@@ -1,5 +1,5 @@
-import { GigRepository } from '../../../Infrastructure/Databse/Mongoose/Repositories/gig.repository';
-import { BadRequestError } from '../../../Presentation/Error/error.interface';
+import { GigRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
+import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IUseCase } from '../../../Shared/IUsecase';
 
 export interface ISellerGigDeleteDTO {

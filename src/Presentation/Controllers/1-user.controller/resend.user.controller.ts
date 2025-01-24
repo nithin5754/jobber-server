@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/IController';
 import { StatusCodes } from 'http-status-codes';
 import { IResendDTO, IResendResult, ResendUsecase } from '../../../Application/UseCases/1AuthUsecase/resend.usecase';
-import { BadRequestError } from '../../Error/error.interface';
+import { BadRequestError } from '../../Error/errorInterface';
 
 export class Resend implements IController {
   constructor(private readonly resendUsecase: ResendUsecase) {}
