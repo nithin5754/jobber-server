@@ -1,6 +1,6 @@
 
-import { ISellerDocument } from '../../../../Domain/Interface/ISeller.interface';
-import { Seller } from '../../../../Domain/Entities/seller.entity';
+import { ISellerDocument } from '../../../../Interface/ISeller.interface';
+import { Seller } from '../../../../Entities/seller.entity';
 import { BadRequestError } from '../../../../Presentation/Error/errorInterface';
 import { IRepoRequest, IRepoResponse } from '../../../../IBaseRepositories';
 import { SellerModel } from '../Models/seller.schema';

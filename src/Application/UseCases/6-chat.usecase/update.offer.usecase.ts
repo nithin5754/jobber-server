@@ -2,7 +2,7 @@
 
 
 
-import { Message } from '../../../Domain/Entities/Chat';
+import { Message } from '../../../Entities/Chat';
 import { IRepoResponse } from '../../../IBaseRepositories';
 import { updateOfferChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';

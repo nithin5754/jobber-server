@@ -1,5 +1,5 @@
 
-import { IConversation } from '../../../Domain/Interface/IChat.interface';
+import { IConversation } from '../../../Interface/IChat.interface';
 import { IRepoResponse } from '../../../IBaseRepositories';
 
 import {  getConversationChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';

@@ -1,6 +1,6 @@
 
-import {  User, UserParams } from '../../../../Domain/Entities/User';
-import { UserDocuments } from '../../../../Domain/Interface/IUser.interface';
+import {  User, UserParams } from '../../../../Entities/User';
+import { UserDocuments } from '../../../../Interface/IUser.interface';
 
 import { IRepoRequest, IRepoResponse } from '../../../../IBaseRepositories';
 import { UserModal } from '../Models/user.schema';

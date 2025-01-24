@@ -1,5 +1,5 @@
 
-import { IChatData,  } from '../../../Domain/Interface/IChat.interface';
+import { IChatData,  } from '../../../Interface/IChat.interface';
 import { createConversationChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 
 

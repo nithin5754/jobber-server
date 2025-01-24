@@ -1,5 +1,5 @@
-import { Seller } from '../../../Domain/Entities/seller.entity';
-import { ISeller } from '../../../Domain/Interface/ISeller.interface';
+import { Seller } from '../../../Entities/seller.entity';
+import { ISeller } from '../../../Interface/ISeller.interface';
 import { IRepoResponse } from '../../../IBaseRepositories';
 import { updateUsingOtherFilterSeller } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
 import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';

@@ -1,5 +1,5 @@
 
-import { Buyer, BuyerParams, IBuyer, IBuyerDocument } from '../../../../Domain/Entities/Buyer';
+import { Buyer, BuyerParams, IBuyer, IBuyerDocument } from '../../../../Entities/Buyer';
 import { IRepoRequest, IRepoResponse } from '../../../../IBaseRepositories';
 import { BuyerModal } from '../Models/buyer.schema';
 

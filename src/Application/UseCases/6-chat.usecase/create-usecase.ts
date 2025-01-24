@@ -1,7 +1,7 @@
 import { UploadApiResponse, UploadApiErrorResponse } from 'cloudinary';
 import { io } from '../../../main';
-import { Message } from '../../../Domain/Entities/Chat';
-import { IChatData } from '../../../Domain/Interface/IChat.interface';
+import { Message } from '../../../Entities/Chat';
+import { IChatData } from '../../../Interface/IChat.interface';
 import { createChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { CloudinaryUploads } from '../../../Infrastructure/External-libraries/3-cloudinary/cloudinary-uploads.service';

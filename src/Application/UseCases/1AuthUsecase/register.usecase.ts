@@ -1,6 +1,6 @@
 import { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
 import { ConfigType } from '../../../config';
-import { User } from '../../../Domain/Entities/User';
+import { User } from '../../../Entities/User';
 
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { EMAIL_TEMPLATE } from '../../../utils/helper.utils';

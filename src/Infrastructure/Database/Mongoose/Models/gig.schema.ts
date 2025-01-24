@@ -1,5 +1,5 @@
 import mongoose, { Model, Schema, model } from 'mongoose';
-import { SellerGigDocument } from '../../../../Domain/Interface/IGig.interface';
+import { SellerGigDocument } from '../../../../Interface/IGig.interface';
 
 const gigSchema: Schema = new Schema({
   sellerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Seller' },

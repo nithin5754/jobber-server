@@ -1,6 +1,6 @@
 
 import { Model, Schema, model } from 'mongoose';
-import { IConversationDocument } from '../../../../../Domain/Interface/IChat.interface';
+import { IConversationDocument } from '../../../../../Interface/IChat.interface';
 
 const conversationSchema: Schema = new Schema({
   conversationId: { type: String, required: true, unique: true, index: true },

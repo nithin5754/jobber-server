@@ -1,4 +1,4 @@
-import { Message } from '../../../Domain/Entities/Chat';
+import { Message } from '../../../Entities/Chat';
 import { IRepoResponse } from '../../../IBaseRepositories';
 
 import {  getMessagesChat } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';

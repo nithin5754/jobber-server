@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
 import { CreateMessageUsecase} from "../../../Application/UseCases/6-chat.usecase/create-usecase";
-import { IChatData } from "../../../Domain/Interface/IChat.interface";
+import { IChatData } from "../../../Interface/IChat.interface";
 import { StatusCodes } from "http-status-codes";
 import { CreateConversationUsecase } from "../../../Application/UseCases/6-chat.usecase/create-conversation";
 

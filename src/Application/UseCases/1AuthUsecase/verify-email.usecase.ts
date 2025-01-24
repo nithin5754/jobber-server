@@ -1,4 +1,4 @@
-import { User } from '../../../Domain/Entities/User';
+import { User } from '../../../Entities/User';
 import { IRepoResponse } from '../../../IBaseRepositories';
 import { findOneByUser ,updateUser} from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 

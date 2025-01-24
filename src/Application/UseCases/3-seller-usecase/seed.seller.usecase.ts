@@ -1,7 +1,7 @@
 import { floor, random, sample, sampleSize } from 'lodash';
-import { Buyer } from '../../../Domain/Entities/Buyer';
-import { Seller } from '../../../Domain/Entities/seller.entity';
-import { IEducation, IExperience, ISeller } from '../../../Domain/Interface/ISeller.interface';
+import { Buyer } from '../../../Entities/Buyer';
+import { Seller } from '../../../Entities/seller.entity';
+import { IEducation, IExperience, ISeller } from '../../../Interface/ISeller.interface';
 import {  getRandomBuyers, updateUsingOtherFieldsBuyer } from '../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository';
 import { createSeller, findOneSeller } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';

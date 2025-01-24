@@ -5,8 +5,8 @@ import { BadRequestError } from '../../Error/errorInterface';
 
 import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
-import { User } from '../../../Domain/Entities/User';
-import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
+import { User } from '../../../Entities/User';
+import { UserTypeKey } from '../../../Interface/IUser.interface';
 import {  omit } from 'lodash';
 import { firstLetterUpperCase, lowerCase } from '../../../utils/helper.utils';
 

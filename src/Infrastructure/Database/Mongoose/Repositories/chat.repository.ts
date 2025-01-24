@@ -1,5 +1,5 @@
-import { Message } from '../../../../Domain/Entities/Chat';
-import { IConversation, IConversationDocument, IMessageDocument } from '../../../../Domain/Interface/IChat.interface';
+import { Message } from '../../../../Entities/Chat';
+import { IConversation, IConversationDocument, IMessageDocument } from '../../../../Interface/IChat.interface';
 
 import { IRepoResponse, IRepoRequest } from '../../../../IBaseRepositories';
 import { MessageModel } from '../Models/chat/message.schema';

@@ -1,5 +1,5 @@
-import { SellerGig } from '../../../Domain/Entities/gig.entity';
-import { ISellerGig } from '../../../Domain/Interface/IGig.interface';
+import { SellerGig } from '../../../Entities/gig.entity';
+import { ISellerGig } from '../../../Interface/IGig.interface';
 import { IRepoResponse } from '../../../IBaseRepositories';
 import { updateGIG } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
 import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';

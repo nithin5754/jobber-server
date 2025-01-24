@@ -1,5 +1,5 @@
 import mongoose, { Model } from 'mongoose';
-import { IBuyerDocument } from '../../../../Domain/Entities/Buyer';
+import { IBuyerDocument } from '../../../../Entities/Buyer';
 
 
 const BuyerSchema = new mongoose.Schema(

@@ -1,4 +1,4 @@
-import { User } from "../../../Domain/Entities/User";
+import { User } from "../../../Entities/User";
 import { IRepoResponse } from "../../../IBaseRepositories";
 import { findOneByUser } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";

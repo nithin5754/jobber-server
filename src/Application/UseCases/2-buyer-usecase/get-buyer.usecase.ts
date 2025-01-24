@@ -1,4 +1,4 @@
-import { Buyer } from "../../../Domain/Entities/Buyer";
+import { Buyer } from "../../../Entities/Buyer";
 import { IRepoResponse } from "../../../IBaseRepositories";
 import {  findOneBuyer } from "../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";

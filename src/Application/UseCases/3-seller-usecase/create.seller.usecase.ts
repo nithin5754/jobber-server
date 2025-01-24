@@ -1,5 +1,5 @@
-import { Seller } from '../../../Domain/Entities/seller.entity';
-import { ISeller } from '../../../Domain/Interface/ISeller.interface';
+import { Seller } from '../../../Entities/seller.entity';
+import { ISeller } from '../../../Interface/ISeller.interface';
 import { IRepoResponse } from '../../../IBaseRepositories';
 import { updateUsingOtherFieldsBuyer } from '../../../Infrastructure/Database/Mongoose/Repositories/buyer.repository';
 

@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker';
-import { ISellerGig } from '../../../Domain/Interface/IGig.interface';
+import { ISellerGig } from '../../../Interface/IGig.interface';
 
 
 import { sample } from 'lodash';
 
 import { createGIG } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
 
-import { Seller } from '../../../Domain/Entities/seller.entity';
+import { Seller } from '../../../Entities/seller.entity';
 import { findSeller } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
 import { IRepoResponse } from '../../../IBaseRepositories';
 

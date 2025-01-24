@@ -1,4 +1,4 @@
-import { Seller } from '../../../Domain/Entities/seller.entity';
+import { Seller } from '../../../Entities/seller.entity';
 import { IRepoResponse } from '../../../IBaseRepositories';
 import { randomSellers } from '../../../Infrastructure/Database/Mongoose/Repositories/seller.respository';
 import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';

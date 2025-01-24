@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 
 import { IRefreshResult, RefreshUsecase } from '../../../Application/UseCases/1AuthUsecase/refresh.usecase';
 import { BadRequestError } from '../../Error/errorInterface';
-import { User } from '../../../Domain/Entities/User';
-import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
+import { User } from '../../../Entities/User';
+import { UserTypeKey } from '../../../Interface/IUser.interface';
 import { omit } from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 

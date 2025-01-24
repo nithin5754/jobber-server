@@ -3,7 +3,7 @@ import { ISellerUpdateResult, UpdateSellerUsecase } from '../../../Application/U
 
 import { BadRequestError } from '../../Error/errorInterface';
 import { Request, Response, NextFunction } from 'express';
-import { ISeller } from '../../../Domain/Interface/ISeller.interface';
+import { ISeller } from '../../../Interface/ISeller.interface';
 import { StatusCodes } from 'http-status-codes';
 
 export class UpdateSeller  {
