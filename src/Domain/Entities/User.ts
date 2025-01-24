@@ -1,5 +1,5 @@
 import moment from "moment";
-import { firstLetterUpperCase, lowerCase } from "../../Presentation/Utils/helper.utils";
+import { firstLetterUpperCase, lowerCase } from "../../utils/helper.utils";
 
 
 

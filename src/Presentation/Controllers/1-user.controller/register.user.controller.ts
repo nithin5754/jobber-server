@@ -8,7 +8,7 @@ import { StatusCodes } from 'http-status-codes';
 import { User } from '../../../Domain/Entities/User';
 import { UserTypeKey } from '../../../Domain/Interface/IUser.interface';
 import {  omit } from 'lodash';
-import { firstLetterUpperCase, lowerCase } from '../../Utils/helper.utils';
+import { firstLetterUpperCase, lowerCase } from '../../../utils/helper.utils';
 
 export class RegisterController {
   constructor(private readonly registerUseCase: RegisterUseCase, private readonly validation: Joi.ObjectSchema<any>) {}

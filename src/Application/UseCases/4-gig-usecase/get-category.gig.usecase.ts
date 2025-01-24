@@ -6,7 +6,7 @@ import { IRepoResponse } from "../../../IBaseRepositories";
 import { findByLimitGIG } from "../../../Infrastructure/Database/Mongoose/Repositories/gig.repository";
 import { findOneByUser } from "../../../Infrastructure/Database/Mongoose/Repositories/UserRespository";
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
-import { firstLetterUpperCase } from "../../../Presentation/Utils/helper.utils";
+import { firstLetterUpperCase } from "../../../utils/helper.utils";
 
 
 

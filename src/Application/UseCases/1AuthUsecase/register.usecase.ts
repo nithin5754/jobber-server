@@ -3,7 +3,7 @@ import { ConfigType } from '../../../config';
 import { User } from '../../../Domain/Entities/User';
 
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { EMAIL_TEMPLATE } from '../../../Presentation/Utils/helper.utils';
+import { EMAIL_TEMPLATE } from '../../../utils/helper.utils';
 import { createUser, isUsernameOrEmailExist } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id/unique-id.service';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';

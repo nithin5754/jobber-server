@@ -3,7 +3,7 @@ import { User } from '../../../Domain/Entities/User';
 import { findOneByUser } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { firstLetterUpperCase, isEmail, lowerCase } from '../../../Presentation/Utils/helper.utils';
+import { firstLetterUpperCase, isEmail, lowerCase } from '../../../utils/helper.utils';
 
 
 interface IUserLoginDTO {

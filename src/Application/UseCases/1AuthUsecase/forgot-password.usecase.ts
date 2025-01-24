@@ -7,7 +7,7 @@ import { UniqueId } from '../../../Infrastructure/External-libraries/1-unique-id
 import { IEmailMessageDetails } from '../../../Infrastructure/External-libraries/4-mailer/interface/imailer.interface';
 import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mailer.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { EMAIL_TEMPLATE } from '../../../Presentation/Utils/helper.utils';
+import { EMAIL_TEMPLATE } from '../../../utils/helper.utils';
 
 
 
