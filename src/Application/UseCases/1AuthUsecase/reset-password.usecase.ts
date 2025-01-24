@@ -2,7 +2,7 @@ import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Reposi
 import { JwtToken } from '../../../Infrastructure/External-libraries/6-token.ts/token.service';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUsecases';
+import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface IResetPasswordDTO {
   password: string;

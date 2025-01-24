@@ -7,7 +7,7 @@ import { UserRepository } from "../../../Infrastructure/Database/Mongoose/Reposi
 import { BadRequestError } from "../../../Presentation/Error/errorInterface";
 import { firstLetterUpperCase } from "../../../Presentation/Utils/helper.utils";
 import { IRepoResponse } from "../../../Shared/IBaseRepositories";
-import { IUseCase } from "../../../Shared/IUsecases";
+import { IUseCase } from "../../../Shared/IUseCases";
 
 
 

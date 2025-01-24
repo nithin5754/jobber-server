@@ -9,7 +9,7 @@ import { IRepoResponse } from '../../../Shared/IBaseRepositories';
 
 
 
-import { IUseCase } from '../../../Shared/IUsecases';
+import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface IUpdateOfferDTO {
   messageId: string;

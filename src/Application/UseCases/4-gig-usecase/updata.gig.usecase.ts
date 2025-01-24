@@ -5,7 +5,7 @@ import { GigRepository } from '../../../Infrastructure/Database/Mongoose/Reposit
 import { UserRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/UserRespository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUsecases';
+import { IUseCase } from '../../../Shared/IUseCases';
 
 
 

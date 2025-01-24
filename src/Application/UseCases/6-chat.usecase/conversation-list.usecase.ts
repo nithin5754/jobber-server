@@ -4,7 +4,7 @@ import { Message } from '../../../Domain/Entities/Chat';
 import { ChatRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/chat.repository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUsecases';
+import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface IConversationListDTO {
   username:string

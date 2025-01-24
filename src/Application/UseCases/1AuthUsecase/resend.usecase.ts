@@ -7,7 +7,7 @@ import { Mailer } from '../../../Infrastructure/External-libraries/4-mailer/mail
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
 import { EMAIL_TEMPLATE, lowerCase } from '../../../Presentation/Utils/helper.utils';
 import { IRepoResponse } from '../../../Shared/IBaseRepositories';
-import { IUseCase } from '../../../Shared/IUsecases';
+import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface IResendDTO {
   email: string;

@@ -1,6 +1,6 @@
 import { GigRepository } from '../../../Infrastructure/Database/Mongoose/Repositories/gig.repository';
 import { BadRequestError } from '../../../Presentation/Error/errorInterface';
-import { IUseCase } from '../../../Shared/IUsecases';
+import { IUseCase } from '../../../Shared/IUseCases';
 
 export interface ISellerGigDeleteDTO {
   gigId: string;
