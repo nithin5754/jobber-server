@@ -14,6 +14,12 @@
     "skipLibCheck": true,                             // Skip type checking in libraries
     "resolveJsonModule": true                         // Allow importing JSON files
   },
-  "include": ["src"],                                 // Files to include in the build
+  "paths": {
+    "@Shared/*": ["src/Shared/*"],
+    "@Domain/*": ["Domain/*"],
+    "@Presentation/*": ["Presentation/*"]
+  },
+
+  "include": ["src/**/*"],                               // Files to include in the build
   "exclude": ["node_modules", "dist"]                 // Exclude unnecessary folders
 }
