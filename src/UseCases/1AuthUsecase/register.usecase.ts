@@ -48,7 +48,7 @@ export class RegisterUseCase {
       throw new BadRequestError('Failed to create user', 'SignUp creation error');
     }
 
-    await this.sendVerificationEmail(result);
+    // await this.sendVerificationEmail(result);
 
     const { accessToken, refreshToken } = await this.generateTokens(result);
 
