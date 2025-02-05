@@ -6,7 +6,7 @@ import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
 import { IResetPasswordDTO, IResetPasswordResult, ResetPasswordUsecase } from '../../../UseCases/1AuthUsecase/reset-password.usecase';
 
-export class ResetPassword  {
+export class ResetPassword {
   constructor(private readonly validation: Joi.ObjectSchema<any>, private readonly resetForgotUsecase: ResetPasswordUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

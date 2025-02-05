@@ -20,6 +20,8 @@ export class GetSellerById  {
 
       const found: ISellerGetResult = await this.getsellerUsecase.execute(data);
 
+      console.log("found",found.seller)
+
       if (!found || !found.seller) {
         throw new BadRequestError('Missing Content', 'GetSellerById() Validation Error');
       }

@@ -1,5 +1,5 @@
 import { DeleteResult} from 'mongoose';
-import { SellerGig } from '../../../Entities/gig.entity';
+import { SellerGig } from '../../../Entities/Gig';
 import { ISellerGigParams, SellerGigDocument } from '../../../Interface/IGig.interface';
 
 import { IRepoRequest, IRepoResponse } from '../../../IBaseRepositories';

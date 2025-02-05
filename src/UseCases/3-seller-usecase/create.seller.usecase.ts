@@ -1,10 +1,10 @@
-import { updateUsingOtherFieldsBuyer } from "../../Database/Mongoose/Repositories/buyer.repository";
-import { createSeller } from "../../Database/Mongoose/Repositories/seller.respository";
-import { findOneByUser } from "../../Database/Mongoose/Repositories/UserRespository";
-import { Seller } from "../../Entities/seller.entity";
-import { IRepoResponse } from "../../IBaseRepositories";
-import { ISeller } from "../../Interface/ISeller.interface";
-import { BadRequestError } from "../../Presentation/Error/errorInterface";
+import { updateUsingOtherFieldsBuyer } from '../../Database/Mongoose/Repositories/buyer.repository';
+import { createSeller } from '../../Database/Mongoose/Repositories/seller.respository';
+import { findOneByUser } from '../../Database/Mongoose/Repositories/UserRespository';
+import { Seller } from '../../Entities/Seller';
+import { IRepoResponse } from '../../IBaseRepositories';
+import { ISeller } from '../../Interface/ISeller.interface';
+import { BadRequestError } from '../../Presentation/Error/errorInterface';
 
 export interface ISellerCreateDTO {
   sellerParams: ISeller;
@@ -14,15 +14,9 @@ export interface ISellerCreateResult {
   seller: Seller;
 }
 
-export class CreateSellerUseCase  {
-
+export class CreateSellerUseCase {
   public async execute(input: ISellerCreateDTO): Promise<ISellerCreateResult> {
-
-
     const result: IRepoResponse = await createSeller({ seller: input.sellerParams });
-
-
-    
 
     if (!result || !result.seller || result.isNull) {
       throw new BadRequestError('Error Occurred Creating Seller Profile', 'CreateSellerUseCase() validation error');
@@ -31,8 +25,6 @@ export class CreateSellerUseCase  {
     await updateUsingOtherFieldsBuyer({ buyerFilter: { userId: result.seller.userId }, buyer: { isSeller: true } });
 
     await this.addUserDetails(result.seller);
-
-
 
     return {
       seller: result.seller

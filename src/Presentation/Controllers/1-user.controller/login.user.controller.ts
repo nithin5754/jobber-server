@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 
-
 import Joi from 'joi';
 import { BadRequestError } from '../../Error/errorInterface';
 import { omit } from 'lodash';
@@ -9,8 +8,7 @@ import { User } from '../../../Entities/User';
 import { StatusCodes } from 'http-status-codes';
 import { LoginUseCase } from '../../../UseCases/1AuthUsecase/login.usecase';
 
-
-export class Login  {
+export class Login {
   constructor(private readonly loginUseCase: LoginUseCase, private readonly validation: Joi.ObjectSchema<any>) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
@@ -22,11 +20,11 @@ export class Login  {
       const userData = await this.loginUseCase.execute({ userId: username, password });
 
       if (userData && userData.token && userData.user) {
-        res.cookie("jwt", userData.token?.refreshToken, {
+        res.cookie('jwt', userData.token?.refreshToken, {
           httpOnly: true,
           secure: true,
           maxAge: 7 * 24 * 60 * 60 * 1000,
-          sameSite: "none",
+          sameSite: 'none'
         });
         res.status(StatusCodes.OK).json({
           message: 'User login Successfully',

@@ -37,7 +37,7 @@ export class JwtToken implements IToken {
   }
   accessTokenGenerator(userId: string,email:string,username:string): string {
     const accessToken: string = jwt.sign({userId,email,username}, this.jwt_key, {
-      expiresIn: "7d",
+      expiresIn: "1d",
     });
 
     return accessToken;

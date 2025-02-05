@@ -2,7 +2,7 @@ import { NextFunction,Request,Response } from "express";
 import { BadRequestError } from "../../Error/errorInterface";
 
 import { StatusCodes } from "http-status-codes";
-import { GetConversationUsecase, IGetConversationResult } from "../../../UseCases/6-chat.usecase/get-conversation";
+import { GetConversationUsecase, IGetConversationResult } from "../../../UseCases/6-chat-usecase/get-conversation";
 
 
 

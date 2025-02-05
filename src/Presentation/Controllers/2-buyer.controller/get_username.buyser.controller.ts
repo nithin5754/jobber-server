@@ -1,45 +1,29 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express';
 
-import { BadRequestError } from "../../Error/errorInterface";
-import { GetBuyerUsecase, IGetBuyerResult } from "../../../UseCases/2-buyer-usecase/get-buyer.usecase";
-import { StatusCodes } from "http-status-codes";
-
-
+import { BadRequestError } from '../../Error/errorInterface';
+import { GetBuyerUsecase, IGetBuyerResult } from '../../../UseCases/2-buyer-usecase/get-buyer.usecase';
+import { StatusCodes } from 'http-status-codes';
 
 export class GetBuyerByUsername {
+  constructor(private readonly getBuyerUsecase: GetBuyerUsecase) {}
 
-    constructor(
-      private readonly getBuyerUsecase:GetBuyerUsecase
-    ){
+  public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { username } = req.params;
 
+      if (!username) {
+        throw new BadRequestError('no buyer found', 'GetBuyerByUsername () method error');
+      }
+
+      const result: IGetBuyerResult = await this.getBuyerUsecase.execute({ username });
+
+      if (!result.buyer) {
+        throw new BadRequestError('no buyer found', 'GetBuyerByUsername () method error');
+      }
+
+      res.status(StatusCodes.OK).json({ message: 'Buyer profile', buyer: result.buyer });
+    } catch (error) {
+      next(error);
     }
-
-public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
-try {
-        
-  const {username}=req.params
-
-  if(!username){
-   throw new BadRequestError('no buyer found', 'GetBuyerByUsername () method error');
   }
-
-
-  const result:IGetBuyerResult=await this.getBuyerUsecase.execute({username})
-
-
-  if(!result.buyer){
-   throw new BadRequestError('no buyer found', 'GetBuyerByUsername () method error');
-
-  }
-
-  res.status(StatusCodes.OK).json({ message: 'Buyer profile', buyer:result.buyer });
-  
-} catch (error) {
-  next(error)
-}
-
-
-       
-  }
-  
 }

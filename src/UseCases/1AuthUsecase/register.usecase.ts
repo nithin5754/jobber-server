@@ -9,7 +9,7 @@ import { Mailer } from "../../External-libraries/4-mailer/mailer.service";
 import { MulterFileConverter } from "../../External-libraries/5-multer-converter/multer-convertor.service";
 import { JwtToken } from "../../External-libraries/6-token.ts/token.service";
 import { BadRequestError } from "../../Presentation/Error/errorInterface";
-import { EMAIL_TEMPLATE } from "../../utils/helper.utils";
+import { EMAIL_TEMPLATE } from "../../Presentation/utils/helper.utils";
 
 
 export interface ICreateUserDTO {
@@ -83,7 +83,9 @@ export class RegisterUseCase {
       emailVerificationToken: randomCharacters
     };
 
+    
     const userData = await createUser({ data: newUserData });
+
 
     if (!userData || userData.isNull || !userData.user) {
       throw new BadRequestError('Failed to create user', 'SignUp creation error');
@@ -108,7 +110,9 @@ export class RegisterUseCase {
 
   private async sendVerificationEmail(user: User): Promise<void> {
     const emailDetails = this.createVerificationEmailDetails(user, EMAIL_TEMPLATE.EMAIL_VERIFICATION);
-    await this.mailerService.SendEmail(emailDetails);
+  const isEmailSend=  await this.mailerService.SendEmail(emailDetails);
+
+  console.log("ismailSend",isEmailSend)
   }
 
   private createVerificationEmailDetails(data: User, template: string): IEmailMessageDetails {

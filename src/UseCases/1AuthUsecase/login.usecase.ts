@@ -3,7 +3,7 @@ import { findOneByUser } from "../../Database/Mongoose/Repositories/UserResposit
 import { User } from "../../Entities/User";
 import { JwtToken } from "../../External-libraries/6-token.ts/token.service";
 import { BadRequestError } from "../../Presentation/Error/errorInterface";
-import { isEmail, firstLetterUpperCase } from "../../utils/helper.utils";
+import { isEmail, firstLetterUpperCase } from "../../Presentation/utils/helper.utils";
 
 
 

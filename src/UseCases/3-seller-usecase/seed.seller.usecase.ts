@@ -7,7 +7,7 @@ import { getRandomBuyers, updateUsingOtherFieldsBuyer } from '../../Database/Mon
 import { createSeller, findOneSeller } from '../../Database/Mongoose/Repositories/seller.respository';
 import { findOneByUser } from '../../Database/Mongoose/Repositories/UserRespository';
 import { Buyer } from '../../Entities/Buyer';
-import { Seller } from '../../Entities/seller.entity';
+import { Seller } from '../../Entities/Seller';
 import { IRepoResponse } from '../../IBaseRepositories';
 import { ISeller, IExperience, IEducation } from '../../Interface/ISeller.interface';
 import { BadRequestError } from '../../Presentation/Error/errorInterface';

@@ -29,12 +29,17 @@ import { BuyerModal } from '../Models/buyer.schema';
         purchasedGigs: []
       };
 
-      await BuyerModal.create({ buyer: buyerInitialDetails });
+ 
+
+ await BuyerModal.create(buyerInitialDetails);
+
+
     }
 
     return result ? { user: filterFetchResult(result) } : { isNull: true };
   }
   export async function findOneByUser(criteria: IRepoRequest): Promise<IRepoResponse> {
+
     const result: UserDocuments | null = await UserModal.findOne(criteria.data);
 
     return result ? { user: filterFetchResult(result) } : { isNull: true };

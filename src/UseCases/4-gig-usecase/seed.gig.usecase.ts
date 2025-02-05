@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 import { sample } from 'lodash';
 import { createGIG } from '../../Database/Mongoose/Repositories/gig.repository';
 import { findSeller } from '../../Database/Mongoose/Repositories/seller.respository';
-import { Seller } from '../../Entities/seller.entity';
+import { Seller } from '../../Entities/Seller';
 import { IRepoResponse } from '../../IBaseRepositories';
 import { ISellerGig } from '../../Interface/IGig.interface';
 

@@ -1,5 +1,5 @@
 import { IMessageDocument } from '../Interface/IChat.interface';
-import { IOffer } from '../Interface/IOrder';
+import { IOffer } from '../Interface/IOrder.interface';
 
 
 export class Message {

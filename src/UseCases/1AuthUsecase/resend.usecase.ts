@@ -1,15 +1,13 @@
-import { lowerCase } from "lodash";
-import { ConfigType } from "../../config";
-import { findOneByUser, updateUser } from "../../Database/Mongoose/Repositories/UserRespository";
-import { User } from "../../Entities/User";
-import { UniqueId } from "../../External-libraries/1-unique-id/unique-id.service";
-import { IEmailMessageDetails } from "../../External-libraries/4-mailer/interface/imailer.interface";
-import { Mailer } from "../../External-libraries/4-mailer/mailer.service";
-import { IRepoResponse } from "../../IBaseRepositories";
-import { BadRequestError } from "../../Presentation/Error/errorInterface";
-import { EMAIL_TEMPLATE } from "../../utils/helper.utils";
 
-
+import { ConfigType } from '../../config';
+import { findOneByUser, updateUser } from '../../Database/Mongoose/Repositories/UserRespository';
+import { User } from '../../Entities/User';
+import { UniqueId } from '../../External-libraries/1-unique-id/unique-id.service';
+import { IEmailMessageDetails } from '../../External-libraries/4-mailer/interface/imailer.interface';
+import { Mailer } from '../../External-libraries/4-mailer/mailer.service';
+import { IRepoResponse } from '../../IBaseRepositories';
+import { BadRequestError } from '../../Presentation/Error/errorInterface';
+import { EMAIL_TEMPLATE } from '../../Presentation/utils/helper.utils';
 
 export interface IResendDTO {
   email: string;
@@ -20,7 +18,7 @@ export interface IResendResult {
   isSend: boolean;
 }
 
-export class ResendUsecase  {
+export class ResendUsecase {
   constructor(
     private readonly mailerService: Mailer,
     private readonly configService: ConfigType,
@@ -29,9 +27,8 @@ export class ResendUsecase  {
 
   public async execute(input: IResendDTO): Promise<IResendResult> {
     const { email, userId } = input;
-    let found: IRepoResponse = await findOneByUser({ data: { email: lowerCase(email) } });
- 
 
+    let found: IRepoResponse = await findOneByUser({ data: { email: email } });
     if (!found || found.isNull || !found.user || found.user.id !== userId) {
       throw new BadRequestError('user not found', 'ResendEmail() error');
     }

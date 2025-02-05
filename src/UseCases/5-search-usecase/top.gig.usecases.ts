@@ -1,4 +1,4 @@
-import { SellerGig } from "../../Entities/gig.entity";
+import { SellerGig } from "../../Entities/Gig";
 
 
 export interface TopGigViewsDTO {

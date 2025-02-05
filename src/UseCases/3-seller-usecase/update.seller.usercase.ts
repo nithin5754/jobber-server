@@ -1,6 +1,6 @@
 import { updateUsingOtherFilterSeller } from "../../Database/Mongoose/Repositories/seller.respository";
 import { findOneByUser } from "../../Database/Mongoose/Repositories/UserRespository";
-import { Seller } from "../../Entities/seller.entity";
+import { Seller } from "../../Entities/Seller";
 import { IRepoResponse } from "../../IBaseRepositories";
 import { ISeller } from "../../Interface/ISeller.interface";
 import { BadRequestError } from "../../Presentation/Error/errorInterface";

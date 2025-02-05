@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 
-
 import { BadRequestError } from '../../Error/errorInterface';
 import { User } from '../../../Entities/User';
 import { UserTypeKey } from '../../../Interface/IUser.interface';
@@ -8,7 +7,7 @@ import { omit } from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 import { RefreshUsecase, IRefreshResult } from '../../../UseCases/1AuthUsecase/refresh.usecase';
 
-export class Refresh  {
+export class Refresh {
   constructor(private readonly refreshUsecase: RefreshUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

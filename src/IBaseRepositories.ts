@@ -1,10 +1,11 @@
 import { Buyer, IBuyer } from "./Entities/Buyer";
 import { Message } from "./Entities/Chat";
-import { SellerGig } from "./Entities/gig.entity";
-import { Seller } from "./Entities/seller.entity";
+import { SellerGig } from "./Entities/Gig";
+import { Seller } from "./Entities/Seller";
 import { User, IUser } from "./Entities/User";
 import { IConversation, IChatData } from "./Interface/IChat.interface";
 import { ISellerGig } from "./Interface/IGig.interface";
+import { IOrder, IOrderDocument } from "./Interface/IOrder.interface";
 import { ISeller } from "./Interface/ISeller.interface";
 
 
@@ -21,7 +22,10 @@ export interface IRepoResponse {
   MessageDetails?: Message;
   messageDetailsArray?:Message[]
   conversationDetailsArray?:IConversation[]
-  conversation?:IConversation
+  conversation?:IConversation;
+  order?:IOrderDocument;
+  orders?:IOrderDocument[]
+  
 }
 
 export interface IRepoRequest {
@@ -53,7 +57,8 @@ export interface IRepoRequest {
     isRead?:boolean,
 
     
-  }
+  };
+  order?:IOrder;
 
   updateFilterMultipleMessage?:{
     _id?:string;

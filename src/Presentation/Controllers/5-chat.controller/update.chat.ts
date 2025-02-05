@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 
 
 import { BadRequestError } from '../../Error/errorInterface';
-import { UpdateOfferReadUsecase, IUpdateOfferResult } from '../../../UseCases/6-chat.usecase/update.offer.usecase';
+import { UpdateOfferReadUsecase, IUpdateOfferResult } from '../../../UseCases/6-chat-usecase/update.offer.usecase';
 
 export class UpdateOfferMessages {
   constructor(private readonly update: UpdateOfferReadUsecase) {}

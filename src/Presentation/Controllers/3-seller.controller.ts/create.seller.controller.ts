@@ -6,11 +6,10 @@ import { StatusCodes } from 'http-status-codes';
 import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
 
-export class CreateSeller  {
+export class CreateSeller {
   constructor(private readonly sellerCreateUseCase: CreateSellerUseCase, private readonly validation: Joi.ObjectSchema<any>) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-
       await this.validateRequest(req);
 
       const seller: ISeller = {

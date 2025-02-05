@@ -5,8 +5,8 @@ import { NextFunction,Request,Response } from "express";
 import { BadRequestError } from "../../Error/errorInterface";
 
 import { StatusCodes } from "http-status-codes";
-import { IGetMessageResult } from "../../../UseCases/6-chat.usecase/get-message.usecase";
-import { GetUserMessagesUsecase } from "../../../UseCases/6-chat.usecase/get-usermessages.uecase";
+import { IGetMessageResult } from "../../../UseCases/6-chat-usecase/get-message.usecase";
+import { GetUserMessagesUsecase } from "../../../UseCases/6-chat-usecase/get-usermessages.uecase";
 
 
 

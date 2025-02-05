@@ -6,8 +6,8 @@ import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
 import { User } from '../../../Entities/User';
 import { UserTypeKey } from '../../../Interface/IUser.interface';
-import {  omit } from 'lodash';
-import { firstLetterUpperCase, lowerCase } from '../../../utils/helper.utils';
+import { omit } from 'lodash';
+import { firstLetterUpperCase, lowerCase } from '../../utils/helper.utils';
 import { RegisterUseCase, ICreateUserDTO } from '../../../UseCases/1AuthUsecase/register.usecase';
 
 export class RegisterController {
@@ -21,8 +21,8 @@ export class RegisterController {
       const profilePicture: Express.Multer.File | undefined = req.file;
 
       const newUserData: ICreateUserDTO = {
-        username:firstLetterUpperCase(username),
-        email:lowerCase(email),
+        username: firstLetterUpperCase(username),
+        email: lowerCase(email),
         password,
         country,
         profilePicture: profilePicture as Express.Multer.File
@@ -30,14 +30,14 @@ export class RegisterController {
 
       const userData = await this.registerUseCase.execute(newUserData);
 
-   
+      console.log("userdata",userData)
 
       if (userData && userData.token && userData.user) {
-        res.cookie("jwt", userData.token?.refreshToken, {
+        res.cookie('jwt', userData.token?.refreshToken, {
           httpOnly: true,
           secure: true,
           maxAge: 7 * 24 * 60 * 60 * 1000,
-          sameSite: "none",
+          sameSite: 'none'
         });
 
         res.status(StatusCodes.CREATED).json({

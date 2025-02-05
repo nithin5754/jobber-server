@@ -1,6 +1,6 @@
 
 import { ISellerGigParams } from '../../../Interface/IGig.interface';
-import { SellerGig } from '../../../Entities/gig.entity';
+import { SellerGig } from '../../../Entities/Gig';
 import { IRepoRequest, IRepoResponse } from '../../../IBaseRepositories';
 import { GigModel } from '../Models/gig.schema';
 

@@ -1,7 +1,7 @@
 import { UploadApiResponse, UploadApiErrorResponse } from "cloudinary";
 import { findOneGIG, countGig, createGIG } from "../../Database/Mongoose/Repositories/gig.repository";
 import { findOneByUser } from "../../Database/Mongoose/Repositories/UserRespository";
-import { SellerGig } from "../../Entities/gig.entity";
+import { SellerGig } from "../../Entities/Gig";
 import { UniqueId } from "../../External-libraries/1-unique-id/unique-id.service";
 import { CloudinaryUploads } from "../../External-libraries/3-cloudinary/cloudinary-uploads.service";
 import { MulterFileConverter } from "../../External-libraries/5-multer-converter/multer-convertor.service";

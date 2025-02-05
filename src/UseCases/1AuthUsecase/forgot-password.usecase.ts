@@ -6,7 +6,7 @@ import { IEmailMessageDetails } from "../../External-libraries/4-mailer/interfac
 import { Mailer } from "../../External-libraries/4-mailer/mailer.service";
 import { IRepoResponse } from "../../IBaseRepositories";
 import { BadRequestError } from "../../Presentation/Error/errorInterface";
-import { EMAIL_TEMPLATE } from "../../utils/helper.utils";
+import { EMAIL_TEMPLATE } from "../../Presentation/utils/helper.utils";
 
 
 

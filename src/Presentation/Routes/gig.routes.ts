@@ -69,7 +69,7 @@ const GigRouter = (router: Router): Router => {
 
   router.route('/search/gig/:page').get(searchGigController.handle.bind(searchGigController));
 
-  router.route('/gig/seed').post(seedController.handle.bind(seedController));
+  router.route('/gig/seed').get(seedController.handle.bind(seedController));
   router.route(`/delete-gig/:gigId/:sellerId`).delete(deleteGigController.handle.bind(deleteGigController));
 
   router.route('/similar-gig/:gigId').get(getGigsController.moreLikeThis.bind(getGigsController));

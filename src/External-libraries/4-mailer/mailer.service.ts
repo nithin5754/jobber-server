@@ -57,7 +57,7 @@ export class Mailer implements IMailer {
         })
         return true;
       } catch (error) {
-      
+      console.log(error)
         throw new BadRequestError('Mail error please try again later ', 'Mail Send Mailer() method error');
       }
   }

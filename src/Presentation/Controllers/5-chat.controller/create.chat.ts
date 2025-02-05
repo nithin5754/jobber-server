@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from "express";
 
 import { IChatData } from "../../../Interface/IChat.interface";
 import { StatusCodes } from "http-status-codes";
-import { CreateConversationUsecase } from "../../../UseCases/6-chat.usecase/create-conversation";
-import { CreateMessageUsecase } from "../../../UseCases/6-chat.usecase/create-usecase";
+import { CreateConversationUsecase } from "../../../UseCases/6-chat-usecase/create-conversation";
+import { CreateMessageUsecase } from "../../../UseCases/6-chat-usecase/create-usecase";
 
 
 
@@ -20,7 +20,7 @@ export class CreateMessage {
   public async  handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
 
-
+  console.log("body",req.body)
 
       const messageData: IChatData = {
         conversationId: req.body.conversationId,

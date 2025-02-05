@@ -2,15 +2,15 @@ import { Router } from 'express';
 
 import { UpdateOfferMessages } from '../Controllers/5-chat.controller/update.chat';
 import services from '../../Services';
-import { ConversationListUsecase } from '../../UseCases/6-chat.usecase/conversation-list.usecase';
-import { CreateConversationUsecase } from '../../UseCases/6-chat.usecase/create-conversation';
-import { CreateMessageUsecase } from '../../UseCases/6-chat.usecase/create-usecase';
-import { GetConversationUsecase } from '../../UseCases/6-chat.usecase/get-conversation';
-import { GetMessageUsecase } from '../../UseCases/6-chat.usecase/get-message.usecase';
-import { GetUserMessagesUsecase } from '../../UseCases/6-chat.usecase/get-usermessages.uecase';
-import { MarkMultipleMessageAsReadUsecase } from '../../UseCases/6-chat.usecase/mark-multiple.message.usecase';
-import { MarkMessageAsReadUsecase } from '../../UseCases/6-chat.usecase/mark-single.message.usecase';
-import { UpdateOfferReadUsecase } from '../../UseCases/6-chat.usecase/update.offer.usecase';
+import { ConversationListUsecase } from '../../UseCases/6-chat-usecase/conversation-list.usecase';
+import { CreateConversationUsecase } from '../../UseCases/6-chat-usecase/create-conversation';
+import { CreateMessageUsecase } from '../../UseCases/6-chat-usecase/create-usecase';
+import { GetConversationUsecase } from '../../UseCases/6-chat-usecase/get-conversation';
+import { GetMessageUsecase } from '../../UseCases/6-chat-usecase/get-message.usecase';
+import { GetUserMessagesUsecase } from '../../UseCases/6-chat-usecase/get-usermessages.uecase';
+import { MarkMultipleMessageAsReadUsecase } from '../../UseCases/6-chat-usecase/mark-multiple.message.usecase';
+import { MarkMessageAsReadUsecase } from '../../UseCases/6-chat-usecase/mark-single.message.usecase';
+import { UpdateOfferReadUsecase } from '../../UseCases/6-chat-usecase/update.offer.usecase';
 import { Conversation } from '../Controllers/5-chat.controller/conversation.chat';
 import { ConversationList } from '../Controllers/5-chat.controller/conversationList.chat';
 import { CreateMessage } from '../Controllers/5-chat.controller/create.chat';
@@ -46,7 +46,7 @@ const userMessages=new UserMessages(getUserMessagesInterceptors)
 const updateOffer=new UpdateOfferMessages(updateOfferInterceptor)
 
 const ChatRouter = (router: Router): Router => {
-  router.route('/').post(messageController.handle.bind(messageController)); 
+  router.route('/create-chat').post(messageController.handle.bind(messageController)); 
   router.route('/conversation/:senderUsername/:receiverUsername').get(conversation.handle.bind(conversation));
   router.route('/:senderUsername/:receiverUsername').get(messages.handle.bind(messages)); 
   router.route('/conversations/list/:username').get(conversationList.handle.bind(conversationList)); 

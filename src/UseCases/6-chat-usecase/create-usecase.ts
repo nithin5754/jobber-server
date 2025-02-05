@@ -29,6 +29,8 @@ export class CreateMessageUsecase  {
 
     if(input.messageData.file){
       const url = await this.uploadFileAndId(`${input.messageData.file}`);
+      console.log("url",url)  
+
       if(url.url){
         messageData.file=url.url as string
       }

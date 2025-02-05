@@ -35,7 +35,7 @@ const SellerRouter = (router: Router): Router => {
   router.route('/random/:size').get(sellerRandomSellersController.handle.bind(sellerRandomSellersController));
   router.route('/update/:sellerId').put(sellerUpdateController.handle.bind(sellerUpdateController));
   router.route('/sellerId/:sellerId').get(sellerSellerIdController.handle.bind(sellerSellerIdController));
-  router.route('/seed/:count').put(seedSeller.handle.bind(seedSeller));
+  router.route('/seed/:count').get(seedSeller.handle.bind(seedSeller));
 
   return router;
 };

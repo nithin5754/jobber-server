@@ -1,6 +1,6 @@
 import { randomSellers } from "../../Database/Mongoose/Repositories/seller.respository";
 import { findOneByUser } from "../../Database/Mongoose/Repositories/UserRespository";
-import { Seller } from "../../Entities/seller.entity";
+import { Seller } from "../../Entities/Seller";
 import { IRepoResponse } from "../../IBaseRepositories";
 import { BadRequestError } from "../../Presentation/Error/errorInterface";
 

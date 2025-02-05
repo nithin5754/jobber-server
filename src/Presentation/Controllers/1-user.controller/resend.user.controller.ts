@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 import { BadRequestError } from '../../Error/errorInterface';
 import { ResendUsecase, IResendDTO, IResendResult } from '../../../UseCases/1AuthUsecase/resend.usecase';
 
-export class Resend  {
+export class Resend {
   constructor(private readonly resendUsecase: ResendUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

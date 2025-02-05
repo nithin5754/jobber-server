@@ -8,7 +8,7 @@ import { User } from '../../../Entities/User';
 import { omit } from 'lodash';
 import { VerifyEmailUsecase, IVerifyEmailResult } from '../../../UseCases/1AuthUsecase/verify-email.usecase';
 
-export class VerifyEmail  {
+export class VerifyEmail {
   constructor(private verifyEmailusecase: VerifyEmailUsecase) {}
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
