@@ -32,7 +32,7 @@ export class Mailer implements IMailer {
           preview:false,
           transport:smtpTransport,
           views:{
-            root: path.join(__dirname, "emails"),
+            root: path.join(__dirname, "../../emails"),
             options:{
               extension:'ejs'
             }
