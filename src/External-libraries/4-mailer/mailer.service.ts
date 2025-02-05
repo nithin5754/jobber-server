@@ -48,13 +48,15 @@ export class Mailer implements IMailer {
         })
     
     
-        await email.send({
+      const res=  await email.send({
           template:template,
           message:{
             to:receiver,
           },
           locals
         })
+
+        console.log("from email",res)
         return true;
       } catch (error) {
       console.log(error)
