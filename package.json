@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -R src/External-libraries/4-mailer/emails dist/External-libraries/4-mailer/emails",
     "start": "node dist/main.js",
     "dev": "npx nodemon --watch 'src/**/*.ts' --exec ts-node src/main.ts"
   },
