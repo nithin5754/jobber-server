@@ -8,7 +8,7 @@ export class OrderByBuyerId {
 
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const data: IOrderGetOrdersResult = await this.orderSellerIdUsecase.execute({ sellerId: req.params.buyerId });
+      const data: IOrderGetOrdersResult = await this.orderSellerIdUsecase.execute({ buyerId: req.params.buyerId });
 
       if (!data || !data.data) {
         throw new BadRequestError('Error : Get Orders by BuyerId', 'OrderByBuyerId() method');

@@ -1,4 +1,4 @@
-import { convertOrderData, convertOrderDataArray, getOrder } from '../../Database/Mongoose/Repositories/order.repository';
+import {  convertOrderDataArray, getOrder } from '../../Database/Mongoose/Repositories/order.repository';
 import { Order } from '../../Entities/Order';
 import { IRepoResponse } from '../../IBaseRepositories';
 import { BadRequestError } from '../../Presentation/Error/errorInterface';
@@ -18,7 +18,7 @@ export class GetOrdersUsecase {
   public async execute(input: IOrderGetOrdersDTO): Promise<IOrderGetOrdersResult> {
     const result: IRepoResponse = await getOrder({ order: { ...input } });
     if (!result || !result.orders || !result.orders.length) {
-      throw new BadRequestError('error', 'Create order() Not Found ');
+      throw new BadRequestError('Error :', 'GetOrdersUsecase() Not Found ');
     }
 
     return {

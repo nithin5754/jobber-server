@@ -111,8 +111,6 @@ export class RegisterUseCase {
   private async sendVerificationEmail(user: User): Promise<void> {
     const emailDetails = this.createVerificationEmailDetails(user, EMAIL_TEMPLATE.EMAIL_VERIFICATION);
   const isEmailSend=  await this.mailerService.SendEmail(emailDetails);
-
-  console.log("ismailSend",isEmailSend)
   }
 
   private createVerificationEmailDetails(data: User, template: string): IEmailMessageDetails {

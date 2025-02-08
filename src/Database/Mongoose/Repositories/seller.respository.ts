@@ -107,4 +107,4 @@ function fetchDataArray(data: ISellerDocument[]): Seller[] {
 
     return sellersArray;
   }
-// }
+

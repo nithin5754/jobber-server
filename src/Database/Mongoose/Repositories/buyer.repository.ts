@@ -110,7 +110,7 @@ export async function getRandomBuyers({count}: IRepoRequest): Promise<IRepoRespo
       .exec();
 
 
-console.log("buyerarray",result)
+
 
 return result
 ? {

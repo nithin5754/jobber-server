@@ -9,7 +9,7 @@ export class CreateOrderController {
 
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const serviceFee: number = req.body.price < 50 ? (5.5 / 100) * req.body.price + 2 : (5.5 / 100) * req.body.price;
+      const serviceFee: number = Number((req.body.price < 50 ? (5.5 / 100) * req.body.price + 2 : (5.5 / 100) * req.body.price).toFixed(2) as string) as number
 
       const orderData: IOrder = {
         ...req.body,

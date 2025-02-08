@@ -1,6 +1,7 @@
+import { promises } from 'dns';
 import { Order } from '../../../Entities/Order';
 import { IRepoRequest, IRepoResponse } from '../../../IBaseRepositories';
-import { IOrder, IOrderDocument } from '../../../Interface/IOrder.interface';
+import { IDeliveredWork, IExtendedDelivery, IOrderDocument } from '../../../Interface/IOrder.interface';
 import { OrderModel } from '../Models/order.schema';
 
 export async function createOrder(params: IRepoRequest): Promise<IRepoResponse> {
@@ -25,6 +26,66 @@ export async function getOrder(params: IRepoRequest): Promise<IRepoResponse> {
 
   return {
     orders: data
+  };
+}
+
+export async function approveOrder(orderId: string): Promise<IRepoResponse> {
+  const result: IOrderDocument = (await OrderModel.findOneAndUpdate(
+    { orderId },
+    {
+      $set: {
+        approved: true,
+        status: 'Completed',
+        approvedAt: new Date()
+      }
+    },
+    { new: true }
+  ).exec()) as IOrderDocument;
+
+  return {
+    order: result
+  };
+}
+
+export const sellerDeliverOrder = async (orderId: string, delivered: boolean, deliveredWork: IDeliveredWork): Promise<IRepoResponse> => {
+  const order: IOrderDocument = (await OrderModel.findOneAndUpdate(
+    { orderId },
+    {
+      $set: {
+        delivered,
+        status: 'Delivered',
+        ['events.orderDelivered']: new Date()
+      },
+      $push: {
+        deliveredWork
+      }
+    },
+    { new: true }
+  ).exec()) as IOrderDocument;
+
+  return {
+    order
+  };
+};
+
+export async function updateRequestExtension(orderId: string, data: IExtendedDelivery): Promise<IRepoResponse> {
+  const { newDate, days, originalDate, reason } = data;
+
+  const order: IOrderDocument = (await OrderModel.findOneAndUpdate(
+    { orderId },
+    {
+      $set: {
+        ['requestExtension.originalDate']: originalDate,
+        ['requestExtension.newDate']: newDate,
+        ['requestExtension.days']: days,
+        ['requestExtension.reason']: reason
+      }
+    },
+    { new: true }
+  ).exec()) as IOrderDocument;
+
+  return {
+    order
   };
 }
 

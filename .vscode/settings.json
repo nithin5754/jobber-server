@@ -4,6 +4,7 @@
     "CLOUDINARYAPIKEY",
     "CLOUDINARYAPISECRET",
     "CLOUDINARYCLOUDNAME",
-    "Emailusecase"
+    "Emailusecase",
+    "Extensionusecase"
   ]
 }
