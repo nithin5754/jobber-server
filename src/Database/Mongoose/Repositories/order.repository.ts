@@ -1,7 +1,7 @@
 import { promises } from 'dns';
 import { Order } from '../../../Entities/Order';
 import { IRepoRequest, IRepoResponse } from '../../../IBaseRepositories';
-import { IDeliveredWork, IExtendedDelivery, IOrderDocument } from '../../../Interface/IOrder.interface';
+import { IDeliveredWork, IExtendedDelivery, IOrder, IOrderDocument, IOrderMessage } from '../../../Interface/IOrder.interface';
 import { OrderModel } from '../Models/order.schema';
 
 export async function createOrder(params: IRepoRequest): Promise<IRepoResponse> {
@@ -68,7 +68,7 @@ export const sellerDeliverOrder = async (orderId: string, delivered: boolean, de
   };
 };
 
-export async function updateRequestExtension(orderId: string, data: IExtendedDelivery): Promise<IRepoResponse> {
+export async function updateRequestDeliveryExtension(orderId: string, data: IExtendedDelivery): Promise<IRepoResponse> {
   const { newDate, days, originalDate, reason } = data;
 
   const order: IOrderDocument = (await OrderModel.findOneAndUpdate(
@@ -86,6 +86,72 @@ export async function updateRequestExtension(orderId: string, data: IExtendedDel
 
   return {
     order
+  };
+}
+
+export async function updateRejectDeliveryDate(orderId: string): Promise<IRepoResponse> {
+  const result: IOrderDocument = (await OrderModel.findOneAndUpdate(
+    { orderId },
+    {
+      $set: {
+        requestExtension: {
+          originalDate: '',
+          newDate: '',
+          days: 0,
+          reason: ''
+        }
+      }
+    },
+    { new: true }
+  ).exec()) as IOrderDocument;
+
+  return {
+    order: result
+  };
+}
+
+export async function updateApproveDeliveryDate(orderId: string, data: IExtendedDelivery): Promise<IRepoResponse> {
+  const { newDate, days, reason, deliveryDateUpdate } = data;
+
+  const result: IOrderDocument = (await OrderModel.findOneAndUpdate(
+    { orderId },
+    {
+      $set: {
+        ['offer.deliveryInDays']: days,
+        ['offer.newDeliveryDate']: newDate,
+        ['offer.reason']: reason,
+        ['events.deliveryDateUpdate']: new Date(`${deliveryDateUpdate}`),
+        requestExtension: {
+          originalDate: '',
+          newDate: '',
+          days: 0,
+          reason: ''
+        }
+      }
+    },
+    { new: true }
+  ).exec()) as IOrderDocument;
+
+  return {
+    order: result
+  };
+}
+
+export async function deleteCancelOrder(orderId: string): Promise<IRepoResponse> {
+  const result: IOrderDocument = (await OrderModel.findOneAndUpdate(
+    { orderId },
+    {
+      $set: {
+        cancelled: true,
+        status: 'Cancelled',
+        approvedAt: new Date()
+      }
+    },
+    { new: true }
+  ).exec()) as IOrderDocument;
+
+  return {
+    order: result
   };
 }
 

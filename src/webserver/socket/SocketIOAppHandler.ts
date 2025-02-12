@@ -26,7 +26,8 @@ export class SocketIOAppHandler {
     this.eventHandler = [
       new UserEventHandler(io),
       new GeneralEventHandler(io),
-      new CategoryEventHandler(io)
+      new CategoryEventHandler(io),
+   
     ];
   }
 

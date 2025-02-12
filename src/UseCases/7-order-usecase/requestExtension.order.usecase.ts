@@ -1,4 +1,4 @@
-import { convertOrderData, updateRequestExtension } from '../../Database/Mongoose/Repositories/order.repository';
+import { convertOrderData, updateRequestDeliveryExtension } from '../../Database/Mongoose/Repositories/order.repository';
 import { Order } from '../../Entities/Order';
 import { IRepoResponse } from '../../IBaseRepositories';
 import { IExtendedDelivery } from '../../Interface/IOrder.interface';
@@ -18,7 +18,7 @@ export class UpdateRequestExtensionUsecase {
   constructor() {}
 
   public async execute(input: IOrderRequestExtensionDTO): Promise<IOrderRequestExtensionResult> {
-    const result: IRepoResponse = await updateRequestExtension(input.orderId, input.data);
+    const result: IRepoResponse = await updateRequestDeliveryExtension(input.orderId, input.data);
     if (!result || !result.order) {
       throw new BadRequestError('error', 'UpdateRequestEExtension() Not Found ');
     }

@@ -6,7 +6,7 @@ import { StatusCodes } from 'http-status-codes';
 import { UserTypeKey } from '../../../Interface/IUser.interface';
 import { User } from '../../../Entities/User';
 import { omit } from 'lodash';
-import { VerifyEmailUsecase, IVerifyEmailResult } from '../../../UseCases/1AuthUsecase/verify-email.usecase';
+import { VerifyEmailUsecase, IVerifyEmailResult } from '../../../UseCases/1-auth-usecase/verify-email.usecase';
 
 export class VerifyEmail {
   constructor(private verifyEmailusecase: VerifyEmailUsecase) {}

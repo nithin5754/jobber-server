@@ -6,7 +6,7 @@ import { omit } from 'lodash';
 import { UserTypeKey } from '../../../Interface/IUser.interface';
 import { User } from '../../../Entities/User';
 import { StatusCodes } from 'http-status-codes';
-import { LoginUseCase } from '../../../UseCases/1AuthUsecase/login.usecase';
+import { LoginUseCase } from '../../../UseCases/1-auth-usecase/login.usecase';
 
 export class Login {
   constructor(private readonly loginUseCase: LoginUseCase, private readonly validation: Joi.ObjectSchema<any>) {}

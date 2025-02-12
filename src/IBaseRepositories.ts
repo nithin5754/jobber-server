@@ -6,6 +6,7 @@ import { User, IUser } from "./Entities/User";
 import { IConversation, IChatData } from "./Interface/IChat.interface";
 import { ISellerGig } from "./Interface/IGig.interface";
 import { IOrder, IOrderDocument } from "./Interface/IOrder.interface";
+import { IReview, IReviewDocument } from "./Interface/IReview.interface";
 import { ISeller } from "./Interface/ISeller.interface";
 
 
@@ -24,8 +25,9 @@ export interface IRepoResponse {
   conversationDetailsArray?:IConversation[]
   conversation?:IConversation;
   order?:IOrderDocument;
-  orders?:IOrderDocument[]
-  
+  orders?:IOrderDocument[];
+  review?:IReviewDocument;
+  reviews?:IReviewDocument[];
 }
 
 export interface IRepoRequest {
@@ -59,6 +61,8 @@ export interface IRepoRequest {
     
   };
   order?:IOrder;
+
+  review?:IReview
 
   updateFilterMultipleMessage?:{
     _id?:string;

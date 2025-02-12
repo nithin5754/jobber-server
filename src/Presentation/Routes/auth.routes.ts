@@ -8,12 +8,12 @@ import { Login as LoginController } from '../Controllers/1-user.controller/login
 import { VerifyEmail } from '../Controllers/1-user.controller/verify-email.user.controller';
 import { SignOut } from '../Controllers/1-user.controller/signout.user.controller';
 import services from '../../Services';
-import { ForgotPasswordUsecase } from '../../UseCases/1AuthUsecase/forgot-password.usecase';
-import { LoginUseCase } from '../../UseCases/1AuthUsecase/login.usecase';
-import { RefreshUsecase } from '../../UseCases/1AuthUsecase/refresh.usecase';
-import { RegisterUseCase } from '../../UseCases/1AuthUsecase/register.usecase';
-import { ResetPasswordUsecase } from '../../UseCases/1AuthUsecase/reset-password.usecase';
-import { VerifyEmailUsecase } from '../../UseCases/1AuthUsecase/verify-email.usecase';
+import { ForgotPasswordUsecase } from '../../UseCases/1-auth-usecase/forgot-password.usecase';
+import { LoginUseCase } from '../../UseCases/1-auth-usecase/login.usecase';
+import { RefreshUsecase } from '../../UseCases/1-auth-usecase/refresh.usecase';
+import { RegisterUseCase } from '../../UseCases/1-auth-usecase/register.usecase';
+import { ResetPasswordUsecase } from '../../UseCases/1-auth-usecase/reset-password.usecase';
+import { VerifyEmailUsecase } from '../../UseCases/1-auth-usecase/verify-email.usecase';
 import { ForgotPassword } from '../Controllers/1-user.controller/forgot-password.user.controller';
 import { Refresh } from '../Controllers/1-user.controller/refresh.user.controller';
 import { ResetPassword } from '../Controllers/1-user.controller/reset-password.user.controller';
@@ -22,6 +22,9 @@ import { forgotPasswordSchema, passwordSchema } from '../schemas/1-auth-schemas/
 import { loginSchema } from '../schemas/1-auth-schemas/signin.schema';
 import { signupSchema } from '../schemas/1-auth-schemas/signup.schemas';
 import upload from '../middlewares/multer';
+
+
+
 
 /**
  * @description INTERCEPTORS

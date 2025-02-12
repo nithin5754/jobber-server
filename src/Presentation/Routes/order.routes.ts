@@ -12,6 +12,12 @@ import { ApproveOrderUsecase } from '../../UseCases/7-order-usecase/approveOrder
 import { SellerDeliverOrderUsecase } from '../../UseCases/7-order-usecase/seller.orderDelivered.usecase';
 import services from '../../Services';
 import upload from '../middlewares/multer';
+import { RejectDeliveryUsecase } from '../../UseCases/7-order-usecase/reject.delivery.usecase';
+import { DeliveryDateController } from '../Controllers/6-order.controller/delivery-date.controller';
+import { ApproveDeliveryUsecase } from '../../UseCases/7-order-usecase/approve.delivery.usecase';
+import { CancelOrderUsecase } from '../../UseCases/7-order-usecase/cancel.order.usecase';
+import { CancelOrderController } from '../Controllers/6-order.controller/cancel.order.controller';
+
 
 const createOrderInterceptor = new CreateOrderUsecase();
 const getOrdersInterceptors = new GetOrdersUsecase();
@@ -19,18 +25,22 @@ const getOrderIdInterceptor = new GetOrderIdUsecase();
 
 const createOrder = new CreateOrderController(createOrderInterceptor);
 
+const approveOrderInterceptor=new ApproveOrderUsecase()
 const updateRequestExtensionInterceptor = new UpdateRequestExtensionUsecase();
+const rejectDeliveryInterceptor=new RejectDeliveryUsecase()
+const approveDeliveryInterceptor=new ApproveDeliveryUsecase()
+const cancelOrderInterceptor=new CancelOrderUsecase()
 
 const getOrdersBySellerIdController = new OrderBySellerId(getOrdersInterceptors);
 
 const getOrdersByBuyerIdController = new OrderByBuyerId(getOrdersInterceptors);
 
 const getOrderIdController = new OrderByOrderId(getOrderIdInterceptor);
+const cancelController=new CancelOrderController(cancelOrderInterceptor)
 
 const sellerDeliverOrderInterceptor=new SellerDeliverOrderUsecase()
 
-const approveOrderInterceptor=new ApproveOrderUsecase()
-
+const deliveryController=new DeliveryDateController(rejectDeliveryInterceptor,approveDeliveryInterceptor)
 const updateOrderController = new UpdateOrderController(updateRequestExtensionInterceptor,approveOrderInterceptor,sellerDeliverOrderInterceptor,services.uniqueId,services.cloudinary,services.multer);
 
 const OrderRouter = (router: Router): Router => {
@@ -45,7 +55,11 @@ const OrderRouter = (router: Router): Router => {
 
   router.route('/order/order-update-extension/:orderId').put(updateOrderController.requestExtension.bind(updateOrderController));
   
-  router.route('/order/approve-order/:orderId').put(updateOrderController.buyerApproveOrder.bind(updateOrderController))
+  router.route('/order/approve-order/:orderId').put(updateOrderController.buyerApproveOrder.bind(updateOrderController));
+
+  router.route('/order/order-delivery-extension/:type/:orderId').put(deliveryController.handle.bind(deliveryController))
+
+  router.route('/order/order-delivery-cancel/:orderId').put(cancelController.handle.bind(cancelController))
 
   return router;
 };

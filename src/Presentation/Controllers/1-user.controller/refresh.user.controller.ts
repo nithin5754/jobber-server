@@ -5,7 +5,7 @@ import { User } from '../../../Entities/User';
 import { UserTypeKey } from '../../../Interface/IUser.interface';
 import { omit } from 'lodash';
 import { StatusCodes } from 'http-status-codes';
-import { RefreshUsecase, IRefreshResult } from '../../../UseCases/1AuthUsecase/refresh.usecase';
+import { RefreshUsecase, IRefreshResult } from '../../../UseCases/1-auth-usecase/refresh.usecase';
 
 export class Refresh {
   constructor(private readonly refreshUsecase: RefreshUsecase) {}

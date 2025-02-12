@@ -8,7 +8,7 @@ import { omit } from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 
 import { IController } from '../../../IController';
-import { CurrentUserUsecase, ICurrentUserResult } from '../../../UseCases/1AuthUsecase/currentUser.usecase';
+import { CurrentUserUsecase, ICurrentUserResult } from '../../../UseCases/1-auth-usecase/currentUser.usecase';
 
 export class CurrentUser implements IController {
   constructor(private readonly currentUsecase: CurrentUserUsecase) {}

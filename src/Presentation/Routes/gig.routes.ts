@@ -26,22 +26,22 @@ const createGigInterceptor = new CreateGigUsecase(services.uniqueId, services.mu
 const updateGigInterceptor = new UpdateGigUsecase();
 
 const getByIdInterceptor = new GetByIdSellerGig();
-
-const getByCategoryInterceptor = new GetByCategorySellerGig();
 const getSellerGigsInterceptor = new GetSellerGigs();
 const getPauseGigsInterceptor = new GetSellerPausedGigs();
+const getMoreLikeThisInterceptor = new MoreLikeThisUsecase();
+const getByCategoryInterceptor = new GetByCategorySellerGig();
+const gatewayCache = new CacheLoginUser();
+
 const deleteGigInterceptor = new DeleteGigUsecase();
 
 const gigSearchInterceptor = new SearchGigsUsecase();
 
 const gigSeedInterceptor = new GigSeedUsecases();
 
-const getMoreLikeThisInterceptor = new MoreLikeThisUsecase();
 
 const updateInterceptor = new updateActiveGigUsecase();
 
 const createController = new CreateGig(createGigInterceptor, gigCreateSchema);
-const gatewayCache = new CacheLoginUser();
 const updateController = new UpdateGig(updateGigInterceptor, updateInterceptor);
 const getGigsController = new GetGig(
   getByIdInterceptor,

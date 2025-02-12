@@ -4,7 +4,7 @@ import { BadRequestError } from '../../Error/errorInterface';
 import Joi from 'joi';
 
 import { StatusCodes } from 'http-status-codes';
-import { ForgotPasswordUsecase, IForgotResult } from '../../../UseCases/1AuthUsecase/forgot-password.usecase';
+import { ForgotPasswordUsecase, IForgotResult } from '../../../UseCases/1-auth-usecase/forgot-password.usecase';
 
 export class ForgotPassword {
   constructor(private readonly validation: Joi.ObjectSchema<any>, private readonly forgotPasswordUsecase: ForgotPasswordUsecase) {}

@@ -20,7 +20,7 @@ export class CreateMessage {
   public async  handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
 
-  console.log("body",req.body)
+
 
       const messageData: IChatData = {
         conversationId: req.body.conversationId,

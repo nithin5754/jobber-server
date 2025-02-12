@@ -8,7 +8,7 @@ import { User } from '../../../Entities/User';
 import { UserTypeKey } from '../../../Interface/IUser.interface';
 import { omit } from 'lodash';
 import { firstLetterUpperCase, lowerCase } from '../../utils/helper.utils';
-import { RegisterUseCase, ICreateUserDTO } from '../../../UseCases/1AuthUsecase/register.usecase';
+import { RegisterUseCase, ICreateUserDTO } from '../../../UseCases/1-auth-usecase/register.usecase';
 
 export class RegisterController {
   constructor(private readonly registerUseCase: RegisterUseCase, private readonly validation: Joi.ObjectSchema<any>) {}

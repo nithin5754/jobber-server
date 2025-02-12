@@ -1,4 +1,4 @@
-import { approveOrder, convertOrderData, sellerDeliverOrder } from '../../Database/Mongoose/Repositories/order.repository';
+import { convertOrderData, sellerDeliverOrder } from '../../Database/Mongoose/Repositories/order.repository';
 import { Order } from '../../Entities/Order';
 import { IRepoResponse } from '../../IBaseRepositories';
 import { IDeliveredWork } from '../../Interface/IOrder.interface';
