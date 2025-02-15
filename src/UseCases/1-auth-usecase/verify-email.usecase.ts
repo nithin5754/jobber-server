@@ -1,4 +1,4 @@
-import { findOneByUser, updateUser } from "../../Database/Mongoose/Repositories/UserRespository";
+import { findOneByUser, updateUser } from "../../Database/Mongoose/Repositories/user.respository";
 import { User } from "../../Entities/User";
 import { IRepoResponse } from "../../IBaseRepositories";
 import { BadRequestError } from "../../Presentation/Error/errorInterface";

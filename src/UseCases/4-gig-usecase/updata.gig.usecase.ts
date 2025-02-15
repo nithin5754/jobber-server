@@ -1,5 +1,5 @@
 import { updateGIG } from "../../Database/Mongoose/Repositories/gig.repository";
-import { findOneByUser } from "../../Database/Mongoose/Repositories/UserRespository";
+import { findOneByUser } from "../../Database/Mongoose/Repositories/user.respository";
 import { SellerGig } from "../../Entities/Gig";
 import { IRepoResponse } from "../../IBaseRepositories";
 import { ISellerGig } from "../../Interface/IGig.interface";

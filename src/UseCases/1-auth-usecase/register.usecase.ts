@@ -1,6 +1,6 @@
 import { UploadApiResponse, UploadApiErrorResponse } from "cloudinary";
 import { ConfigType } from "../../config";
-import { createUser, isUsernameOrEmailExist } from "../../Database/Mongoose/Repositories/UserRespository";
+import { createUser, isUsernameOrEmailExist } from "../../Database/Mongoose/Repositories/user.respository";
 import { User } from "../../Entities/User";
 import { UniqueId } from "../../External-libraries/1-unique-id/unique-id.service";
 import { CloudinaryUploads } from "../../External-libraries/3-cloudinary/cloudinary-uploads.service";

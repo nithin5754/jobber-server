@@ -5,7 +5,7 @@ import { faker } from '@faker-js/faker';
 import { sampleSize, sample, floor, random } from 'lodash';
 import { getRandomBuyers, updateUsingOtherFieldsBuyer } from '../../Database/Mongoose/Repositories/buyer.repository';
 import { createSeller, findOneSeller } from '../../Database/Mongoose/Repositories/seller.respository';
-import { findOneByUser } from '../../Database/Mongoose/Repositories/UserRespository';
+import { findOneByUser } from '../../Database/Mongoose/Repositories/user.respository';
 import { Buyer } from '../../Entities/Buyer';
 import { Seller } from '../../Entities/Seller';
 import { IRepoResponse } from '../../IBaseRepositories';

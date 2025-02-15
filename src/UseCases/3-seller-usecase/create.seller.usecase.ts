@@ -1,6 +1,6 @@
 import { updateUsingOtherFieldsBuyer } from '../../Database/Mongoose/Repositories/buyer.repository';
 import { createSeller } from '../../Database/Mongoose/Repositories/seller.respository';
-import { findOneByUser } from '../../Database/Mongoose/Repositories/UserRespository';
+import { findOneByUser } from '../../Database/Mongoose/Repositories/user.respository';
 import { Seller } from '../../Entities/Seller';
 import { IRepoResponse } from '../../IBaseRepositories';
 import { ISeller } from '../../Interface/ISeller.interface';

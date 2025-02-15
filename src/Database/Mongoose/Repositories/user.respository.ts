@@ -45,6 +45,8 @@ import { BuyerModal } from '../Models/buyer.schema';
     return result ? { user: filterFetchResult(result) } : { isNull: true };
   }
 
+ 
+
   export async function updateUser(id: string, data: IRepoRequest): Promise<IRepoResponse> {
     const isUpdate = await UserModal.findByIdAndUpdate({ _id: id }, { $set: data.data }, { upsert: true });
 

@@ -1,5 +1,5 @@
 import { searchGigs } from "../../Database/Mongoose/Repositories/search.gig.repository";
-import { findOneByUser } from "../../Database/Mongoose/Repositories/UserRespository";
+import { findOneByUser } from "../../Database/Mongoose/Repositories/user.respository";
 import { SellerGig } from "../../Entities/Gig";
 import { IRepoResponse } from "../../IBaseRepositories";
 import { BadRequestError } from "../../Presentation/Error/errorInterface";

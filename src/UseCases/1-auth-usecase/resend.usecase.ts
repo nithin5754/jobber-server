@@ -1,6 +1,6 @@
 
 import { ConfigType } from '../../config';
-import { findOneByUser, updateUser } from '../../Database/Mongoose/Repositories/UserRespository';
+import { findOneByUser, updateUser } from '../../Database/Mongoose/Repositories/user.respository';
 import { User } from '../../Entities/User';
 import { UniqueId } from '../../External-libraries/1-unique-id/unique-id.service';
 import { IEmailMessageDetails } from '../../External-libraries/4-mailer/interface/imailer.interface';
